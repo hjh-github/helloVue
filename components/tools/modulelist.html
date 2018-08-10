@@ -1,0 +1,56 @@
+<!--左侧模块列表-->
+<div id="tplListIcon" class="mytpl tplListIcon tplSame positionF">
+    <div @click.stop.prevent="toggleIcon" class="btnIconBox positionR pointer boxShadow" :class="{clearBoxShadow: iconName === type}">
+        <div class="tplImgBox positionA">
+            <img class="iconImage" :src="iconName !== type?'./images/tplList.png':'./images/tplListChosen.png'" alt="">
+        </div>
+    </div>
+
+    <div v-cloak v-show="iconName === type" class="iconRight iconTop positionA">
+        <img src="./images/iconTop.png" alt="">
+    </div>
+    <!-- 模块列表弹窗 -->
+    <div v-cloak v-show="iconName === type" id="tplListDialog" class="tabs positionA fs14 tplSameDialog clearfix">
+        <!-- 弹窗左边的导航 -->
+        <ul class="fl addMduleLeft">
+            <!--
+            @click.stop.prevent="showModuleList(index,moduleCategory.code)"-->
+            <li @click="showWitch=index" :class="{active: showWitch == index}" v-for="(moduleCategory,index) in moduleCategoryList">
+                <a href="javascript:;" v-text="moduleCategory.name"></a>
+            </li>
+        </ul>
+        <div class="addMduleRight fr">
+            <div class="tabsTitle">
+                <span>{{thisModule}}</span>
+                <div class="tpl_right fr" @click.stop="app.iconName = ''">
+                    <div class="closeBox pointer">
+                        <img src="./images/mytpl_close.png" alt="">
+                    </div>
+                </div>
+            </div>
+            <!-- 新的组件库 .v2 -->
+            <!-- <div v-show="!showElement" class="commonModules scroll-bar">
+                <div v-for="(models,i) in moduleConfig" class="moduleViewContainer clearfix">
+                    <div class="moduleViewLabel" @click="showClum(i)" :class="[models.show ? 'on' : 'off']">
+                        <span class="mLabelText" style="color: #5ca6e2;">{{models.name}}</span>
+                    </div>
+                    <div class="moduleViewContent" v-show="models.show">
+                        <palette-item v-for="model in models.modules" :model="model"></palette-item>
+                    </div>
+                </div>
+            </div> -->
+            
+            <el-collapse v-show="!showElement" class="commonModules scroll-bar" v-model="activeName" accordion>
+                <el-collapse-item :title="models.name" :name="i+1" v-for="(models,i) in moduleConfig" class="moduleViewContainer">
+                   
+                    <div class="moduleViewContent">
+                        <palette-item v-for="model in models.modules" :model="model" v-if="model.code.indexOf(app.webcode)>-1&&model.status.indexOf(app.channel)>-1"></palette-item>
+                    </div>
+                </el-collapse-item>
+            </el-collapse>
+            <!--  <div class="moduleViewLabel" @click="showClum(i)" :class="[models.show ? 'on' : 'off']">
+                        <span class="mLabelText" style="color: #5ca6e2;">{{models.name}}</span>
+                    </div> -->
+        </div>
+    </div>
+</div>

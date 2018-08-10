@@ -1,0 +1,12 @@
+<!-- 图文>显示更多 -->
+<div class="martop10 marbottom10">
+    <div><span>显示更多：</span>
+
+        <el-radio type="radio" v-model="showMore.visible" name="showmore" :label="true">显示</el-radio>
+        <el-radio type="radio" v-model="showMore.visible" name="showmore" :label="false">隐藏</el-radio>
+    </div>
+    <el-row v-show="showMore.visible" style="margin: 10px 0px;">
+        <addlink :callback="addLink" :model="showMore"></addlink>
+        <!--<span v-if="showMore.link">链接：{{showMore.link}}</span>-->
+    </el-row>
+</div>

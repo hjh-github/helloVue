@@ -1,0 +1,43 @@
+<div class="new-page alter-page text-dialog flex-column mobileFooterList">
+    <!-- <div class="new-page-child">
+        
+    </div> -->
+    <div class="dialog-title">
+        新增页面
+        <button @click="close" class="close-dialog" type="button"></button>
+    </div>
+    <div class="pd-0-20 content scroll-bar" style="height: 630px;overflow-y:auto;overflow-x:hidden;">
+        <el-row>
+            <li>
+                <span>页面类型</span>
+                <el-select v-model="pageInfo.columnCode" placeholder="请选择">
+                    <el-option v-for="item in navType" :key="item.id" :label="item.name" :value="item.code">
+                    </el-option>
+                </el-select>
+            </li>
+        </el-row>
+        <el-row>
+            <li>
+                <span>上级名称</span>
+                <el-select v-model="pageInfo.parentId" placeholder="请选择">
+                    <el-option v-if="item" v-for="item in navList1" :key="item.menuId" :label="item.name" :value="item.menuId">
+                    </el-option>
+                </el-select>
+            </li>
+        </el-row>
+        <el-row>
+            <el-checkbox v-model="pageInfo.target" :true-label="2" :false-label="1" v-show="pageInfo.columnCode !== 'custom'">新窗口打开</el-checkbox>
+        </el-row>
+        <el-row>
+            <span>填写名称</span>
+            <el-input type="text" v-model="pageInfo.name" placeholder="导航名称" maxlength="6"></el-input>
+        </el-row>
+        <addlink :model="model" :callback="addLink" v-show="pageInfo.columnCode == 'custom'" class="newPageBtn"></addlink>
+        <div class="tips-add-new" v-if="showTips">请填写导航名称</div>
+    </div>
+    <div class="square-btn-box clearfix text-dcrtion positionR">
+        <button @click="addNavigation" type="button" class="succee-btn fr" v-loading="loading">
+            确 定
+        </button>
+    </div>
+</div>

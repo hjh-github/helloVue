@@ -1,0 +1,5 @@
+define(['vueLoader'], (loader) => {
+    return{
+        
+    }
+})

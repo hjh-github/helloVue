@@ -1,0 +1,21 @@
+<div>
+    <div v-if="config[0]" class="color-item mar-bot">
+        <span class="subtitle displayI"></span>
+        <span class="self-subtitle">颜色&nbsp;:</span>
+        <el-color-picker v-model="model['background-color']"></el-color-picker>
+        <!-- <span class="well-number displayI">#</span> -->
+        <input type="text" v-model="model['background-color']" class="time-number lh30 alignC fs14">
+    </div>.
+
+    <div v-if="config[0]" class="pic-item">
+        <span class="subtitle displayI"></span>
+        <span class="self-subtitle pic-text">图片&nbsp;:</span>
+        <div @click="selectImage" class="pic-add-box pointer" :style="{'background-image':model['background-image']}">
+            <p class="add-symbol fs40 alignC lh46">+</p>
+            <p class="add-text fs14 alignC">添加图片</p>
+        </div>
+        <el-row v-if="model['background-image']" style="height:40px;">
+            <el-button style="margin-top:5px;right:60px;position: absolute;" size="mini" type="danger" @click="clearImage">清空</el-button>
+        </el-row>
+    </div>
+</div>

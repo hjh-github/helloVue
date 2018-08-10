@@ -1,0 +1,50 @@
+<div>
+    <div class="size-item mar-bot10">
+        <span class="subtitle displayI">大小&nbsp;:</span>
+        <el-select v-model="model['font-size']">
+            <el-option v-for="i in 9" :label="i+13+'px'" :key="i+13" :value="i+13"></el-option>
+        </el-select>
+    </div>
+    <div class="family-item mar-bot10">
+        <span class="subtitle displayI">字体&nbsp;:</span>
+        <el-select v-model="model['font-family']">
+            <el-option v-for="f in fonts" :label="f" :value="f" :key="f"></el-option>
+        </el-select>
+    </div>
+    <div class="style-item mar-bot10">
+        <span class="subtitle displayI">样式&nbsp;:</span>
+        <label :style="match('font-weight','bold')"
+               class="style-label mar-r blod-label gray-border h30p">
+            <input @click="switchBold" type="radio" class="blod-input hidden-radio" name="font-style">
+        </label>
+        <label :style="match('font-style','italic')"
+               class="style-label mar-r italic-label gray-border h30p">
+            <input @click="switchItalic" type="radio" class="italic-input hidden-radio"
+                   name="font-style">
+        </label>
+        <label :style="match('text-decoration','underline')"
+               class="style-label mar-r oblique-label gray-border h30p">
+            <input @click="switchUnderline" type="radio" class="oblique-input hidden-radio"
+                   name="font-style">
+        </label>
+    </div>
+    <div class="font-color-item mar-bot10">
+        <span class="subtitle displayI">颜色&nbsp;:</span>
+        <el-color-picker v-model="model['color']"></el-color-picker>
+        <span class="well-number displayI">#</span>
+        <input type="text" v-model="model['color']" class="time-number lh30 alignC fs14">
+
+    </div>
+    <!--<div class="pad-distance">-->
+    <!--<div class="top-distance mar-bot10">-->
+    <!--<span class="subtitle displayI">距离&nbsp;:</span>-->
+    <!--<span class="self-subtitle">上&nbsp;:</span>-->
+    <!--<input type="text" v-model="model['margin-top']" class="time-number lh30 alignC fs14">-->
+    <!--</div>-->
+    <!--<div class="bot-distance">-->
+    <!--<span class="subtitle displayI"></span>-->
+    <!--<span class="self-subtitle">下&nbsp;:</span>-->
+    <!--<input type="text" v-model="model['margin-bottom']" class="time-number lh30 alignC fs14">-->
+    <!--</div>-->
+    <!--</div>-->
+</div>

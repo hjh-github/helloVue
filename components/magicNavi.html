@@ -1,0 +1,22 @@
+<v-cptborder :model="model" :setting="settingConfig" :editing="editingConfig">
+  <div v-if='model.type==0'>
+    <ul class="clearfix">
+      <li v-for="item in navlist" class="mgNavList mgNavS1" v-if="item.isShow">
+        <v-href :model="item">
+          <i :style="{'background-image':'url('+item.src+')'}"></i>
+          <span>{{item.name}}</span>
+        </v-href>
+      </li>
+    </ul>
+  </div>
+  <div v-if='model.type==1'>
+    <ul class="clearfix">
+      <li v-for="item in navlist" class="mgNavList mgNavS2" v-if="item.isShow">
+        <v-href :model="item">
+            <i :style="{'background-image':'url('+item.src+')'}"></i>
+          <span>{{item.name}}</span>
+        </v-href>
+      </li>
+    </ul>
+  </div>
+</v-cptborder>

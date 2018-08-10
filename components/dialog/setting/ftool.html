@@ -1,0 +1,59 @@
+<!-- 编辑文字工具组件 -->
+<div class="colorpick-parents fonttool" :class='fontTop'>
+    <el-color-picker v-model="model.fontStyle['color']"></el-color-picker>
+    <div class="fontf">
+        <el-select v-model="model.fontStyle['font-family']" placeholder="请选择">
+            <el-option v-for="item in fonts" :key="item" :label="item" :value="item">
+            </el-option>
+        </el-select>
+    </div>
+    <div class="fonts">
+        <el-select v-model="model.fontStyle['font-size']" placeholder="请选择">
+            <el-option v-for="item in sizes" :key="item" :label="item" :value="item">
+            </el-option>
+        </el-select>
+    </div>
+    <div @click="save" style="width:33px; text-align: right; cursor: pointer;">确定</div>
+    <div class="icon-box">
+        <div class="blod icon-item" @click="swap('font-weight','bold')" :class="{'cur-img':model.fontStyle['font-weight']=='bold'}" title="加粗">
+
+        </div>
+        <div class="italic icon-item" @click="swap('font-style','italic')" :class="{'cur-img':model.fontStyle['font-style']=='italic'}" title="斜体">
+
+        </div>
+        <div class="undeline icon-item" @click="swap('text-decoration','underline')" :class="{'cur-img':model.fontStyle['text-decoration']=='underline'}"
+            title="下划线">
+
+        </div>
+        <!--<div class="font-direction icon-item" title="文字排列方式">-->
+
+        <!--</div>-->
+        <div class="fontlh selectBox trigger" title="行高">
+            <!-- <div class="icon-item vertical">
+            </div>
+            <i class="triangle"></i> -->
+            <el-select v-model="model.fontStyle['line-height']" placeholder="行高">
+                <el-option v-for="item in lineHeights" :key="item" :label="item" :value="item">
+                </el-option>
+            </el-select>
+            <!--<div class="select-dropdown scroll-bar hide">-->
+            <!--<ul class="fonts-list">-->
+
+            <!--</ul>-->
+            <!--</div>-->
+        </div>
+        <div class="alignment selectBox trigger" title="对齐方式">
+            <!-- <div class="icon-item"></div>
+            <i class="triangle"></i> -->
+            <el-select v-model="model.fontStyle['text-align']" placeholder="对齐方式">
+                <el-option v-for="item in aligns" :key="item.value" :label="item.label" :value="item.value">
+                </el-option>
+            </el-select>
+        </div>
+        <!--<div class="setlink icon-item" title="设置链接">-->
+
+        <!--</div>-->
+        <div class="cleartype icon-item" title="清除格式">
+        </div>
+    </div>
+</div>

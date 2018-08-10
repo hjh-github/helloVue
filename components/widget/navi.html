@@ -1,0 +1,12 @@
+<div style="width:100%;height:100%;" @mouseleave.prevent="hover=false;" @mouseenter.prevent="hover=true;">
+    <div @click="showMenu" style="position: relative;width:100%;height:100%;" :style="titleStyle">
+        <div style="position:relative;top:50%;transform:translateY(-50%);">
+            <i v-if="model.type==2" class="el-icon-more" style="margin-right:1rem;"></i>
+            <slot name="title"></slot>
+            <i v-if="model.type==1" class="el-icon-more" style="margin-left:1rem;"></i>
+        </div>
+    </div>
+    <div ref="menu" v-show="menuVisible" style="margin-top:1px;position:fixed;" :style="menuStyle">
+        <slot></slot>
+    </div>
+</div>

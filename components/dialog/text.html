@@ -1,0 +1,13 @@
+<div class="title" style="max-width: 350px;">
+    <el-row >
+        <el-col :span="4" style="white-space:nowrap" class="alignR">
+            {{config.text}}&nbsp;:
+        </el-col>
+        <el-col :span="18">
+            <div class="input-text-box marleft10">
+                <input v-model="model[key]" class="titleInput" :type="config.type" :placeholder="config.placeholder" style="border-radius: 2px;"/>
+            </div>
+        </el-col>
+        <!--<span v-if="config.unit">{{config.unit}}</span>-->
+    </el-row> 
+</div>

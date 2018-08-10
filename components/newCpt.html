@@ -1,0 +1,18 @@
+<v-cptborder :model="model" :setting="settingConfig" :editing="editingConfig">
+    <div>
+        <div v-show="visible">
+            名称：<input type="text" v-model="model.name"/>
+
+        </div>
+        <div>
+            描述：<input type="text" v-model="model.desc"/>
+
+        </div>
+        <div>
+            名称1：<input type="text" v-model="name1"/>
+        </div>
+
+        <button @click="handleClick">{{name}}</button>
+    </div>
+</v-cptborder>
+

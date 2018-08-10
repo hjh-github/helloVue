@@ -1,0 +1,22 @@
+<div class="pickrect-box-outer clearfix" v-if="app.channel == 1">
+	<div v-for="(c,index) in config.data" >
+		<div    v-if='index==0||index%5==0'  style="position:relative;float:left;height:100px;width:150px;margin-top:20px;margin-left:8px"
+		 :class="{'cur-img':model[store]==index,'no-margin-r': (index+1)%4 == 0}" @click="model[store]=index" class="positionR pickrect-box"  :style="c.style">
+		    <img :src="c.src" :title="c.desc"  style="width:100%;height:100%;">
+		    <i class="checkin positionA" v-show="model[store]==index"></i>
+		</div>
+
+		<div   v-else   
+		 style="position:relative;float:left;height:100px;width:150px;margin-top:20px;margin-left:16px"
+		 :style="c.style" 
+		 :class="{'cur-img':model[store]==index}" 
+		 class="positionR pickrect-box" 
+		 @click="model[store]=index" 
+		 >
+		    <img :src="c.src" :title="c.desc"  style="width:100%;height:100%;">
+		    <i class="checkin positionA" v-show="model[store]==index"></i>
+		</div>
+	</div>
+
+</div>
+<div v-else style="width: 100%;line-height: 50vh;color: #333; font-size: 13px;text-align: center">暂无</div>

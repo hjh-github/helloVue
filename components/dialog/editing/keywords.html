@@ -1,0 +1,13 @@
+<div>
+    <span>
+        推荐的关键字
+    </span>
+    <div>
+        <el-row :gutter="35" style="margin-top:20px;line-height:80px;">
+            <el-col v-for="i in 10" :span="5">
+                <el-input v-model="model[key][i-1]">
+                </el-input>
+            </el-col>
+        </el-row>
+    </div>
+</div>

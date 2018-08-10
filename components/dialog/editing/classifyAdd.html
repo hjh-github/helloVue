@@ -1,0 +1,87 @@
+<div v-show="visible" style="z-index:100;position:fixed;" :style="styleConfig">
+    <div @click="cancel" class="vmask"></div>
+    <div class="moduleSetDialog vdialog moduleSetFileWb" id="dialog">
+        <div class="DialogTitle" id="DialogTitle">
+            <span>{{config.title}}</span>
+            <i class="closeDialog" data-isSecond="0" @mousedown="cancel"></i>
+        </div>
+        <div class="img-txt">
+            <div class="setlink-dialog" style="margin-left: 30px;">
+                <input type="hidden" v-model="id">
+                <div class="input-text-box" style="margin-top: 20px">
+                    栏目标题&nbsp;:
+                    <el-input placeholder="请输入内容" clearable style="width:240px;" v-model="name" :maxlength="10"></el-input>
+                </div>
+                </el-row>
+                <div style="margin-top: 20px;">
+                    <span>添加图片&nbsp;:</span>
+                    <div @click="selectImage" class="iconify" :style="iconStyle">
+                        <i class="el-icon-plus"></i>
+                    </div>
+                </div>
+                <el-row class="setlink-dialog-ro">
+                    <el-col :span="10" class="link-slider-top">
+                        <span>链接类型&nbsp;:</span>
+                        <el-radio-group ref="eradio" v-model="linkType">
+                            <el-radio ref="r2" :label="0">本地链接</el-radio>
+                            <el-radio ref="r3" :label="1">自定义链接</el-radio>
+                        </el-radio-group>
+                    </el-col>
+                    <el-col class="link-slider-top">
+                        <div v-show="linkType==0">
+                            <span> 本地连接&nbsp;:</span>
+                            <el-row style="padding-bottom: 10px;">
+                                <el-select v-model="localLinkName" @change="changeType">
+                                    <el-option v-for="v in linkTypeOptions" :key="v" :value="v" :label="v"></el-option>
+                                </el-select>
+                            </el-row>
+                            <el-row style="padding-bottom: 10px;">
+                                链接地址
+                            </el-row>
+                            <el-row style="padding-bottom: 10px;">
+                                <el-select v-model="localLink">
+                                    <el-option  v-for="v in linkList" :key="v.link" :value="v.link" :label="v.name"></el-option>
+                                </el-select>
+                            </el-row>
+                            <el-row style="padding-bottom: 10px;font-size: 12px;color: red;" v-if="selectedLinkType!='栏目'">
+                                *点击“后台”进入商城后台系统，进入“建站管理”==>“建站商城导航”菜单==>开始添加内容
+                            </el-row>
+                        </div>
+                        <div v-show="linkType==1" class="self-defined-link">
+                            <el-row class="defined-link-name">
+                                自定义链接
+                            </el-row>
+                            <el-input type="text" v-model="customLink" placeholder="填写链接" class="input-with-select" style="width: 480px;">
+                                <el-select v-model="domain" slot="prepend" placeholder="请选择" style="width: 100px;">
+                                    <el-option label="http://" value="http://"></el-option>
+                                    <el-option label="https://" value="https://"></el-option>
+                                </el-select>
+                            </el-input>
+                        </div>
+                        <div>
+                            <div>
+                                <span> 选择上级栏目&nbsp;:</span>
+                                <el-row style="padding-bottom: 10px;">
+                                    <el-select v-model="upChannel">
+                                        <el-option v-for="(v,i) in model.classify" :key="i" :value="v.id" :label="v.name"></el-option>
+                                    </el-select>
+                                </el-row>
+                                <el-row style="padding-bottom: 10px;font-size: 12px;color: red;">
+                                    *不需要上级栏目请不要选择
+                                </el-row>
+                            </div>
+                            <el-row style="margin-top: 10px;">
+                                <el-checkbox v-model="blankYn" :true-label="0" :false-label="1">新窗口打开
+                                </el-checkbox>
+                            </el-row>
+                        </div>
+                    </el-col>
+                </el-row>
+            </div>
+            <div class="ImgTxtButton">
+                <div class="ITsubmit" @click="ok">确定</div>
+                <div class="ITclose" @click="cancel" v-if="config.canCancel==null||config.canCancel">取消</div>
+            </div>
+        </div>
+    </div>
+</div>

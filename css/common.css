@@ -1,0 +1,1252 @@
+body,
+html,
+* {
+  margin: 0;
+  padding: 0;
+}
+body {
+  background-color: #fff;
+}
+.h610 {
+  height: 610px;
+}
+.h360 {
+  height: 360px;
+}
+.float-l {
+  float: left;
+}
+.float-r {
+  float: right;
+}
+.clearfix:after {
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+ul,
+li,
+ol {
+  list-style: none;
+}
+img {
+  border: none;
+  border: 0;
+  max-width: 100%;
+  vertical-align: top;
+}
+.burleBtn {
+  position: relative;
+  width: 100px;
+  background: #5ca6e2;
+  color: #fff;
+  line-height: 30px;
+  border-radius: 3px;
+  font-size: 14px;
+  border: 0;
+  cursor: pointer;
+}
+.burleBtn .upimgBox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.burleBtn .upimgBox img {
+  padding-right: 10px;
+}
+.upimgMore {
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+.twice:after {
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+.twice .containerDiv {
+  float: left;
+}
+.twice .containerDiv-l {
+  float: left;
+  padding-right: 10px;
+}
+.ImgCenter {
+  max-height: 100%;
+  max-width: 100%;
+}
+.ImgCenterbox {
+  display: -webkit-box;
+  -webkit-box-orient: horizontal;
+  -webkit-box-pack: center;
+  -webkit-box-align: center;
+  display: -moz-box;
+  -moz-box-orient: horizontal;
+  -moz-box-pack: center;
+  -moz-box-align: center;
+  display: -o-box;
+  -o-box-orient: horizontal;
+  -o-box-pack: center;
+  -o-box-align: center;
+  display: -ms-box;
+  -ms-box-orient: horizontal;
+  -ms-box-pack: center;
+  -ms-box-align: center;
+  display: box;
+  box-orient: horizontal;
+  box-pack: center;
+  box-align: center;
+}
+.explain {
+  border-bottom: 1px solid #ccc;
+  font-size: 12px;
+  color: #999;
+  line-height: 90px;
+  padding: 0 30px;
+}
+/** 编辑组件title栏 */
+.moduleSetDialog .moduleSetFileWb {
+  width: 900px;
+  height: 660px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  margin-left: -450px;
+  margin-top: -330px;
+  z-index: 1000;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+}
+.moduleSetDialog .dialogBox {
+  display: none;
+}
+.moduleSetDialog .DialogTitle {
+  width: 100%;
+  height: 50px;
+  position: relative;
+  line-height: 50px;
+  text-align: left;
+  text-indent: 20px;
+  font-size: 14px;
+  color: #fff;
+  background-color: #292C33;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  cursor: move;
+}
+.moduleSetDialog .DialogTitle i.closeDialog {
+  top: 50%;
+  margin-top: -10px;
+  position: absolute;
+  right: 20px;
+  background: url(../asset/close.png) no-repeat center;
+  display: block;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  border-radius: 50%;
+}
+.moduleSetDialog .DialogTitle i.closeDialog:hover {
+  background-color: #363f4d;
+}
+/* 编辑组件（图文） **/
+.ImgTxt {
+  width: 900px;
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+.ImgTxt .ImgTxtTips {
+  width: 100%;
+  height: 610px;
+}
+.ImgTxt .ImgTxtTips > ul {
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+}
+.ImgTxt .ImgTxtTips > ul > li {
+  list-style: none;
+  float: left;
+  width: 120px;
+  height: 44px;
+  text-align: center;
+  line-height: 44px;
+  border-bottom: 1px solid #e6e6e6;
+  cursor: pointer;
+}
+.ImgTxt .ImgTxtTips > ul > li label {
+  cursor: pointer;
+  font-size: 14px;
+  color: #333;
+}
+.ImgTxt .ImgTxtTips > ul > li.cur {
+  border-bottom: #fff;
+}
+.ImgTxt .ImgTxtTips > ul > li.cur label {
+  color: #5ca6e2;
+}
+.ImgTxt .ImgTxtTips > ul > li:not(:last-of-type) {
+  border-right: 1px solid #e6e6e6;
+}
+.ImgTxt .ImgTxtTips > ul > li:last-of-type {
+  height: 44px;
+  cursor: auto;
+}
+.ImgTxt .ImgTxtTips dl {
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+}
+.ImgTxt .ImgTxtTips dl dd {
+  display: none;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.ImgTxt .ImgTxtTips dl dd .content {
+  margin: 0 0 0 30px;
+  padding: 20px 30px 20px 0;
+  width: 840px;
+  height: 464px;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+.ImgTxt .ImgTxtTips dl dd .content::-webkit-scrollbar,
+.ImgTxt .ImgTxtTips dl dd .content .parts-item::-webkit-scrollbar {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 6px;
+  height: 16px;
+  padding-left: 20px;
+}
+.ImgTxt .ImgTxtTips dl dd .content::-webkit-scrollbar-thumb {
+  border-radius: 3px;
+  background-color: rgba(218, 219, 230, 0.6);
+}
+.ImgTxt .ImgTxtTips dl dd .content::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0);
+  border-radius: 10px;
+  background-color: transparent;
+}
+.ImgTxt .ImgTxtTips dl dd .content input[type='radio'] {
+  float: left;
+  margin: 8.5px;
+  position: relative;
+  cursor: pointer;
+}
+.ImgTxt .ImgTxtTips dl dd .content input[type='radio']:focus {
+  outline: none;
+}
+.ImgTxt .ImgTxtTips dl dd .content input[type='radio']:checked:after {
+  background: url(../asset/danxa.png) no-repeat center;
+}
+.ImgTxt .ImgTxtTips dl dd .content input[type='radio']:after {
+  background: url(../asset/danxb.png) no-repeat center;
+  background-size: 13px;
+  position: absolute;
+  top: -1px;
+  left: -2px;
+  content: '';
+  width: 15px;
+  height: 15px;
+}
+.ImgTxt .ImgTxtTips dl dd .content .title {
+  width: 100%;
+  height: 50px;
+  line-height: 50px;
+}
+.ImgTxt .ImgTxtTips dl dd .content .title span {
+  font-size: 14px;
+  color: #4d4d4d;
+  text-align: left;
+  padding-right: 10px;
+}
+.ImgTxt .ImgTxtTips dl dd .content .title input {
+  width: 230px;
+  height: 30px;
+  padding: 0 10px;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  color: #666;
+  font-size: 12px;
+  line-height: 28px;
+}
+.ImgTxt .ImgTxtTips dl dd .content .layout {
+  width: 100%;
+  height: 50px;
+  line-height: 20px;
+  margin-top: 20px;
+}
+.ImgTxt .ImgTxtTips dl dd .content .layout span {
+  font-size: 14px;
+  color: #4d4d4d;
+  text-align: left;
+  padding-right: 10px;
+  float: left;
+}
+.ImgTxt .ImgTxtTips dl dd .content .layout .layout-img {
+  width: 70px;
+  height: 48px;
+  float: left;
+  position: relative;
+  cursor: pointer;
+}
+.ImgTxt .ImgTxtTips dl dd .content .layout .layout-img img {
+  width: 70px;
+  height: 48px;
+}
+.ImgTxt .ImgTxtTips dl dd .content .layout .layout-img:not(:first-of-type) {
+  margin-left: 20px;
+}
+.ImgTxt .ImgTxtTips dl dd .content .layout .layout-img.cur:after {
+  content: '';
+  width: 22px;
+  height: 17px;
+  background: url(../asset/icon_xuanz.png) no-repeat right bottom;
+  background-size: 100%;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
+.ImgTxt .ImgTxtTips dl dd .content .layout .layout-img.cur:before {
+  content: '';
+  width: 66px;
+  height: 44px;
+  border: 2px solid #5ca6e2;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+.ImgTxt .ImgTxtTips dl dd .content .photoFile {
+  width: 180px;
+  height: 90px;
+  margin-top: 20px;
+  float: left;
+}
+.ImgTxt .ImgTxtTips dl dd .content .photoFile span {
+  font-size: 14px;
+  color: #4d4d4d;
+  text-align: left;
+  padding-right: 10px;
+  float: left;
+}
+.ImgTxt .ImgTxtTips dl dd .content .photoFile .addImg {
+  width: 88px;
+  height: 88px;
+  float: left;
+  border: 1px dashed #5ca6e2;
+  background: url(../asset/icon_tjtp.png) no-repeat center top 16px;
+  background-size: 31px;
+  line-height: 130px;
+  color: #5ca6e2;
+  font-size: 14px;
+  text-align: center;
+  cursor: pointer;
+  position: relative;
+}
+.ImgTxt .ImgTxtTips dl dd .content .photoFile .addImg img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: none;
+}
+.ImgTxt .ImgTxtTips dl dd .content .photoSize {
+  width: 584px;
+  height: 30px;
+  margin-top: 25px;
+  margin-left: 70px;
+  float: left;
+  line-height: 30px;
+}
+.ImgTxt .ImgTxtTips dl dd .content .photoSize span {
+  font-size: 14px;
+  color: #4d4d4d;
+  text-align: left;
+  padding-right: 10px;
+  float: left;
+}
+.ImgTxt .ImgTxtTips dl dd .content .photoSize .h,
+.ImgTxt .ImgTxtTips dl dd .content .photoSize .w {
+  width: 130px;
+  height: 30px;
+  float: left;
+}
+.ImgTxt .ImgTxtTips dl dd .content .photoSize .h input,
+.ImgTxt .ImgTxtTips dl dd .content .photoSize .w input {
+  width: 50px;
+  height: 28px;
+  padding: 0;
+  border: 1px solid #ccc;
+  border-radius: 2px;
+  float: left;
+  color: #666;
+  line-height: 28px;
+  font-size: 12px;
+  text-align: center;
+}
+.ImgTxt .ImgTxtTips dl dd .content .photoMargin {
+  width: 584px;
+  height: 30px;
+  margin-top: 25px;
+  margin-left: 70px;
+  float: left;
+  line-height: 30px;
+}
+.ImgTxt .ImgTxtTips dl dd .content .photoMargin.ml0 {
+  margin-left: 0;
+}
+.ImgTxt .ImgTxtTips dl dd .content .photoMargin span {
+  font-size: 14px;
+  color: #4d4d4d;
+  text-align: left;
+  padding-right: 10px;
+  float: left;
+}
+.ImgTxt .ImgTxtTips dl dd .content .photoMargin .Mauto input[type='text'] {
+  width: 70px;
+  height: 28px;
+  padding: 0;
+  border: 1px solid #ccc;
+  border-radius: 2px;
+  float: left;
+  color: #666;
+  line-height: 28px;
+  font-size: 12px;
+  text-align: center;
+}
+.ImgTxt .ImgTxtTips dl dd .content .photoHref {
+  width: 180px;
+  height: 30px;
+  margin-top: 20px;
+  float: left;
+}
+.ImgTxt .ImgTxtTips dl dd .content .photoHref span {
+  line-height: 30px;
+  font-size: 14px;
+  color: #4d4d4d;
+  text-align: left;
+  padding-right: 10px;
+  float: left;
+}
+.ImgTxt .ImgTxtTips dl dd .content .photoHref .hrefButton {
+  width: 88px;
+  height: 28px;
+  line-height: 28px;
+  float: left;
+  border: 1px solid #5ca6e2;
+  border-radius: 2px;
+  color: #5ca6e2;
+  font-size: 14px;
+  text-align: center;
+  cursor: pointer;
+}
+.ImgTxt .ImgTxtTips dl dd .content .photoDescribe {
+  width: 584px;
+  height: 30px;
+  margin-top: 20px;
+  margin-left: 70px;
+  float: left;
+}
+.ImgTxt .ImgTxtTips dl dd .content .photoDescribe span {
+  line-height: 30px;
+  font-size: 14px;
+  color: #4d4d4d;
+  text-align: left;
+  padding-right: 10px;
+  float: left;
+}
+.ImgTxt .ImgTxtTips dl dd .content .photoDescribe input {
+  width: 300px;
+  height: 28px;
+  padding: 0;
+  border: 1px solid #ccc;
+  color: #666;
+  font-size: 12px;
+  line-height: 28px;
+}
+.ImgTxt .ImgTxtTips dl dd .content .editor {
+  margin-top: 20px;
+  float: left;
+  width: 840px;
+}
+.ImgTxt .ImgTxtTips dl dd .content .editor > span {
+  font-size: 14px;
+  color: #4d4d4d;
+  text-align: left;
+  padding-right: 10px;
+  line-height: 30px;
+}
+.ImgTxt .ImgTxtTips dl dd .content .showMore {
+  width: 100%;
+  height: 40px;
+  line-height: 40px;
+}
+.ImgTxt .ImgTxtTips dl dd .content .showMore span {
+  display: block;
+  float: left;
+  width: 100px;
+  font-size: 14px;
+  color: #4d4d4d;
+  text-align: right;
+  padding-right: 10px;
+  line-height: 40px;
+}
+.ImgTxt .ImgTxtTips dl dd .content .showMore i {
+  float: left;
+  font-size: 12px;
+  color: #4d4d4d;
+  font-style: normal;
+  padding-right: 10px;
+  line-height: 40px;
+}
+.ImgTxt .ImgTxtTips dl dd .content .showMore input[type='radio'] {
+  float: left;
+  margin: 13px 8.5px;
+  position: relative;
+  cursor: pointer;
+}
+.ImgTxt .ImgTxtTips dl dd .content .showMore input[type='radio']:focus {
+  outline: none;
+}
+.ImgTxt .ImgTxtTips dl dd .content .showMore input[type='radio']:checked:after {
+  background: url(../asset/danxa.png) no-repeat center;
+}
+.ImgTxt .ImgTxtTips dl dd .content .showMore input[type='radio']:after {
+  background: url(../asset/danxb.png) no-repeat center;
+  background-size: 13px;
+  position: absolute;
+  top: -1px;
+  left: -2px;
+  content: '';
+  width: 15px;
+  height: 15px;
+}
+.ImgTxt .ImgTxtTips dl dd .content .moreHref {
+  width: 100%;
+  height: 50px;
+  line-height: 50px;
+}
+.ImgTxt .ImgTxtTips dl dd .content .moreHref span {
+  display: block;
+  float: left;
+  width: 100px;
+  font-size: 14px;
+  color: #4d4d4d;
+  text-align: right;
+  padding-right: 10px;
+  line-height: 50px;
+}
+.ImgTxt .ImgTxtTips dl dd .content .moreHref i {
+  font-style: normal;
+  font-size: 14px;
+  color: #4d4d4d;
+  text-align: right;
+  padding-right: 10px;
+  line-height: 50px;
+  vertical-align: top;
+  padding-left: 10px;
+}
+.ImgTxt .ImgTxtTips dl dd .content .moreHref select {
+  width: 100px;
+  height: 28px;
+  border: 1px solid #ccc;
+  line-height: 28px;
+  font-size: 12px;
+  color: #666;
+  float: left;
+  margin: 10px 0;
+}
+.ImgTxt .ImgTxtTips dl dd .content .moreHref input[type='checkbox'] {
+  float: left;
+  width: 13px;
+  height: 13px;
+  margin: 17.5px 0 17.5px 10px;
+}
+.ImgTxt .ImgTxtTips dl dd .content .rollDirection {
+  width: 100%;
+  height: 50px;
+  line-height: 50px;
+}
+.ImgTxt .ImgTxtTips dl dd .content .rollDirection span {
+  display: block;
+  float: left;
+  width: 100px;
+  font-size: 14px;
+  color: #4d4d4d;
+  text-align: right;
+  padding-right: 10px;
+  line-height: 50px;
+}
+.ImgTxt .ImgTxtTips dl dd .content .rollDirection select {
+  width: 80px;
+  height: 28px;
+  line-height: 28px;
+  border: 1px solid #ccc;
+  color: #666;
+  font-size: 13px;
+}
+.ImgTxt .ImgTxtTips dl dd .content .proClassify-list {
+  width: 838px;
+  height: 265px;
+  float: left;
+  margin-top: 22px;
+  overflow: hidden;
+  border: 1px solid #5ca6e2;
+}
+.ImgTxt .ImgTxtTips dl dd .content .proClassify-list .proClassify-list-body {
+  width: 838px;
+  height: 225px;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+.ImgTxt .ImgTxtTips dl dd .content .proClassify-list .proClassify-list-body::-webkit-scrollbar,
+.ImgTxt .ImgTxtTips dl dd .content .proClassify-list .proClassify-list-body .parts-item::-webkit-scrollbar {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 3px;
+  height: 16px;
+  padding-left: 20px;
+}
+.ImgTxt .ImgTxtTips dl dd .content .proClassify-list .proClassify-list-body::-webkit-scrollbar-thumb {
+  border-radius: 3px;
+  background-color: rgba(218, 219, 230, 0.6);
+}
+.ImgTxt .ImgTxtTips dl dd .content .proClassify-list .proClassify-list-body::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0);
+  border-radius: 10px;
+  background-color: transparent;
+}
+.ImgTxt .ImgTxtTips dl dd .content .proClassify-list > h3 {
+  line-height: 40px;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  color: #5ca6e2;
+  background-color: #f0f5fa;
+  border-bottom: 1px solid #5ca6e2;
+  margin: 0;
+  padding: 0;
+  text-indent: 10px;
+  width: 838px;
+  height: 40px;
+}
+.ImgTxt .ImgTxtTips dl dd .content .proClassify-list ul {
+  list-style: none;
+}
+.ImgTxt .ImgTxtTips dl dd .content .proClassify-list ul li {
+  position: relative;
+}
+.ImgTxt .ImgTxtTips dl dd .content .proClassify-list ul li h3 {
+  cursor: pointer;
+}
+.ImgTxt .ImgTxtTips dl dd .content .proClassify-list ul li i {
+  width: 30px;
+  height: 28px;
+  position: absolute;
+  top: 0;
+  right: 20px;
+  background: url(../asset/icon_cpdh_yangb.png) no-repeat center;
+  background-size: auto;
+}
+.ImgTxt .ImgTxtTips dl dd .content .proClassify-list ul li i.isShow {
+  background: url(../asset/icon_cpdh_yank.png) no-repeat center;
+  background-size: auto;
+}
+.ImgTxt .ImgTxtTips dl dd .content .proClassify-list ul.proListFirst {
+  padding: 0;
+  margin: 20px;
+  overflow: hidden;
+}
+.ImgTxt .ImgTxtTips dl dd .content .proClassify-list ul.proListFirst > li {
+  width: 798px;
+  line-height: 28px;
+  text-align: left;
+  border: none;
+  float: left;
+}
+.ImgTxt .ImgTxtTips dl dd .content .proClassify-list ul.proListFirst > li > h3 {
+  background-color: #f0f5fa;
+  text-indent: 30px;
+  color: #4e4e4e;
+  font-size: 12px;
+  font-weight: normal;
+  margin: 0;
+  margin-bottom: 10px;
+  padding: 0;
+}
+.ImgTxt .ImgTxtTips dl dd .content .proClassify-list ul.proListFirst > li > h3:before {
+  content: '';
+  width: 30px;
+  height: 28px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: url('../asset/icon_left_arrow.png') no-repeat center;
+  background-size: auto;
+}
+.ImgTxt .ImgTxtTips dl dd .content .proClassify-list ul.proListFirst > li.cur > h3:before {
+  content: '';
+  width: 30px;
+  height: 28px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: url('../asset/icon_down_arrow.png') no-repeat center;
+  background-size: auto;
+}
+.ImgTxt .ImgTxtTips dl dd .content .proClassify-list ul.proListFirst > li.noList > h3:before {
+  content: '';
+  width: 4px;
+  height: 4px;
+  position: absolute;
+  top: 13px;
+  left: 15px;
+  background-color: #999;
+  background-image: none;
+}
+.ImgTxt .ImgTxtTips dl dd .content .proClassify-list ul.proListSecond {
+  width: 768px;
+  padding: 0;
+  margin: 0;
+}
+.ImgTxt .ImgTxtTips dl dd .content .proClassify-list ul.proListSecond > li {
+  width: 768px;
+  line-height: 28px;
+  text-align: left;
+  border: none;
+  float: left;
+  margin-left: 30px;
+}
+.ImgTxt .ImgTxtTips dl dd .content .proClassify-list ul.proListSecond > li > h3 {
+  background-color: #f0f5fa;
+  text-indent: 30px;
+  color: #4e4e4e;
+  font-size: 12px;
+  font-weight: normal;
+  margin: 0;
+  margin-bottom: 10px;
+  padding: 0;
+}
+.ImgTxt .ImgTxtTips dl dd .content .proClassify-list ul.proListSecond > li > h3:before {
+  content: '';
+  width: 30px;
+  height: 28px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: url('../asset/icon_left_arrow.png') no-repeat center;
+  background-size: auto;
+}
+.ImgTxt .ImgTxtTips dl dd .content .proClassify-list ul.proListSecond > li.cur > h3:before {
+  content: '';
+  width: 30px;
+  height: 28px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: url('../asset/icon_down_arrow.png') no-repeat center;
+  background-size: auto;
+}
+.ImgTxt .ImgTxtTips dl dd .content .proClassify-list ul.proListSecond > li.noList > h3:before {
+  content: '';
+  width: 4px;
+  height: 4px;
+  position: absolute;
+  top: 13px;
+  left: 15px;
+  background-color: #999;
+  background-image: none;
+}
+.ImgTxt .ImgTxtTips dl dd .content .proClassify-list ul.proListThird {
+  width: 738px;
+  padding: 0;
+  margin: 0;
+}
+.ImgTxt .ImgTxtTips dl dd .content .proClassify-list ul.proListThird > li {
+  width: 738px;
+  line-height: 28px;
+  text-align: left;
+  border: none;
+  float: left;
+  margin-left: 30px;
+}
+.ImgTxt .ImgTxtTips dl dd .content .proClassify-list ul.proListThird > li > h3 {
+  background-color: #f0f5fa;
+  text-indent: 30px;
+  color: #4e4e4e;
+  font-size: 12px;
+  font-weight: normal;
+  margin: 0;
+  margin-bottom: 10px;
+  padding: 0;
+}
+.ImgTxt .ImgTxtTips dl dd .content .proClassify-list ul.proListThird > li > h3:before {
+  content: '';
+  width: 4px;
+  height: 4px;
+  position: absolute;
+  top: 13px;
+  left: 15px;
+  background-color: #999;
+}
+.ImgTxt .ImgTxtTips dl dd .content .proTypeIco {
+  width: 840px;
+  height: 464px;
+  position: relative;
+}
+.ImgTxt .ImgTxtTips dl dd .content .proTypeIco .proTypeTitle {
+  width: 838px;
+  height: 38px;
+  background-color: #f0f5fa;
+  border: 1px solid #5ca6e2;
+}
+.ImgTxt .ImgTxtTips dl dd .content .proTypeIco .proTypeTitle ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+.ImgTxt .ImgTxtTips dl dd .content .proTypeIco .proTypeTitle ul li {
+  width: 278.66667px;
+  height: 38px;
+  line-height: 38px;
+  color: #5ca6e2;
+  font-size: 14px;
+  text-align: center;
+  float: left;
+}
+.ImgTxt .ImgTxtTips dl dd .content .proTypeIco .proTypeTitle ul li:not(:first-of-type) {
+  border-left: 1px solid #5ca6e2;
+}
+.ImgTxt .ImgTxtTips dl dd .content .proTypeIco .proTypeContent {
+  width: 838px;
+}
+.ImgTxt .ImgTxtTips dl dd .content .proTypeIco .proTypeContent ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+.ImgTxt .ImgTxtTips dl dd .content .proTypeIco .proTypeContent ul li {
+  width: 840px;
+  height: 38px;
+  float: left;
+  position: relative;
+  border-bottom: 1px solid #5ca6e2;
+}
+.ImgTxt .ImgTxtTips dl dd .content .proTypeIco .proTypeContent ul li .proIcoName {
+  width: 278.66667px;
+  height: 38px;
+  line-height: 38px;
+  text-align: center;
+  border-left: 1px solid #5ca6e2;
+  color: #4d4d4d;
+  font-size: 14px;
+  float: left;
+}
+.ImgTxt .ImgTxtTips dl dd .content .proTypeIco .proTypeContent ul li .proIcoSrc {
+  width: 278.66667px;
+  height: 38px;
+  line-height: 38px;
+  text-align: center;
+  border-left: 1px solid #5ca6e2;
+  color: #4d4d4d;
+  font-size: 14px;
+  float: left;
+}
+.ImgTxt .ImgTxtTips dl dd .content .proTypeIco .proTypeContent ul li .proIcoSrc img {
+  width: 20px;
+  height: 21px;
+  margin: 8.5px auto;
+}
+.ImgTxt .ImgTxtTips dl dd .content .proTypeIco .proTypeContent ul li .proIcoBtn {
+  width: 278.66667px;
+  height: 38px;
+  line-height: 38px;
+  float: left;
+  text-align: center;
+  border-left: 1px solid #5ca6e2;
+  border-right: 1px solid #5ca6e2;
+}
+.ImgTxt .ImgTxtTips dl dd .content .proTypeIco .proTypeContent ul li .proIcoBtn i.proUpdate {
+  position: relative;
+  cursor: pointer;
+  display: inline-block;
+  overflow: hidden;
+  width: 14px;
+  height: 14px;
+  margin-right: 15px;
+  background: url(../asset/icon_cpdh_bianja.png) no-repeat center;
+  background-size: auto;
+}
+.ImgTxt .ImgTxtTips dl dd .content .proTypeIco .proTypeContent ul li .proIcoBtn i.proUpdate:hover {
+  background: url(../asset/icon_cpdh_bianjb.png) no-repeat center;
+  background-size: auto;
+}
+.ImgTxt .ImgTxtTips dl dd .content .proTypeIco .proTypeContent ul li .proIcoBtn i.proUpdate input[type='file'] {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  right: 0;
+  top: 0;
+  opacity: 0;
+}
+.ImgTxt .ImgTxtTips dl dd .content .proTypeIco .proTypeContent ul li .proIcoBtn i.proDel {
+  cursor: pointer;
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  margin-left: 15px;
+  background: url(../asset/icon_cpdh_shanca.png) no-repeat center;
+  background-size: auto;
+}
+.ImgTxt .ImgTxtTips dl dd .content .proTypeIco .proTypeContent ul li .proIcoBtn i.proDel:hover {
+  background: url(../asset/icon_cpdh_shancb.png) no-repeat center;
+  background-size: auto;
+}
+.ImgTxt .ImgTxtTips .ImgTxtButton {
+  width: 100%;
+  height: 60px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  box-shadow: 0px -1px 4px 0px rgba(0, 0, 0, 0.1);
+}
+.ImgTxt .ImgTxtTips .ImgTxtButton .ITsubmit {
+  cursor: pointer;
+  width: 80px;
+  height: 30px;
+  float: right;
+  background-color: #5ca6e2;
+  color: #fff;
+  border-radius: 14px;
+  font-size: 12px;
+  text-align: center;
+  line-height: 30px;
+  margin: 15px 20px 15px 10px;
+}
+.ImgTxt .ImgTxtTips .ImgTxtButton .ITclose {
+  cursor: pointer;
+  width: 80px;
+  height: 28px;
+  float: right;
+  border: 1px solid #5ca6e2;
+  color: #808080;
+  border-radius: 14px;
+  font-size: 12px;
+  text-align: center;
+  line-height: 28px;
+  margin: 15px 10px;
+}
+/*在线地圖彈窗*/
+.contentMap {
+  color: #4d4d4d;
+  font-size: 15px;
+}
+.contentMap > div {
+  line-height: 50px;
+}
+.contentMap > div > div:nth-of-type(1) {
+  width: 100px;
+  float: left;
+}
+.contentMap > div input {
+  width: 250px;
+  height: 28px;
+  border: none;
+  border: solid 1px #ccc;
+  border-radius: 2px;
+  padding: 0;
+  outline: none;
+}
+.contentMap .mapSize input {
+  width: 68px;
+  font-size: 12px;
+  padding-left: 10px;
+}
+.contentMap .mapSize input::-webkit-outer-spin-button,
+.contentMap .mapSize input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+.contentMap .mapSize input[type="number"] {
+  -moz-appearance: textfield;
+}
+.contentMap .address input {
+  text-indent: .5em;
+  width: 300px;
+}
+.contentMap #map {
+  height: 400px;
+  width: 100%;
+  margin: 20px auto 30px;
+}
+.contentMap .ITsubmit {
+  background-color: #E6E6E6;
+  color: #666;
+}
+.contentMap .setFlag .flagMsg {
+  width: 300px;
+}
+.seniorMap {
+  font-size: 14px;
+}
+.seniorMap div {
+  display: inline-block;
+  line-height: 28px;
+}
+.textareaMsg {
+  padding: 30px 0;
+  background-color: #fff;
+}
+.map-layout101 .contentTitle {
+  background-color: #fff;
+  padding: 10px 0 0 15px;
+}
+.map-layout101 .BMap_mask {
+  border: 10px solid #fff;
+}
+/* 动画 */
+.effect-container {
+  /* 旋转特有的方向 */
+}
+.effect-container .dialog-nav {
+  height: 42px;
+  line-height: 42px;
+  border-bottom: 1px solid #e6e6e6;
+}
+.effect-container .dialog-nav .nav-item {
+  display: inline-block;
+  height: 42px;
+  line-height: 42px;
+  width: 72px;
+  background-color: #fff;
+  text-align: center;
+  border-right: 1px solid #e6e6e6;
+}
+.effect-container .rotate-direction {
+  display: none;
+}
+.effect-container .effect-dialog-content {
+  height: 626px;
+}
+.effect-container .effect-list {
+  padding: 30px 50px 30px 50px;
+}
+.effect-container .effect-list .effect-item {
+  float: left;
+  margin-bottom: 20px;
+  margin-right: 28px;
+}
+.effect-container .effect-list .effect-item .effectShowBox {
+  width: 68px;
+  height: 68px;
+  border-radius: 4px;
+  background-color: #ebeff5;
+}
+.effect-container .effect-list .effect-item .effectShowBox .effect-img {
+  width: 100%;
+  height: 100%;
+}
+.effect-container .effect-list .effect-item .effectShowBox .checke-icon {
+  bottom: 0;
+  right: 0;
+  display: none;
+}
+.effect-container .effect-list .effect-item .effectShowBox.checked {
+  border: 1px solid #5ca6e2;
+}
+.effect-container .effect-list .effect-item .effectShowBox.checked .checke-icon {
+  display: block;
+}
+.effect-container .effect-list .effect-item p {
+  padding-top: 10px;
+  text-align: center;
+  font-size: 12px;
+}
+.effect-container .effect-list .effect-item:nth-of-type(3n) {
+  margin-right: 0px;
+}
+.effect-container .effect-direction {
+  padding-left: 26px;
+  margin-bottom: 20px;
+}
+.effect-container .effect-direction .direction-item,
+.effect-container .effect-direction .direction-text {
+  display: inline-block;
+}
+.effect-container .effect-direction .direction-item {
+  margin-right: 15px;
+}
+.effect-container .describe {
+  font-size: 14px;
+  color: #4d4d4d;
+  cursor: pointer;
+}
+.effect-container input[type="radio"] {
+  vertical-align: middle;
+  cursor: pointer;
+}
+.effect-container .effect-placeholder {
+  display: inline-block;
+  width: 80px;
+  height: 12px;
+}
+.effect-container .time-item {
+  margin-bottom: 20px;
+  padding-left: 26px;
+}
+.effect-container .time-item .ui-widget.ui-widget-content {
+  border: none;
+}
+.effect-container .time-item .effect-time-text {
+  color: #4d4d4d;
+  margin-right: 15px;
+}
+.effect-container .time-item .time-slide {
+  display: inline-block;
+  vertical-align: middle;
+  width: 100px;
+  height: 3px;
+  background-color: #ebeff5;
+  margin-right: 20px;
+}
+.effect-container .time-item .time-slide .ui-slider-handle {
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background-color: #5ca6e2;
+}
+.effect-container .time-item input[type="text"] {
+  display: inline-block;
+  width: 50px;
+  height: 30px;
+  color: #4d4d4d;
+  border: 1px solid #cccccc;
+}
+.effect-container .square-btn-box {
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  border-top: 1px solid #e6e6e6;
+  padding-top: 15px;
+}
+.effect-container .square-btn-box .succee-btn {
+  cursor: pointer;
+  width: 80px;
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+  border: 1px solid #e6e6e6;
+  border-radius: 10px;
+  background-color: #ffffff;
+  color: #5ca6e2;
+}
+.effect-container .play-effect-btn {
+  margin-left: 26px;
+  width: 90px;
+  height: 30px;
+  line-height: 30px;
+  color: #5ca6e2;
+  text-align: center;
+  border: 1px solid #5ca6e2;
+  border-radius: 4px;
+  padding-left: 20px;
+  background: url("../asset/play.png") no-repeat 10px 9px;
+  margin-top: 10px;
+}
+.effect-container .demo {
+  width: 20px;
+  height: 20px;
+  background-color: skyblue;
+  margin-top: 10px;
+}
+/*图片库弹窗*/
+.ImgTxt.setPath {
+  width: 560px;
+  height: 360px;
+}
+.ImgTxt.setPath .ImgTxtTips {
+  height: 360px;
+}
+.ImgTxt.setPath .ImgTxtTips .leftBox {
+  padding: 30px;
+  width: 150px;
+  height: 238px;
+  border-right: 1px solid #ccc;
+  box-shadow: 0px -1px 4px 0px rgba(0, 0, 0, 0.1);
+  margin-bottom: 60px;
+}
+.ImgTxt.setPath .ImgTxtTips .leftBox li {
+  display: flex;
+  align-items: center;
+  pading-bottom: 20px;
+}
+.ImgTxt.setPath .ImgTxtTips .rightBox {
+  padding: 30px;
+}
+/*设置连接*/
+.ImgTxt.setPath {
+  width: 560px;
+  height: 360px;
+  color: #4d4d4d;
+  font-size: 14px;
+}
+.ImgTxt.setPath .ImgTxtTips {
+  height: 360px;
+}
+.ImgTxt.setPath .ImgTxtTips .leftBox {
+  padding: 30px;
+  width: 150px;
+  height: 238px;
+  border-right: 1px solid #ccc;
+  box-shadow: 0px -1px 4px 0px rgba(0, 0, 0, 0.1);
+  margin-bottom: 60px;
+}
+.ImgTxt.setPath .ImgTxtTips .leftBox li {
+  display: flex;
+  align-items: center;
+  pading-bottom: 20px;
+}
+.ImgTxt.setPath .ImgTxtTips .rightBox {
+  padding: 30px;
+}
+.ImgTxt.setPath .ImgTxtTips .rightBox input {
+  vertical-align: middle;
+  color: #4d4d4d;
+  text-indent: .5em;
+}
+.ImgTxt.setPath .ImgTxtTips .ImgTxtButton .ITclose {
+  border: solid 1px #E7E7E7;
+}
+.common[type='text'] {
+  border: solid 1px #ccc;
+  border-radius: 3px;
+  height: 28px;
+  outline: none;
+  width: 200px;
+  font-size: 12px;
+}
+.pd-b10 {
+  padding-bottom: 10px;
+}
+.pd-b10 select {
+  width: 200px;
+  color: #4d4d4d;
+  height: 28px;
+  border-radius: 3px;
+  font-size: 12px;
+  border: solid 1px #ccc;
+}
+.pd-l10 {
+  padding-left: 10px;
+}

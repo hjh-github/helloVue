@@ -1,0 +1,15 @@
+<div>
+    <ul>
+        <li class="fl pictures-list" v-for='(item,index) in imaList'>
+            <div v-if='index==0||index%7==0' class="imgx"
+                 :style="config.style" @click="setSelection(item,index)" :class="imageClass(item,index)">
+                <img :src="item.src" alt="" style="display:block;height:100%;width:100%;">
+            </div>
+            <div @click="setSelection(item,index)" :class="imageClass(item,index)"
+            class="imgx" v-else>
+                <img :src="item.src" alt="" style="display:block;height:100%;width:100%;">
+            </div>
+
+        </li>
+    </ul>
+</div>

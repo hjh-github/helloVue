@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>产品列表</title>
+    <link rel="stylesheet" href="product.css" />
+    <link href="../../ueditor/themes/default/css/ueditor.css" type="text/css" rel="stylesheet" />
+    <link rel="stylesheet" href="../../css/public/public.css" />
+</head>
+
+<body>
+
+    <div class="loading displayN">
+        <img src="../../images/loading.gif" alt="" />
+    </div>
+
+    <div id="product" class="layout fs14">
+        <!--左侧栏-->
+        <div class="left-nav">
+            <ul>
+                <li class="bubbleRight on" data-title="添加/编辑产品">
+                    <a href="javascript:;">
+                        <div>
+                            <div>
+                                <img src="../../images/productIcon.png">
+                            </div>
+                            <span>产品</span>
+                        </div>
+                    </a>
+                </li>
+                <li class="bubbleRight " data-title="添加/编辑文章">
+                    <a href="../newCate/newsCate.html">
+                        <div>
+                            <div>
+                                <img src="../../images/passage.png">
+                            </div>
+                            <span>文章</span>
+                        </div>
+                    </a>
+                </li>
+                <!-- <li class="bubbleRight" data-title="管理网站留言板">
+                    <a href="../Message/Message.html">
+                        <div>
+                            <div>
+                                <img src="../../images/comment.png">
+                            </div>
+                            <span>留言板</span>
+                        </div>
+                    </a>
+                </li> -->
+                <!-- <li class="bubbleRight" data-title="添加/seo">
+                    <a href="../set/setting.html">
+                        <div>
+                            <div>
+                                <img src="../../images/setting.png">
+                            </div>
+                            <span>设置</span>
+                        </div>
+                    </a>
+                </li> -->
+            </ul>
+        </div>
+        <!--顶部-->
+        <header>
+            <div class="logo-box fs16 flex-box row-center">
+                <img class="logo " src="../../images/logo.png" alt="">
+                <span>企业官网型后台</span>
+            </div>
+            <ul id="morp" class="clearfix">
+                <a href="../../index.html">
+                    <li class="fr fs14 two positionR pointer ripple">
+                        页面编辑器
+                    </li>
+                </a>
+                <li class="fr fs14 one positionR pointer ripple">
+                    帮助
+                </li>
+            </ul>
+        </header>
+        <!--内容-->
+        <div class="content clearfix">
+            <div class="right fl">
+                <nav class="flex-box">
+                    <ul class="clearfix leftBox ctrl-nav">
+                        <li @click="navChange(1)" class="fl fs14 active pointer">
+                            产品列表
+                        </li>
+                        <li @click="navChange(2)" @click="getCate(1)" class="fl fs14 pointer">
+                            产品分类
+                        </li>
+                        <li @click="navChange(3)" class="fl fs14 pointer">
+                            添加产品
+                        </li>
+                        <li @click="navChange(4)" class="fl fs14 pointer">
+                            回收站
+                        </li>
+                    </ul>
+                    <ul class="flex-content"></ul>
+                    <ul v-cloak v-if="canSearch" class="rightBox">
+                        <li class="fl fs14 flex-box row-center search-box">
+                            <div class="search-input">
+                                <input class="clearInput" placeholder="请输入你要查找的内容" v-model="searchKey" type="text" />
+                            </div>
+                            <img class="pointer" @click="toSearch" src="..\..\images\product\shousuo.png" />
+                        </li>
+                    </ul>
+                </nav>
+                <!-- 产品列表 -->
+                <div class="dataBox section show">
+                    <ul class="title clearfix">
+                        <li class="fl checkboxBox">
+                            <input type="checkbox" @change="checkAllFn" v-model="checkAll" class="checkbox" />
+                        </li>
+                        <li class="fl productName fs14">
+                            产品名称
+                        </li>
+                        <li class="fl productClass fs14">
+                            产品分类
+                        </li>
+                        <li class="fl productMomey fs14 alignC">
+                            价格
+                        </li>
+                        <li class="fl time fs14 alignC">
+                            发布时间
+                        </li>
+                        <li class="fl do fs14 alignC">
+                            操作
+                        </li>
+                    </ul>
+                    <ul class="data">
+                        <li class="hover dataLi" v-cloak v-for="(product,i) in products">
+                            <ul class="title clearfix">
+                                <li class="fl checkboxBox">
+                                    <input type="checkbox" class="checkbox" :id="product.id" :value="product.id" v-model="checkedProduct" @change="checkedProductFn"
+                                    />
+                                </li>
+                                <li class="fl productName fs14"> {{product.name}}</li>
+                                <li class="fl productClass fs14">{{product.productCateName}}</li>
+                                <li class="fl productMomey fs14 alignC">{{product.price}}</li>
+                                <li class="fl time fs14 alignC">{{getFDate(product.createTime)}}</li>
+                                <li class="fl do fs14 alignC clearfix">
+                                    <div class="doInner clearfix m0auto">
+                                        <span @click="delProduct(product.id,2)" class="delete fl alignC">
+                                            <i class="displayB"></i>
+                                        </span>
+                                        <span @click="productEdit(product.id)" class="edit fl alignC flex-box row-center row-j-center">
+                                            <i class="displayI"></i>
+                                            <span class="fs12 m">编辑</span>
+                                        </span>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+                        <div v-cloak class="nullDataBox positionA" v-if="products.length == 0">
+                            <img src="../../images/newCate/tututtutut.png" alt="">
+                            <p class="null_P fs14 alignC">呜呜，当前还木有产品哦 ╥﹏╥</p>
+                            <button @click="navChange(3)"产品摘要onclick="editProduct()" class="lh28 alignC displayB pointer">添加产品</button>
+                        </div>
+                    </ul>
+                    <ul class="total">
+                        <li>
+                            <ul class="title clearfix">
+                                <li class="fl checkboxBox">
+                                    <input id="checkAll1" type="checkbox" @change="checkAllFn" v-model="checkAll" class="checkbox" />
+                                    <label for="checkAll1" class="allCheck fs14 pointer">全选</label>
+                                </li>
+                                <li class="fl productName fs16">
+                                    
+
+                                    <div @click="allMove" class="allMove pointer displayI fs12 alignC lh28">批量转移</div>
+                                    <div @click="delProduct(-1,2)" class="delete pointer displayI fs12 alignC lh28">删除</div>
+                                </li>
+                                <li class="blank"></li>
+                                <li class="page fl">
+                                    <ul class="clearfix">
+                                        <li @click="getProducts(1,1)" class="fs14 fl number alignC pointer">
+                                            首页
+                                        </li>
+                                        <li @click="prefPage(1,pagesIndex)" class="fl arrow left pointer">
+                                            <div class="leftIconBox">
+                                                <div class="icon">
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li v-for="item in showPages" @click="getProducts(1,item)" class="fs14 fl number alignC" :class="{on:item == pagesIndex?true : false}">
+                                            {{item}}
+                                        </li>
+
+                                        <li @click="nextPage(1,pagesIndex)" class="fl arrow right pointer">
+                                            <div class="rightIconBox">
+                                                <div class="icon">
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li @click="getProducts(1,allPages.length)" class="fs14 fl number alignC pointer">
+                                            尾页
+                                        </li>
+                                        <li class="fs14 fl alignC goTo">
+                                            <span class="fs14 displayI tiaozhuan">跳转到：</span>
+                                            <input type="text" v-model="toPage" />
+                                            <span @click="getProducts(1,toPage)" class="fs14 displayI to">GO
+                                                <i class="displayI"></i>
+                                            </span>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <!-- 产品分类 -->
+                <div class="section category">
+                    <div class="classify">
+                        <div class="navL fl">
+                            <div @click="getCate(1)" class="navInner active flex-box row-center row-j-between">
+                                <div>一级分类</div>
+                                <i>
+                                    <img src="../../images/newCate/xiangyou.png" alt="" />
+                                </i>
+                            </div>
+                            <div @click="getCate(2)" class="navInner  flex-box row-center row-j-between">
+                                <div class="lh40 displayI">二级分类</div>
+                                <i>
+                                    <img src="../../images/newCate/xiangyou.png" alt="" />
+                                </i>
+                            </div>
+                            <div @click="getCate(3)" class="navInner  flex-box row-center row-j-between">
+                                <div class="lh40 displayI">三级分类</div>
+                                <i>
+                                    <img src="../../images/newCate/xiangyou.png" alt="" />
+                                </i>
+                            </div>
+                            <div class="blank">
+
+                            </div>
+                        </div>
+                        <!-- 一级分类 -->
+                        <div class="add section active firstLevl">
+                            <div class="addTitle">
+                                <div class="name lh50 fs14 alignC">
+                                    分类名称
+                                </div>
+                                <div class="name lh50 fs14 alignC">
+                                    排序
+                                </div>
+                                <div class="name lh50 fs14 alignC">
+                                    操作
+                                </div>
+                            </div>
+                            <form action="" v-for="(firstCate,i) in firstCates">
+                                <div class="addTto active">
+                                    <div class="name lh50">
+                                        <input type="text" @change="cateChange(i,firstCate.level)" @focus="cateFocus(i,firstCate.level)" class="nameInput" placeholder="输入分类名称"
+                                            maxlength="8" v-model="firstCate.name" name="name" />
+                                    </div>
+                                    <div class="sort flex-box row-center">
+                                        <input @change="cateChange(i)" placeholder="0" name="sort" class="numberInput" v-model="firstCate.sort" />
+                                    </div>
+                                    <div class="do">
+                                        <div @click="cateDel(firstCate.id,1)" class=" shift operation pointer">
+                                        </div>
+
+                                        <div @click="cateSave(i,firstCate.level)" class="save alignR fs12 lh30 pointer">
+                                            保存
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                            <div class="more pointer" @click="cateAdd(1)">
+                                <div class="fs14">添加分类</div>
+                                <div class="icon">
+                                    <img src="../../images/newCate/tianj.png" alt="" />
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 二级分类 -->
+                        <div class="add section secondLevl secondCateBox">
+                            <div class="addTitle">
+                                <div class="name lh50 fs14 alignC">
+                                    分类名称
+                                </div>
+                                <div class="ups lh50 fs14 alignC">
+                                    上级分类
+                                </div>
+                                <div class="name lh50 fs14 alignC">
+                                    排序
+                                </div>
+                                <div class="name lh50 fs14 alignC">
+                                    操作
+                                </div>
+                            </div>
+                            <form action="" v-for="(secondCate,i) in secondCates">
+                                <div class="addTto active">
+                                    <div class="name lh50">
+                                        <input  @focus="cateFocus(i,secondCate.level)" class="nameInput" placeholder="输入分类名称"
+                                            v-model="secondCate.name" maxlength="8" name="name" />
+                                    </div>
+                                    <div class="checkedUps positionR">
+                                        <input name="parentId" type="text" placeholder="选择上级分类" class="checkUpLevel" v-model="secondCate.parentName" />
+
+                                        <div class="option positionA">
+                                            <ul>
+                                                <li v-for="firstCate in firstCates" @click="secondParent(i,firstCate.id,firstCate.name)" class="fs14 lh48 alignC secondOption"
+                                                    rel="0">{{firstCate.name}}
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="sort flex-box row-center">
+                                        <input type="text" placeholder="0" class="alignC clearInput" name="sort" v-model="secondCate.sort" />
+                                    </div>
+                                    <div class="do">
+                                        <div @click="cateDel(secondCate.id,2)" class="shift operation pointer">
+                                        </div>
+
+                                        <div @click="cateSave(i,secondCate.level)" class="save alignR fs12 lh30 pointer">
+                                            保存
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                            <div class="more pointer" @click="cateAdd(2)">
+                                <div class="fs14">添加分类</div>
+                                <div class="icon">
+                                    <img src="../../images/newCate/tianj.png" alt="" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="add section secondLevl secondCateBox">
+                            <div class="addTitle">
+                                <div class="name lh50 fs14 alignC">
+                                    分类名称
+                                </div>
+                                <div class="ups lh50 fs14 alignC">
+                                    上级分类
+                                </div>
+                                <div class="name lh50 fs14 alignC">
+                                    排序
+                                </div>
+                                <div class="name lh50 fs14 alignC">
+                                    操作
+                                </div>
+                            </div>
+                            <form action="" v-for="(thirdCate,i) in thirdCates">
+                                <div class="addTto active">
+                                    <div class="name lh50">
+                                        <input @change="cateChange(i,thirdCate.level)" @focus="cateFocus(i,thirdCate.level)" class="nameInput" placeholder="输入分类名称"
+                                            v-model="thirdCate.name" name="name" maxlength="8" />
+                                    </div>
+                                    <div class="checkedUps positionR">
+                                        <input name="parentId" type="text" placeholder="选择上级分类" class="checkUpLevel" v-model="thirdCate.parentName" />
+
+                                        <div class="option positionA">
+                                            <ul>
+                                                <li v-for="secondCate in secondCates" @click="thirdParent(i,secondCate.id,secondCate.name)" class="fs14 lh48 alignC secondOption"
+                                                    rel="0">{{secondCate.name}}
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="sort flex-box row-center">
+                                        <input type="text" placeholder="0" class="alignC clearInput" name="sort" v-model="thirdCate.sort" />
+                                    </div>
+                                    <div class="do">
+                                        <div @click="cateDel(thirdCate.id,3)" class="shift operation pointer">
+                                        </div>
+
+                                        <div @click="cateSave(i,thirdCate.level)" class="save alignR fs12 lh30 pointer">
+                                            保存
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                            <div class="more pointer" @click="cateAdd(3)">
+                                <div class="fs14">添加分类</div>
+                                <div class="icon">
+                                    <img src="../../images/newCate/tianj.png" alt="" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- 产品添加 -->
+                <form id="addProduct" name="addProduct" method="post" enctype="multipart/form-data" class="addBox section ">
+
+                    <ul>
+                        <li class="flex-box row-center addItem">
+                            <div class="flex-name fs14">产品分类 <span class="red">*</span></div>
+                            <div class="selcet positionR">
+                                <div class="input-box" :class="{checked:firstCateflag}">
+                                    <div @click="getFirstCate(firstCateflag)" class="border-box flex-box row-center selcet-t">
+                                        <span class="fs14">{{firstChecked == ''? '请选择分类':firstChecked}}</span>
+                                        <i class="arrows-icon "></i>
+                                    </div>
+                                    <ul v-cloak v-if="firstCateflag" class="option positionA fs14 ">
+                                        <li v-for="(firstc,i) in firstCates" @click.stop="getCatef(firstc.name,firstc.id,firstc.path)">
+                                            <span>{{firstc.name}}</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="selcet positionR" v-cloak v-if="hasSecond">
+                                <div class="input-box" :class="{checked:secondCateflag}">
+                                    <div @click="getSecondCate(secondCateflag)" class="border-box flex-box row-center selcet-t">
+                                        <span class="fs14">{{secondChecked == ''? '请选择分类':secondChecked}}</span>
+                                        <i class="arrows-icon "></i>
+                                    </div>
+                                    <ul v-cloak v-if="secondCateflag" class="option positionA fs14">
+                                        <li v-for="(childs,i) in secondCates" v-if="firstChecked==childs.parentName" @click.stop="getSecondc(childs.name,childs.id,childs.path)">{{childs.name}}
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="selcet positionR" v-cloak v-if="hasThird">
+                                <div class="input-box" :class="{checked:thirdCateflag}">
+                                    <div @click="getThirdCate(thirdCateflag)" class="border-box flex-box row-center selcet-t">
+                                        <span class="fs14">{{thirdChecked == ''? '请选择分类':thirdChecked}}</span>
+                                        <i class="arrows-icon "></i>
+                                    </div>
+                                    <ul v-cloak v-if="thirdCateflag" class="option positionA fs14 ">
+                                        <li v-for="(childs,i) in thirdCates" v-if="secondChecked==childs.parentName"  @click.stop="getThirdc(childs.name,childs.id,childs.path)">{{childs.name}}
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="flex-box row-center addItem">
+                            <div class="flex-name fs14">产品名称 <span class="red">*</span></div>
+                            <div class="input-box border-box">
+                                <input v-model="productName" class="clearInput name-input" name="name" type="text" maxlength="30">
+                            </div>
+                            <div class="tips ml-20">最多输入30个字符</div>
+                        </li>
+                        <li class="flex-box row-center">
+                            <div class="flex-name ">上传图片 <span class="red">*</span></div>
+                            <div class="flex-column w-100  ml-20 tips fs14">主图 </div>
+                            <div class="flex-name  ml-20 tips fs14">细节图</div>
+                        </li>
+                        <li class="flex-box row-center addItem">
+                            <div class="flex-name ">
+                            </div>
+                            <div v-for="(item,index) in imgs" class="img-list flex-box ">
+                                <div  class="imgBtn positionR flex-column ml-20 positionR" @click.stop="checkImg(index)">
+                                    <img class="pointer" :src="imgs[index]" alt=""/>
+                                    <div v-if="index != 0" @click.stop="imgDel(index)" class="img-del positionA"></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="flex-box row-center addItem">
+                            <div class="flex-name fs14">市场价格 <span class="red">*</span></div>
+                            <div class="prize-box border-box">
+                                <!-- <input v-model="productPrice" class="clearInput name-input" name="price" type="number" onkeyup="value=(parseInt((value=value.replace(/\D/g,''))==''||parseInt((value=value.replace(/\D/g,''))==0)?'0':value,10))" onafterpaste="value=(parseInt((value=value.replace(/\D/g,''))==''||parseInt((value=value.replace(/\D/g,''))==0)?'0':value,10))"/> -->
+                                 <input v-model="marketPrice" class="clearInput name-input" name="marketPrice" type="text" maxlength="10"/>
+                            </div>
+                            <!-- <div class="tips ml-20">元 *必须为数字如：100</div> -->
+                            <div class="tips ml-20">(人民币)</div>
+                        </li>
+                        <li class="flex-box row-center addItem">
+                            <div class="flex-name fs14">交易价格 <span class="red">*</span></div>
+                            <div class="prize-box border-box">
+                                 <input v-model="productPrice" class="clearInput name-input" name="price" type="text" maxlength="10"/>
+                            </div>
+                            <div class="tips ml-20">(人民币)</div>
+                        </li>
+                        <li class="flex-box row-center addItem">
+                            <div class="flex-name fs14">产品编号<span class="red">*</span></div>
+                            <div class="prize-box border-box">
+                                <input v-model="spu" class="clearInput name-input" name="spu" type="text" maxlength="10"/>
+                            </div>
+                        </li>
+                        <li class="flex-box row-center addItem">
+                            <div class="flex-name fs14">产品摘要 <span class="red">*</span></div>
+                            <div class="digest-box border-box">
+                                <textarea v-model="productSummary" class="clearInput fs14" name="summary" placeholder="产品的简介，亮点等.."></textarea>
+                            </div>
+                        </li>
+                        <li class="flex-box addItem">
+                            <div class="flex-name fs14">产品详情 <span class="red">*</span></div>
+                            <div id="Ed">
+                                <textarea v-model="productDescription" placeholder="商品详情" name="description" type="text/plain" id="myEditor" style="z-index:10;width:922px;height:240px;"></textarea>
+                                <div @click="saveProduct" class="add-submit add-submit_dis pointer">保存</div>
+                            </div>
+                        </li>
+                    </ul>
+                    <input type="hidden" name="id" v-model="productId" />
+                    <input type="hidden" name="userWebId" v-model="userWebId" />
+                    <input type="hidden" name="productCateId" v-model="productCateId">
+                    <input type="hidden" name="image" v-model="image" />
+                    <input type="hidden" name="sImages" v-model="sImages" />
+                </form>
+                <!--回收站-->
+                <div class="dataBox section recycle">
+                    <ul class="title clearfix">
+                        <li class="fl checkboxBox">
+                            <input type="checkbox" @change="checkAllFn" v-model="checkAll" class="checkbox" />
+                        </li>
+                        <li class="fl productName fs14">
+                            产品名称
+                        </li>
+                        <li class="fl productClass fs14">
+                            产品分类
+                        </li>
+                        <li class="fl productMomey fs14 alignC">
+                            价格
+                        </li>
+                        <li class="fl time fs14 alignC">
+                            发布时间
+                        </li>
+                        <li class="fl do fs14 alignC">
+                            操作
+                        </li>
+                    </ul>
+                    <ul class="data">
+                        <li class="hover dataLi" v-for="(product,i) in products">
+                            <ul class="title clearfix">
+                                <li class="fl checkboxBox">
+                                    <input type="checkbox" class="checkbox" :id="product.id" :value="product.id" v-model="checkedProduct" @change="checkedProductFn"
+                                    />
+                                </li>
+                                <li class="fl productName fs14"> {{product.name}}</li>
+                                <li class="fl productClass fs14">{{product.productCateName}}</li>
+                                <li class="fl productMomey fs14 alignC">{{product.price}}</li>
+                                <li class="fl time fs14 alignC">{{getFDate(product.createTime)}}</li>
+                                <li class="fl do fs14 alignC clearfix">
+                                    <div class="doInner clearfix m0auto">
+                                        <span @click="redelProduct(product.id)" class="delete fl alignC">
+                                            <i class="displayB"></i>
+                                        </span>
+                                        <span @click="delProduct(product.id,1)" class="recover fl alignC flex-box row-center row-j-center">
+                                            <i class="displayI"></i>
+                                            <span class="fs12 m">恢复</span>
+                                        </span>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+                        <div class="nullDataBox positionA" v-cloak v-if="products.length == 0">
+                            <img src="../../images/newCate/tututtutut.png" alt="">
+                            <p class="null_P fs14 alignC">回收站里没有产品哦 ╥﹏╥</p>
+
+                        </div>
+                    </ul>
+                    <ul class="total">
+                        <li>
+                            <ul class="title clearfix">
+                                <li class="fl checkboxBox">
+                                    <input id="checkAll2" type="checkbox" @change="checkAllFn" v-model="checkAll" class="checkbox" />
+                                    
+                                </li>
+                                <li class="fl productName fs16">
+                                    <label for="checkAll2" class="allCheck fs14 pointer">全选</label>
+
+                                    <div @click="delProduct(-1,1)" class="allMove pointer displayI fs12 alignC lh28">批量恢复
+                                    </div>
+                                    <div @click="redelProduct(-1)" class="delete pointer displayI fs12 alignC lh28">批量删除
+                                    </div>
+                                </li>
+                                <li class="blank"></li>
+                                <li class="page fl">
+                                    <ul class="clearfix">
+                                        <li @click="getProducts(2,1)" class="fs14 fl number alignC pointer">
+                                            首页
+                                        </li>
+                                        <li @click="prefPage(2,pagesIndex)" class="fl arrow left pointer">
+                                            <div class="leftIconBox">
+                                                <div class="icon">
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li v-for="item in showPages" @click="getProducts(2,item)" class="fs14 fl number alignC" :class="{on:item == pagesIndex?true : false}">
+                                            {{item}}
+                                        </li>
+
+                                        <li @click="nextPage(2,pagesIndex)" class="fl arrow right pointer">
+                                            <div class="rightIconBox">
+                                                <div class="icon">
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li @click="getProducts(2,allPages.length)" class="fs14 fl number alignC pointer">
+                                            尾页
+                                        </li>
+                                        <li class="fs14 fl alignC goTo">
+                                            <span class="fs14 displayI tiaozhuan">跳转到：</span>
+                                            <input type="text" v-model="toPage" />
+                                            <span @click="getProducts(2,toPage)" class="fs14 displayI to">GO
+                                                <i class="displayI"></i>
+                                            </span>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- 选择分类弹窗 -->
+        <div v-cloak v-if="tispsTag" style="width: 100%;height: 100%;position: fixed;left: 0;top:0;z-index: 12; ">
+            <div class="tispsTag" style="width:720px; height:320px;margin: -160px 0 0 -360px">
+                <div class="tipsTitle">批量转移</div>
+                <div class="tipsMsg" style="align-items:flex-start">
+                    <span>
+                        <div class="changeCate">
+                            <ul>
+                                <li class="flex-box row-center addItem">
+                                    <div class="flex-name fs14">产品分类</div>
+                                    <div class="selcet positionR">
+                                        <div class="input-box" :class="{checked:firstCateflag}">
+                                            <div @click="getFirstCate(firstCateflag)" class="border-box flex-box row-center selcet-t">
+                                                <span class="fs14">{{firstChecked == ''? '请选择分类':firstChecked}}</span>
+                                                <i class="arrows-icon "></i>
+                                            </div>
+                                            <ul v-cloak v-if="firstCateflag" class="option positionA fs14 ">
+                                                <li v-cloak v-for="(firstc,i) in firstCates" @click.stop="getCatef(firstc.name,firstc.id,firstc.path)">
+                                                    <span>{{firstc.name}}</span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="selcet positionR" v-cloak v-if="hasSecond">
+                                        <div class="input-box" :class="{checked:secondCateflag}">
+                                            <div @click="getSecondCate(secondCateflag)" class="border-box flex-box row-center selcet-t">
+                                                <span class="fs14">{{secondChecked == ''? '请选择分类':secondChecked}}</span>
+                                                <i class="arrows-icon "></i>
+                                            </div>
+                                            <ul v-cloak v-if="secondCateflag" class="option positionA fs14">
+                                                <li v-cloak v-for="(childs,i) in secondCates" v-if="firstChecked==childs.parentName" @click.stop="getSecondc(childs.name,childs.id,childs.path)">
+                                                    {{childs.name}}
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="selcet positionR" v-cloak v-if="hasThird">
+                                        <div class="input-box" :class="{checked:thirdCateflag}">
+                                            <div @click="getThirdCate(thirdCateflag)" class="border-box flex-box row-center selcet-t">
+                                                <span class="fs14">{{thirdChecked == ''? '请选择分类':thirdChecked}}</span>
+                                                <i class="arrows-icon "></i>
+                                            </div>
+                                            <ul v-cloak v-if="thirdCateflag" class="option positionA fs14 ">
+                                                <li v-for="(childs,i) in thirdCates" v-if="secondChecked==childs.parentName"  @click.stop="getThirdc(childs.name,childs.id,childs.path)">{{childs.name}}
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </span>
+                </div>
+                <div class="comfire">
+                    <span @click="tispsTagHide" class="cancle">取消</span>
+                    <span class="sure" @click="tispsTagComfire">确定</span>
+                </div>
+            </div>
+        </div>
+        <!--//单个编辑样式-->
+        <!--<div id="checkImg" class="checkImg">-->
+        <!--<div class="flex-box row-center addItem">-->
+        <!--<div class="flex-name ">-->
+        <!--</div>-->
+        <!--<ul class="img-list flex-box ">-->
+        <!--<div class="imgBtn positionR flex-column ">-->
+        <!--<input @change="upImg($event,0)" class=" positionA opacity0" name="imageFile" type="file"-->
+        <!--multiple="multiple" value=""/>-->
+        <!--<img :src="imgItem" alt=""/>-->
+        <!--</div>-->
+        <!--</ul>-->
+        <!--</div>-->
+        <!--<div class="sureImges">确定</div>-->
+        <!--<div class="giveUp">放弃</div>-->
+        <!--</div>-->
+        <div v-cloak v-if="checkImgs != -1" class="imgbg">
+            <div id="checkImg" class="checkImg">
+                <div class="title flex-box">
+                    <div class="flex-name">图片编辑器</div>
+                    <div class="flex-content"></div>
+                    <div class="flex-name pointer" @click="closeImg">
+                        <img src="../../images/product/close.png"> </div>
+                </div>
+                <nav>
+                    <ul>
+                        <li class="on">上传图片</li>
+                    </ul>
+                </nav>
+                <ul>
+                    <li>
+                        <form class="flex-box flex-column" id="setProduct">
+                            <div class="flex-box ctrlbar">
+                                <span class="flex-content "> *图片建议尺寸 230*230（px）；大小不要超过500k</span>
+                                <span class="imgInput positionR">
+                                    <input id="flieInput" @change="upImg($event)" class="positionA opacity0" name="imageFile" type="file" value="" />
+                                    <span>选择文件</span>
+                                </span>
+                                <span class="imgInput upLoad" @click="comfireImg">开始上传</span>
+                            </div>
+                            <div class="ml-20 positionR showImg">
+                                <!--<input @change="upImg($event)" class=" positionA opacity0" name="" type="file"-->
+                                <!--multiple="multiple" value=""/>-->
+
+                                <img :src="imgItem" alt="" />
+
+                                <input type="hidden" name="userWebId" v-model="userWebId" />
+                                <input type="hidden" name="param" value="product" />
+                            </div>
+                        </form>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <script src="../../js/dependence/vue.min.js"></script>
+    <script src="../../js/dependence/jquery.min.js"></script>
+    <script src="../../js/dependence/jquery-ui.min.js"></script>
+    <script src="../../js/dependence/jquery.form.js"></script>
+    <!-- 富文本-->
+    <script type="text/javascript" charset="utf-8" src="../../ueditor/ueditor.config.js"></script>
+    <script type="text/javascript" charset="utf-8" src="../../ueditor/ueditor.all.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="../../js/workspace/utils.js"></script>
+    <script type="text/javascript" charset="utf-8" src="product.js"></script>
+    <script type="text/javascript" src="../../ueditor/lang/zh-cn/zh-cn.js"></script>
+    <script>
+        $(document).ready(function(){
+            var channel = sessionStorage.getItem("channel");
+            if(channel==1){
+                $("#morp a").attr("href","../../index.html");
+            }else{
+                $("#morp a").attr("href","../../mobileIndex.html");
+            }
+        })
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,23 @@
+<div class="hover-module" @mouseenter="hoverStart" @mouseleave="hoverEnd" style="position:relative;overflow: hidden"
+     :style="style">
+    <img class="hover-module-img" :src="imageSrc" style="width:100%;height:100%;box-sizing: border-box;" ref="hoverImg" :style="imageStyle">
+
+    <!--蒙板加描述效果-->
+    <template>
+
+        <!--放大镜-->
+        <div v-show="hover" class="hover-zoom-mask" v-if="hoverEffect==4" :style="maskStyle">
+            <i class="hover-zoom-icon center-parent"></i>
+        </div>
+        <!--覆盖全图片-->
+        <div v-show="hover" v-if="hoverEffect==5" style="position:absolute;top:0;width:100%;height: 100%"
+             :style="maskStyle">
+            <p style="opacity: 1" :style="{'line-height':LH}">{{desc}}</p>
+        </div>
+        <!--覆盖三分之一图片-->
+        <div v-show="hover" v-if="hoverEffect==6" style="position:absolute;width:100%;height:30%;top:70%;left:0"
+             :style="maskStyle">
+            <p style="opacity: 1">{{desc}}</p>
+        </div>
+    </template>
+</div>

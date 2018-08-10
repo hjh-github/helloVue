@@ -1,0 +1,9 @@
+<!--<div class="showMore">
+    <span v-text="model[key].text"></span>
+    <span v-for="item in model[key].radio"><input type="radio" :name="model[key].st" :value="item.value" v-model="model[key].which"><i v-text="item.name"></i></span>
+</div>-->
+
+<div class="radio-type">
+    <span class="radio-title" v-text="model[key].text"></span>
+    <el-radio class="radio-btn" v-for="item in model[key].radio" v-model="model[key].which" :label="item.value">{{item.name}}</el-radio>
+</div>

@@ -1,0 +1,68 @@
+<!-- 图片库 -->
+
+<div class="img-house ImgTxt h610" id="imgHouse">
+    <div class="ImgTxtTips">
+        <ul>
+            <li class="cur">
+                <label>我的文件</label>
+            </li>
+            <li>
+                <label>图片库</label>
+            </li>
+            <li>&nbsp;</li>
+        </ul>
+        <dl>
+            <dd>
+                <div class="content">
+                    <div class="explain clearfix">
+                        <span class="float-l">你可以上传大小在2MB以内，格式jpg,gif,或者png的图片文件</span>
+                        <span class="float-r">
+                            <form action="" enctype="multipart/form-data" method="post">
+                                <button type="button" class="burleBtn clearfix">
+                                    <div class="upimgBox">
+                                        <img src="../../../../asset/icon_shangc.png" alt="">
+                                        <span>上传图片</span>
+                                    </div>
+                                    <input class ="upimgMore"  name="imageFile" @change="upImg($(event))" multiple="multiple" type="file">
+                                </button>
+                                <input type="hidden" name="userWebId" v-model="userWebId">
+                                <input type="hidden" name="param" value="page">
+                            </form>
+                        </span>
+                    </div>
+                    <div class="img-list-content">
+                        <div class="img-list">
+                            <ul class="clearfix img-list-content">
+                                <li class="container" v-for="item in imgList">
+                                    <div class="ImgCenterbox">
+                                        <img class="ImgCenter" :src="item" alt="">
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="no-img">
+                            <img src="../img/img_wusj.png" alt="">
+                        </div>
+                    </div>  
+                </div>
+            </dd>
+            <dd>
+                <div class="content">
+                    <div class="img-list">
+                        <ul class="clearfix">
+                            <li class="container">
+                                <div class="ImgCenterbox">
+                                    <img class="ImgCenter"  alt="">
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>   
+            </dd>
+        </dl>
+        <div class="ImgTxtButton">
+            <div class="ITsubmit">确定</div>
+            <div class="ITclose">取消</div>
+        </div>
+    </div>
+</div>

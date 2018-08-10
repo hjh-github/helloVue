@@ -1,0 +1,101 @@
+<div class="effect-dialog-content tabs-bar-content colorpick-parents">
+    <div class="font-item mar-bot">
+        <span class="subtitle displayI">高度&nbsp;:</span>
+
+        <el-radio-group v-model="model.def.defheight">
+            <el-radio :label="true" @change="restore({barStyle:['height']})">默认</el-radio>
+            <el-radio :label="false">自定义</el-radio>
+        </el-radio-group>
+    </div>
+    <div class="background-self-item mar-bot height-input-outer" v-show="!model.def.defheight">
+        <el-input v-model="model.barStyle.height">
+            <template slot="append">px</template>
+        </el-input>
+    </div>
+
+    <div class="background-item mar-bot">
+        <span class="subtitle displayI">背景&nbsp;:</span>
+        <el-radio-group v-model="model.def.defbackground">
+            <el-radio :label="true" @change="restore({barStyle:['background-image','background-color']})">默认</el-radio>
+            <el-radio :label="false">自定义</el-radio>
+        </el-radio-group>
+    </div>
+    <div class="background-self-item mar-bot" v-show="!model.def.defbackground">
+        <bgedit :model="model.barStyle"></bgedit>
+    </div>
+
+    <div class="background-item mar-bot">
+        <span class="subtitle displayI">悬浮颜色&nbsp;:</span>
+        <el-radio-group v-model="model.def.defHoverColor">
+            <el-radio :label="true"
+                      @change="restore(model.tabStyle.hoverColor)">默认
+            </el-radio>
+            <el-radio :label="false">自定义</el-radio>
+        </el-radio-group>
+    </div>
+    <div class="background-self-item mar-bot" v-show="!model.def.defHoverColor">
+        <hcolor :model="model.tabStyle.hoverColor"></hcolor>
+    </div>
+
+    <div class="background-item mar-bot colorpick-parents">
+        <span class="subtitle displayI">边框&nbsp;:</span>
+        <el-radio-group v-model="model.def.defborder">
+            <el-radio :label="true"
+                      @change="restore({barStyle:['border-color','border-width','border-style','showBorderLeft','showBorderRight','showBorderTop','showBorderBottom']})">
+                默认
+            </el-radio>
+            <el-radio :label="false">自定义</el-radio>
+        </el-radio-group>
+    </div>
+
+    <div class="border-self-item mar-bot" v-show="!model.def.defborder">
+        <div class="color-item mar-bot">
+            <span class="subtitle displayI"></span>
+            <el-color-picker v-model="model.barStyle['border-color']"></el-color-picker>
+            <input type="text" v-model="model.barStyle['border-color']" class="time-number lh30 alignC fs14">
+        </div>
+        <div class="width-item mar-bot">
+            <span class="subtitle displayI"></span>
+            <span class="self-subtitle">宽度&nbsp;:</span>
+            <input type="text" v-model="model.barStyle['border-width']" class="time-number lh30 alignC fs14">
+        </div>
+        <div class="style-item mar-bot">
+            <span class="subtitle displayI"></span>
+            <span class="self-subtitle">样式&nbsp;:</span>
+            <div class="border-style displayI vertical-middle mar-r"
+                 :style="{'border-color':('solid'==model.barStyle['border-style'])?'red':'#ccc'}"
+                 @click="model.barStyle['border-style']='solid'">
+                <div class="border-line solid-border"></div>
+            </div>
+            <div class="border-style displayI vertical-middle mar-r"
+                 :style="{'border-color':('dotted'==model.barStyle['border-style'])?'red':'#ccc'}"
+                 @click="model.barStyle['border-style']='dotted'">
+                <div class="border-line dotted-border"></div>
+            </div>
+            <div class="border-style displayI vertical-middle"
+                 :style="{'border-color':('dashed'==model.barStyle['border-style'])?'red':'#ccc'}"
+                 @click="model.barStyle['border-style']='dashed'">
+                <div class="border-line dashed-border"></div>
+            </div>
+        </div>
+        <div class="show-item mar-bot">
+            <el-col :span="6"></el-col>
+            <el-col :span="4">
+                <span class="self-subtitle pic-text mar-t">显示&nbsp;:</span>
+            </el-col>
+            <el-col :span="14">
+                <el-row>
+                    <el-checkbox size="mini" v-model="model.barStyle.showBorderLeft" label="左边框" border></el-checkbox>
+                    <el-checkbox size="mini" v-model="model.barStyle.showBorderRight" label="右边框" border></el-checkbox>
+                </el-row>
+                <el-row style="margin-top: 20px">
+                    <el-checkbox size="mini" v-model="model.barStyle.showBorderTop" label="上边框" border
+                    ></el-checkbox>
+                    <el-checkbox size="mini" v-model="model.barStyle.showBorderBottom" label="下边框" border
+                    ></el-checkbox>
+                </el-row>
+            </el-col>
+        </div>
+    </div>
+
+</div>

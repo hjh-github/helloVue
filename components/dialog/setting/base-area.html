@@ -1,0 +1,22 @@
+<!-- 设置弹框 start-->
+<div id="dialogId" class="commonDialog" v-if="visible " >
+    <div class="cs-title">
+        <span>设置样式</span>
+        <i class="closeDialog" @click="visible=false" data-isSecond="1"></i>
+    </div>
+    <div class="commonSet-content sdialog">
+        <div style="height:690px;">
+            <el-tabs  v-model="activeTab" type="card" @tab-click="reBase">
+                <el-tab-pane v-for="(item,key,index) in tabs" v-if="key == 'common'" :label="item.name" :name="item.id">
+                        <base-content  :model="model" :base="toTab" :config="tabs" :code="item.id"></base-content>            
+                </el-tab-pane>
+            </el-tabs>
+        </div>
+        <!-- <div class="square-btn-box clearfix text-dcrtion positionA">
+            <button class="succee-btn reset-btn fr succee-btn-text marright20 fs12" @click="_reset(activeTab)" type="button">
+                重置
+            </button>
+        </div> -->
+    </div>
+</div>
+<!-- 公共样式设置 end-->

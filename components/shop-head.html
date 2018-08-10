@@ -1,0 +1,9 @@
+<v-cptborder ref="container" :model="model" :setting="settingConfig" :editing="editingConfig" :drag="drag">
+    <div class="goods-head" style="height: 100%" :style="{'background-color':model['background-color']}">
+        <ul class="site-menu">
+            <li v-for="(item,i) in navList" :key="i">
+                <a :href="'http://'+app.saveParams.domainUrl+item.url" @mouseenter="hoverClass=i" target="_blank" @mouseenter="mouseenter" :style="{'color':model['text-color'],'font-size':model['font-size']}">{{item.name}}<i v-show="hoverClass==i" class="hoverClass"></i></a>
+            </li>
+        </ul>
+    </div>
+</v-cptborder>

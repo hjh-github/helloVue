@@ -1,0 +1,127 @@
+<div class="effect-dialog-content colorpick-parents tabs-item-content">
+    <div class="font-item mar-bot">
+        <span class="subtitle displayI">文字&nbsp;:</span>
+
+        <el-radio-group v-model="model.def.tabFont">
+            <el-radio :label="true" @change="restore({tabStyle:['font-size','font-family','color'],tabSelectedStyle:['color']})">默认
+            </el-radio>
+            <el-radio :label="false">自定义</el-radio>
+        </el-radio-group>
+    </div>
+    <div class="background-self-item mar-bot" v-show="!model.def.tabFont">
+        <div class="size-item mar-bot10">
+            <span class="subtitle displayI">大小&nbsp;:</span>
+            <el-select v-model="model.tabStyle['font-size']">
+                <el-option v-for="i in 9" :label="i+13" :key="i+13" :value="i+13"></el-option>
+            </el-select>
+        </div>
+        <div class="family-item mar-bot10">
+            <span class="subtitle displayI">字体&nbsp;:</span>
+            <el-select v-model="model.tabStyle['font-family']">
+                <el-option v-for="f in fonts" :label="f" :value="f" :key="f"></el-option>
+            </el-select>
+        </div>
+        <div class="font-color-item mar-bot10">
+            <span class="subtitle displayI">初始&nbsp;:</span>
+            <el-color-picker v-model="model.tabStyle['color']"></el-color-picker>
+            <span class="well-number displayI">#</span>
+            <input type="text" v-model="model.tabStyle['color']" class="time-number lh30 alignC fs14">
+
+        </div>
+
+        <div class="font-color-item mar-bot10">
+            <span class="subtitle displayI">选中&nbsp;:</span>
+            <el-color-picker v-model="model.tabSelectedStyle['color']"></el-color-picker>
+            <span class="well-number displayI">#</span>
+            <input type="text" v-model="model.tabSelectedStyle['color']" class="time-number lh30 alignC fs14">
+
+        </div>
+
+    </div>
+
+
+    <div class="font-item mar-bot">
+        <span class="subtitle displayI">高度&nbsp;:</span>
+
+        <el-radio-group v-model="model.def.tabHeight">
+            <el-radio :label="true" @change="restore({tabStyle:['height']})">默认</el-radio>
+            <el-radio :label="false">自定义</el-radio>
+        </el-radio-group>
+    </div>
+    <div class="background-self-item mar-bot" v-show="!model.def.tabHeight">
+        <el-input v-model="model.tabStyle.height">
+            <template slot="append">px</template>
+        </el-input>
+    </div>
+
+
+    <div class="font-item mar-bot">
+        <span class="subtitle displayI">宽度&nbsp;:</span>
+
+        <el-radio-group v-model="model.def.tabWidth">
+            <el-radio :label="true" @change="restore({tabStyle:['width']})">默认</el-radio>
+            <el-radio :label="false">自定义</el-radio>
+        </el-radio-group>
+    </div>
+    <div class="background-self-item mar-bot" v-show="!model.def.tabWidth">
+        <el-input v-model="model.tabStyle.width">
+            <template slot="append">px</template>
+        </el-input>
+    </div>
+
+
+    <div class="background-item mar-bot">
+        <span class="subtitle displayI">背景&nbsp;:</span>
+        <el-radio-group v-model="model.def.tabBg">
+            <el-radio :label="true" @change="restore({tabStyle:['background-color','background-image']})">默认</el-radio>
+            <el-radio :label="false">自定义</el-radio>
+        </el-radio-group>
+    </div>
+    <div class="background-self-item mar-bot" v-show="!model.def.tabBg">
+        <bgedit :config="[true,false]" :model="model.tabStyle"></bgedit>
+    </div>
+
+    <div class="background-item mar-bot">
+        <span class="subtitle displayI">选中背景&nbsp;:</span>
+        <el-radio-group v-model="model.def.tabSelectedBg">
+            <el-radio :label="true" @change="restore({tabSelectedStyle:['background-color','background-image']})">默认</el-radio>
+            <el-radio :label="false">自定义</el-radio>
+        </el-radio-group>
+    </div>
+    <div class="background-self-item mar-bot" v-show="!model.def.tabSelectedBg">
+        <bgedit :config="[true,false]" :model="model.tabSelectedStyle"></bgedit>
+    </div>
+
+
+    <div class="font-item mar-bot">
+        <span class="subtitle displayI">间距&nbsp;:</span>
+
+        <el-radio-group v-model="model.def.tabMargin">
+            <el-radio :label="true" @change="restore({tabStyle:['margin-left']})">默认</el-radio>
+            <el-radio :label="false">自定义</el-radio>
+        </el-radio-group>
+    </div>
+
+    <div class="background-self-item mar-bot" v-show="!model.def.tabMargin">
+        <el-input v-model="model.tabStyle['margin-left']">
+            <template slot="append">px</template>
+        </el-input>
+    </div>
+
+    <div class="slide-box">
+        <el-row>
+            <el-col :span="5" class="slider-text-item">
+                <span class="subtitle displayI">圆角&nbsp;:</span>
+            </el-col>
+
+            <el-col :span="18">
+                <el-slider
+                        v-model="radius"
+                        show-input
+                        :max="100"
+                        :min="0">
+                </el-slider>
+            </el-col>
+        </el-row>
+    </div>
+</div>

@@ -1,0 +1,34 @@
+<!--留言板按钮样式选择-->
+<div class="msg-border-btn clearfix">
+    <el-row>
+        <span class="btn-style-text">按钮样式：</span>
+        <div class="btn-content" v-if="app.channel == 1">
+            <ul class="line-list">
+                <div class="line-list-box" v-for="c in btnOpts" :class="{'cur-img':c == model[key]}">
+                    <li :class="c" ref="btnitem" @click="btnClass">
+                        提交留言
+                    </li>
+                </div>
+            </ul>
+        </div>
+        <div v-if="app.channel == 2" class="mobile-btn-type">
+            <ul class="mobile-btn-list">
+                <li v-for="c in btnOptsMobile" :class="{'cur-img':c == model[key]}" ref="btnitem" @click="model[key]=c">
+                    <div :class="c">提交留言</div>
+                </li>
+            </ul>
+        </div>
+        <span v-if="app.channel == 2" class="btn-style-text" style="margin-top: 10px">按钮颜色：</span>
+        <div v-if="app.channel == 2" class="mobile-btn-type">
+
+            <ul class="button-color-type">
+                <li v-for="(c,index) in config.colorList" :class="{'cur':index==config.current_2}" @click="config.current_2=index;model.btnBg = c.color"
+                    :style="{background:c.color}"></li>
+                <li>
+                    <el-color-picker size="small" @change="config.current_2='-1';model.btnBg = config.color1" v-model="config.color1"></el-color-picker>
+                </li>
+                <i class="choose_color">选择颜色</i>
+            </ul>
+        </div>
+    </el-row>
+</div>

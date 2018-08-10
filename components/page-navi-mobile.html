@@ -1,0 +1,19 @@
+<div @click="showBtns=true" @mouseleave="showBtns=false">
+    <div class="mobile_title_list" :style="canvasStyle"><i class="mobile_title_icon" @click="app.mobileNav = !app.mobileNav" v-if="showSelect" :style="showPlace"></i><span>{{webName}}</span></div>
+    <el-col :span="12" v-if="app.mobileNav">
+        <el-menu mode="vertical" :style="showPlace" class="el-menu-vertical-overflow" default-active="1" :background-color="model['background-color']" :text-color="model['text-color']">
+            <template v-for="(item,i) in navList">
+                <el-submenu :index="i" v-if="item.children&&item.children.length>0">
+                    <template slot="title"><span @click="chanPage(item.id,item)">{{item.name}}</span></template>
+                    <el-menu-item :index="cItem.id" v-for="(cItem,n) in item.children" @click="chanPage(cItem.id,cItem)">{{cItem.name}}</el-menu-item>
+                </el-submenu>
+                <el-menu-item :index="i" v-else @click="chanPage(item.id,item)">{{item.name}}</el-menu-item>
+            </template>
+        </el-menu>
+    </el-col>
+    <div class="mobile-pop" v-if="app.mobileNav" @click="app.mobileNav = !app.mobileNav"></div>
+    <div  v-show="showBtns&&!app.isPreview" class="clearfix group-set newSetBtns" style="z-index:100">
+        <button class="textEdit-set  mgl0 set-btn fl" @click="edit" type="button">编辑内容</button>
+        <button class="textEdit-set  mgl0 set-btn fl" @click="editNav"  type="button">编辑导航</button>
+    </div>
+</div>

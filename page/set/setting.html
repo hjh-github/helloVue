@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+	<meta charset="UTF-8">
+	<title>SEO</title>
+	<link rel="stylesheet" href="../../css/public/public.css" />
+	<link rel="stylesheet" href="../../css/dependence/animate.css" />
+	<link rel="stylesheet" href="setting.css" />
+</head>
+
+<body>
+	<div class="layout" id="setting">
+		<!--左侧栏-->
+		<div class="left-nav">
+			<ul>
+				<li class="bubbleRight" data-title="添加/编辑产品">
+					<a href="../product/product.html">
+						<div>
+							<div>
+								<img src="../../images/productIcon.png">
+							</div>
+							<span>产品</span>
+						</div>
+					</a>
+				</li>
+				<li class="bubbleRight" data-title="添加/编辑文章">
+					<a href="../newCate/newsCate.html">
+						<div>
+							<div>
+								<img src="../../images/passage.png">
+							</div>
+							<span>文章</span>
+						</div>
+					</a>
+				</li>
+				<li class="bubbleRight on" data-title="添加/seo">
+					<a href="javascript:;">
+						<div>
+							<div>
+								<img src="../../images/setting.png" alt="" />
+							</div>
+							<span>设置</span>
+						</div>
+					</a>
+				</li>
+			</ul>
+		</div>
+		<!--顶部-->
+		<header>
+			<div class="logo-box flex-box row-center">
+				<img class="logo" src="../../images/logo.png" alt="">
+				<span>企业官网型后台</span>
+			</div>
+			<ul class="clearfix">
+				<a href="../../index.html">
+					<li class="fr fs14 two positionR pointer ripple">
+						页面编辑器
+					</li>
+				</a>
+				<li class="fr fs14 one positionR pointer ripple">
+					帮助
+				</li>
+			</ul>
+		</header>
+		<!--内容-->
+		<div class="content clearfix">
+			<!--设置的右边-->
+			<div class="setRight fl">
+				<!--设置的导航-->
+				<nav class="flex-box">
+					<ul class="clearfix">
+						<li class="fl fs14 pointer" :class="{ active: flag === 'seo' }" @click="navKeywordClick">
+							关键字设置
+						</li>
+						<li class="fl fs14 pointer" :class="{ active: flag === 'youhua' }" @click="flag = 'youhua'">
+							<span class="fs12">SEO</span>优化
+						</li>
+						<li class="fl fs14 pointer" :class="{active: flag === 'title'}" @click="getIcon">
+							网站图标
+						</li>
+					</ul>
+					<ul class="flex-content"></ul>
+				</nav>
+				<!--设置列表-->
+				<div class="seo" v-show="flag === 'seo'">
+					<div class="content">
+						<form action="">
+							<ul>
+								<li class="short">
+									<span class="font">标题设置</span>
+									<input type="text" class="title padleft10 fs12" v-model="title" maxlength="80" name="title" />
+									<span class="tips fs14">不超过80个汉字</span>
+								</li>
+								<li class="short">
+									<span class="font">关键词设置</span>
+									<input type="text" class="long wordsS padleft10 fs12" v-model="keyword" maxlength="200" name="keyword" />
+									<span class="tips fs14">不超过200个汉字，多个关键词用英文的逗号","分割！</span>
+								</li>
+								<li class="textareaLi">
+									<span class="font same">关键词描述</span>
+									<textarea v-model="content" name="content" id="" cols="30" rows="10" maxlength="200" class="long wordsD padleft10 padtop10 fs12"></textarea>
+									<span class="tips fs14 same">不超过200个汉字</span>
+								</li>
+								<li class="mouth">
+									<span class="font">收录入口</span>
+									<a class="baiduLink" href="http://ziyuan.baidu.com/linksubmit/url" target="_blank">
+										<div class="in pointer">
+											<span class="fs14">百度收录入口</span>
+											<img src="../../images/product/gogo.png" alt="" />
+										</div>	
+									</a>
+								</li>
+								<li class="buttonLi">
+									<span class="font"></span>
+									<input type="button" value="保存" class="btn lh36 alignC pointer" @click="saveSeo" />
+								</li>
+							</ul>
+						</form>
+					</div>
+				</div>
+				<!--seo优化-->
+				<div class="section category padtop20" v-show="flag === 'youhua'">
+					<div class="details">
+						<ul class="step padleft20">
+							<li class="fs14 same lh46">在这里我们将指导您如何自己进行网站的SEO，如何将关键词竞争到搜索引擎第一页。</li>
+							<li class="fs14 same blod lh46 canglu">SEO第一步：选择关键词</li>
+							<li class="fs14 lh46">A 如何选择关键词？</li>
+							<li class="fs14 same lh46">关键词的选择将直接决定您网站的优化效果，所以要对您的关键词做必要的前期分析，挑选去最适合的关键词以达到最佳的优化效果。</li>
+						</ul>
+						<div class="standard">
+							<div class="title fs14 padleft20 lh50">总结了以下几点关键词的选择标准：</div>
+							<ul class="list padleft20">
+								<li class="fs14 lh42">a、关键词要与公司的业务相关，并选择百度中竞价较少的关键词。</li>
+								<li class="fs14 lh42">b、关键词不要太宽泛，比如做房地产的公司，想针对房地产这个词优化，基本效果是很难达到的。</li>
+								<li class="fs14 lh42">c、可以选择 “地区+业务关键词”的组合来做为优化的关键词。</li>
+								<li class="fs14 lh42">d、关键词也不适于太长太特殊。</li>
+								<li class="fs14 lh42">e、站在用户角度思考，对您的客户做个简单调查，了解他们常用的关键词。</li>
+								<li class="fs14 lh42">f、要发布关键词相关的服务或产品信息，来做为优化页面。</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<!-- 网站图标 -->
+				<div class="title padtop20" v-show="flag === 'title'">
+					<form id="form" action="">
+						<ul class="">
+							<li class="short content name">
+								<span class="font fs14 SimSun">网站名称</span>
+								<input type="text" class="border inputbox fs12 padleft10" v-model="webName" name="title" maxlength="13" onkeyup="this.value=this.value.replace(/^ +| +$/g,'')" />
+								<span class="tips fs10 marleft20">不能超过13个字</span>
+							</li>
+							<li class="short content uplaud">
+								<span class="font fs14 SimSun">图片上传</span>
+								<div class="flex-column">
+									<div class="flex-box row-center">
+										<div class="imgBtn positionR">
+											<input id="fileInput" class="positionA opacity0 imgFile pointer" type="file" value="" accept="image/png,image/jpg,image/jpeg" @change="uploading($event)"
+											    name="icon" />
+											<img src="..\..\images\product\pic.png" alt="" />
+											<span>选择图片</span>
+										</div>
+									</div>
+								</div>
+								<button v-show="ImgShowUrl !== ''" class="favicon fs16 pointer marleft20" @click.stop.prevent="shiftFavicon">删除网站图标</button>
+							</li>
+							<li class="flex-box row-center addItem imgFather content padbottom10" v-if="imgBoxFlag">
+								<span class="font fs14 SimSun"></span>
+								<!--展示图片-->
+								<img :src="ImgShowUrl" alt="" class="showImg"/>
+							</li>
+							<li class="textareaLi content">
+								<span class="font same"></span>
+								<span class="tips fs14 same tips">图标大小不能超过300kb，仅支持jpg，gif，png, ico(ICO类型图格式为宽16px，高16px)！</span>
+							</li>
+							<li class="mouth content">
+								<span class="font"></span>
+								<input type="button" value="确定" class="canglu ffffff save alignC lh36 pointer" @click="titleSet" />
+							</li>
+						</ul>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script src="../../js/dependence/vue.min.js"></script>
+	<script src="../../js/dependence/jquery.min.js"></script>
+	<script src="../../js/workspace/utils.js"></script>
+	<script src="../../js/dependence/jquery.form.js"></script>
+	<script charset="utf-8" src="setting.js"></script>
+</body>
+
+</html>

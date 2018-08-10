@@ -1,0 +1,47 @@
+<div style="position:absolute;" class="animated cptborder" :class="model.animation" :style="positionStyle" @click="fineTurn($event)">
+    <!--<el-row v-if="defTitle != 1 && model.titleVisible && model.title &&  model.title.length > 0"-->
+    <!--style="overflow: hidden;" :style="model.titleStyle">-->
+    <!--<el-col :span="20">-->
+    <!--<span :style="model.titleWordStyle">{{model.title}}</span>-->
+    <!--<span :style="model.subTitleWordStyle">{{model.subtitle}}</span>-->
+    <!--</el-col>-->
+    <!--<el-col :span="4">-->
+    <!--<span v-if="model.showMore&&model.showMore.open" @click="openShowMore">显示更多</span>-->
+    <!--</el-col>-->
+    <!--</el-row>-->
+    <div v-if="!app.isPreview&&wireShow" style='position: absolute;right:-66px;'>
+        <p>w:{{width}}</p>
+        <p>h:{{height}}</p>
+    </div>
+    <div v-if="wireShow" style="width:1000%;border-top:1px solid #ff3aff;transform: translateX(-50%);position: absolute;top:-1px;opacity: 0.7"></div>
+    <div v-if="wireShow" style="height:1000%;border-left:1px solid #ff3aff;transform: translateY(-50%);position: absolute;left:-1px;opacity: 0.7"></div>
+    <div v-if="wireShow" style="width:1000%;border-top:1px solid #ff3aff;transform: translateX(-50%);position: absolute;bottom:-1px;opacity: 0.7"></div>
+    <div v-if="wireShow" style="height:1000%;border-left:1px solid #ff3aff;transform: translateY(-50%);position: absolute;right:-1px;opacity: 0.7"></div>
+    <div style="width:100%;height:100%;" :style="containerStyle">
+        <el-row v-if="showTitle" style="overflow: hidden" :style="titleBarStyle">
+            <div style="position: relative;" :style="titleBlockStyle">
+                <span :style="titleStyle">
+                    {{title}}
+                </span>
+                <span :style="subTitleStyle">
+                    {{subtitle}}
+                </span>
+            </div>
+            <div v-if="showMore.visible" style="position:absolute;top:50%;transform:translateY(-50%);right:5px;">
+                <v-href :model="showMore">
+                    <span :style="showMoreStyle">
+                        更多
+                    </span>
+                </v-href>
+            </div>
+        </el-row>
+
+        <el-row style="width:100%;height:100%;" :style="contentStyle">
+            <!--为了padding生效加的div-->
+            <div style="width:100%;height:100%;" :style="paddingStyle">
+                <slot></slot>
+            </div>
+        </el-row>
+    </div>
+    <div ref="dialog"></div>
+</div>

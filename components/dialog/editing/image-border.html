@@ -1,0 +1,25 @@
+<!-- 图片编辑  -->
+<div>
+    <div class="radio-type">
+        <span class="radio-title" v-text="config.text"></span>
+        <el-radio class="radio-btn" v-for="item in config.radio" v-model="model[key].radio" :label="item.value">{{item.name}}</el-radio>
+    </div>
+    <div class="image-border" v-show="model[key].radio == '1'">
+        <div class="border-list">
+            <span class="border-title">颜色：</span>
+            <el-color-picker class="border-color" v-model="model[key].color" size="mini"></el-color-picker>#
+            <input class="border-color-rgb" type="text" v-model="model[key].color">
+            
+        </div>
+        <div class="border-list">
+            <span class="border-title">宽度：</span>
+            <input class="border-width" type="text" valur="0px" v-model="model[key].width">
+        </div>
+        <div class="border-list">
+            <span class="border-title">样式：</span>
+            <div class="border-style sty-bd-1" v-model="model[key].style" @click="model[key].checked=1" :class="{cur:model[key].checked ==1}" ></div>
+            <div class="border-style sty-bd-2" v-model="model[key].style" @click="model[key].checked=2" :class="{cur:model[key].checked ==2}" ></div>
+            <div class="border-style sty-bd-3" v-model="model[key].style" @click="model[key].checked=3" :class="{cur:model[key].checked ==3}" ></div>
+        </div>
+    </div>
+</div>

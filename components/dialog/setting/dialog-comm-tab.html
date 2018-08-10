@@ -1,0 +1,199 @@
+<div class="convention com-set-item scroll-bar colorpick-parents">
+    <div class="titleBar mar-bot">
+        <span class="subtitle displayI">标题栏&nbsp;:</span>
+        <el-radio v-model="model.titleBarStyle.show" :label="true">显示</el-radio>
+        <el-radio v-model="model.titleBarStyle.show" :label="false">隐藏</el-radio>
+    </div>
+    <div class="slide-box">
+        <el-row>
+            <el-col :span="5" class="slider-text-item">
+                <span class="subtitle displayI">不透明度&nbsp;:</span>
+            </el-col>
+
+            <el-col :span="18">
+                <el-slider
+                        v-model="opacity"
+                        show-input
+                        :max="100"
+                        :min="5">
+                </el-slider>
+            </el-col>
+        </el-row>
+    </div>
+
+    <div class="slide-box">
+        <el-row>
+            <el-col :span="5" class="slider-text-item">
+                <span class="subtitle displayI">圆角&nbsp;:</span>
+            </el-col>
+
+            <el-col :span="18">
+                <el-slider
+                        v-model="radius"
+                        show-input
+                        :max="100"
+                        :min="0">
+                </el-slider>
+            </el-col>
+        </el-row>
+    </div>
+
+    <div class="background-item mar-bot" v-if="model.__componentType==='font'">
+        <span class="subtitle displayI">悬浮&nbsp;:</span>
+        <el-color-picker v-model="model.hoverColor"></el-color-picker>
+    </div>
+
+    <div class="hieght-item mar-bot">
+        <span class="subtitle displayI">高度&nbsp;:</span>
+        <el-radio-group v-model="defheight">
+            <el-radio :label="true">默认</el-radio>
+            <el-radio :label="false">自定义</el-radio>
+        </el-radio-group>
+    </div>
+    <div class="hieght-selft-item mar-bot" v-show="!defheight">
+        <span class="subtitle displayI"></span>
+        <span class="self-subtitle">数值&nbsp;:</span>
+        <input type="text" v-model="model.style.height" class="time-number lh30 alignC fs14">
+    </div>
+    <div class="hieght-item mar-bot" v-if="model.__componentType==='search'">
+        <span class="subtitle displayI">搜索栏高度&nbsp;:</span>
+        <el-radio-group v-model="seheight">
+            <el-radio :label="true">默认</el-radio>
+            <el-radio :label="false">自定义</el-radio>
+        </el-radio-group>
+    </div>
+    <div class="hieght-selft-item mar-bot" v-show="!seheight">
+        <span class="subtitle displayI"></span>
+        <span class="self-subtitle">数值&nbsp;:</span>
+        <input type="text" v-model="model.style.searchH" class="time-number lh30 alignC fs14">
+    </div>
+    <!--<div class="margin-item mar-bot">-->
+    <!--<span class="subtitle displayI">外边距&nbsp;:</span>-->
+    <!--<el-radio-group v-model="defmargin">-->
+    <!--<el-radio :label="true">默认</el-radio>-->
+    <!--<el-radio :label="false">自定义</el-radio>-->
+    <!--</el-radio-group>-->
+    <!--</div>-->
+    <!--<div class="margin-self-item mar-bot" v-show="!defmargin">-->
+    <!--<div class="margin-self-top mar-bot10">-->
+    <!--<span class="subtitle displayI"></span>-->
+    <!--<span class="self-subtitle">上&nbsp;:</span>-->
+    <!--<input type="text" v-model="model.style['margin-top']"-->
+    <!--class="time-number lh30 alignC fs14 mar-right">-->
+    <!--<span class="self-subtitle">下&nbsp;:</span>-->
+    <!--<input type="text" v-model="model.style['margin-bottom']" class="time-number lh30 alignC fs14">-->
+    <!--</div>-->
+    <!--<div class="margin-self-bottom">-->
+    <!--<span class="subtitle displayI"></span>-->
+    <!--<span class="self-subtitle">左&nbsp;:</span>-->
+    <!--<input type="text" v-model="model.style['margin-left']"-->
+    <!--class="time-number lh30 alignC fs14 mar-right">-->
+    <!--<span class="self-subtitle">右&nbsp;:</span>-->
+    <!--<input type="text" v-model="model.style['margin-right']" class="time-number lh30 alignC fs14">-->
+    <!--</div>-->
+    <!--</div>-->
+    <div class="padding-item mar-bot">
+        <span class="subtitle displayI">内边距&nbsp;:</span>
+        <el-radio-group v-model="model.paddingStyle.useDefault">
+            <el-radio :label="true"
+                      @change="resume('contentConfig',{paddingStyle:['padding-left','padding-bottom','padding-top','padding-right']})">
+                默认
+            </el-radio>
+            <el-radio :label="false">自定义</el-radio>
+        </el-radio-group>
+    </div>
+    <div class="margin-self-item mar-bot" v-show="!model.paddingStyle.useDefault">
+        <div class="margin-self-top mar-bot10">
+            <span class="subtitle displayI"></span>
+            <span class="self-subtitle">上&nbsp;:</span>
+            <input type="text" v-model="model.paddingStyle['padding-top']"
+                   class="time-number lh30 alignC fs14 mar-right">
+            <span class="self-subtitle">下&nbsp;:</span>
+            <input type="text" v-model="model.paddingStyle['padding-bottom']" class="time-number lh30 alignC fs14">
+        </div>
+        <div class="margin-self-bottom">
+            <span class="subtitle displayI"></span>
+            <span class="self-subtitle">左&nbsp;:</span>
+            <input type="text" v-model="model.paddingStyle['padding-left']"
+                   class="time-number lh30 alignC fs14 mar-right">
+            <span class="self-subtitle">右&nbsp;:</span>
+            <input type="text" v-model="model.paddingStyle['padding-right']" class="time-number lh30 alignC fs14">
+        </div>
+    </div>
+    <div class="background-item mar-bot">
+        <span class="subtitle displayI">背景&nbsp;:</span>
+        <el-radio-group v-model="model.backgroundStyle.useDefault">
+            <el-radio :label="true"
+                      @change="resume('contentConfig',{backgroundStyle:['background-color','background-image']})">默认
+            </el-radio>
+            <el-radio :label="false">自定义</el-radio>
+        </el-radio-group>
+    </div>
+    <div class="background-self-item mar-bot" v-show="!model.backgroundStyle.useDefault">
+        <bgedit :model="model.backgroundStyle"></bgedit>
+    </div>
+
+    <div class="background-item mar-bot">
+        <span class="subtitle displayI">边框&nbsp;:</span>
+        <el-radio-group v-model="model.def.defborder">
+            <el-radio :label="true">默认</el-radio>
+            <el-radio :label="false">自定义</el-radio>
+        </el-radio-group>
+    </div>
+
+
+    <div class="border-self-item mar-bot" v-show="!model.def.defborder">
+        <div class="color-item mar-bot">
+            <span class="subtitle displayI"></span>
+            <el-color-picker v-model="model.borderStyle['border-color']"
+                             @active-change="colorChanged(model.borderStyle,'border-color')"></el-color-picker>
+            <input type="text" v-model="model.borderStyle['border-color']" class="time-number lh30 alignC fs14">
+        </div>
+        <div class="width-item mar-bot">
+            <span class="subtitle displayI"></span>
+            <span class="self-subtitle">宽度&nbsp;:</span>
+            <input type="text" v-model="model.borderStyle['border-width']" class="time-number lh30 alignC fs14">
+        </div>
+        <div class="style-item mar-bot">
+            <span class="subtitle displayI"></span>
+            <span class="self-subtitle">样式&nbsp;:</span>
+            <div class="border-style displayI vertical-middle mar-r"
+                 :style="{'border-color':('solid'==model.borderStyle['border-style'])?'red':'#ccc'}"
+                 @click="model.borderStyle['border-style']='solid'">
+                <div class="border-line solid-border"></div>
+            </div>
+            <div class="border-style displayI vertical-middle mar-r"
+                 :style="{'border-color':('dotted'==model.borderStyle['border-style'])?'red':'#ccc'}"
+                 @click="model.borderStyle['border-style']='dotted'">
+                <div class="border-line dotted-border"></div>
+            </div>
+            <div class="border-style displayI vertical-middle"
+                 :style="{'border-color':('dashed'==model.borderStyle['border-style'])?'red':'#ccc'}"
+                 @click="model.borderStyle['border-style']='dashed'">
+                <div class="border-line dashed-border"></div>
+            </div>
+        </div>
+        <div class="show-item mar-bot">
+            <el-col :span="6"></el-col>
+            <el-col :span="4">
+                <span class="self-subtitle pic-text mar-t">显示&nbsp;:</span>
+            </el-col>
+            <el-col :span="14">
+                <el-row>
+                    <el-checkbox size="mini" v-model="model.borderStyle.showBorderLeft" label="左边框"
+                                 border></el-checkbox>
+                    <el-checkbox size="mini" v-model="model.borderStyle.showBorderRight" label="右边框"
+                                 border></el-checkbox>
+                </el-row>
+                <el-row style="margin-top: 20px">
+                    <el-checkbox size="mini" v-model="model.borderStyle.showBorderTop" label="上边框" border
+                    ></el-checkbox>
+                    <el-checkbox size="mini" v-model="model.borderStyle.showBorderBottom" label="下边框" border
+                    ></el-checkbox>
+                </el-row>
+            </el-col>
+        </div>
+    </div>
+
+
+</div>

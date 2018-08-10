@@ -1,0 +1,118 @@
+<!-- 模板按钮 -->
+<div id="tpl" class="mytpl tplSame positionF">
+    <div @click.stop.prevent="toggleIcon" class="btnIconBox positionR pointer boxShadow" :class="{clearBoxShadow: iconName === type}">
+        <div class="tplImgBox positionA">
+            <!-- 三元表达式 -->
+            <img class="tplIcon iconImage" :src="iconName !== type?'./images/tpl.png':'./images/tplChosen.png'" alt="">
+        </div>
+    </div>
+    <div v-cloak v-show="iconName === type" class="iconRight tplIconRight positionA">
+        <img src="./images/iconRight.png" alt="">
+    </div>
+    <!-- 模板弹窗 -->
+    <div v-cloak v-show="iconName === type" id="tplDialog" class="positionA boxModel fs14 tplSameDialog">
+        <div class="mytpl_header padleft20 boxModel borderBottom">
+            <span class="boxModel">选择模板</span>
+            <div class="tpl_right fr">
+                <div class="closeBox pointer" @click.stop.prevent="tplDialog">
+                    <img src="./images/mytpl_close.png" alt="">
+                </div>
+            </div>
+        </div>
+        <div class="tplBottom flex-box">
+            <div class="tplsliderBar">
+                <div class="tplSearchBox">
+                    <input class="center" v-model="tempaltesData.name" type="text" @keyup.enter="tplSearch()" placeholder="请输入关键字">
+                </div>
+                <p class="mdTips">选择分类</p>
+                <div class="industryClassify sliderSame">
+                    <h5 class="marbottom10">行业</h5>
+                    <ul>
+                        <li @click.stop.prevent="chosenOneLevel(index,tplTopLevel.code,tplTopLevel.parentCode)" :class="{active:tplTopLevel.code == isThisWebType}"
+                            v-for="(tplTopLevel,index) in tplTopLevelArr" v-text="tplTopLevel.name"></li>
+                    </ul>
+                </div>
+                <!-- <div class="sliderSame">
+                        <h5 class="marbottom10">类型</h5>
+                        <ul>
+                            <li @click.stop.prevent="ChosenWebType(webType.code)" v-for="(webType,index) in webTypeArr" v-text="webType.name" :class="{active: webType.code === tempaltesData.themeCode}"></li>
+                        </ul>
+                    </div> -->
+                <div class="colorChosen">
+                    <h5 class="marbottom10">色系</h5>
+                    <ul class="clearfix">
+                        <li @click.stop.prevent="chosenTplThemeColor(tplThemeColor.code)" v-for="(tplThemeColor,index) in tplThemeColorArr" class="lis1 "
+                            :style="{backgroundColor:'#'+tplThemeColor.code,borderColor:tplThemeColor.code}" :class="{active: tempaltesData.colorCode === tplThemeColor.code}"
+                            :title="tplThemeColor.name">
+                            <div class="liInner"></div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="tplList positionR" style="width: 1208px;">
+                <!-- 二级分类的下拉框 -->
+
+                <div class="tplDownDialog" style="display: none">
+                    <div class="tplDownDialogContent">
+                        <div class="contentTitle">
+                            <span>二级分类</span>
+                        </div>
+                        <div class="slideUlBox">
+                            <ul class="clearfix">
+                                <li @click.stop.prevent="chosenOneLevel(0,secondLevelItem.code,secondLevelItem.parentCode)" v-for="(secondLevelItem,index) in tplChildLevelArr"
+                                    v-if="secondLevelItem.parentCode == tplTopLevelCode" :class="{active: tempaltesData.industryCode === secondLevelItem.code }"
+                                    class="pointer" v-text="secondLevelItem.name"></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="title padbottom20 padtop20">
+                    <ul class="clearfix">
+                        <li @click="checkOrderBy('create_time')" :class="{active: tempaltesData.orderBy === 'create_time' }">最近更新
+                        </li>
+                        <li @click="checkOrderBy('used')" :class="{active: tempaltesData.orderBy === 'used' }" class="">最受欢迎
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <ul class="clearfix dataUl positionR scroll-bar">
+                        <li v-for="(item,index) in tplWebInfoList" :key="index" class="fl tplItem pointer">
+                            <div>
+                                <div class="imgBox">
+                                    <img style="width:268px;height:180px;" :src="item.thumbImage" alt="" @mouseover.stop.prevent='hover' @mouseout.stop.prevent='out'>
+                                </div>
+                                <div class="tplBottom">
+                                    <p class="tpl_name">
+                                        <span>{{item.name}}</span>
+                                        <!-- <span>行业: 互联网</span> -->
+                                    </p>
+                                    <div class="info clearfix">
+                                        <span class="tpl_data fl">
+                                            <!-- $99.00 -->
+                                        </span>
+                                        <div class="tpl_infoRight fr clearfix">
+                                            <a :href="'http://'+item.previewUrl" target="_blank" class="reading fl pointer">预览</a>
+                                            <span class="pointer fl" @click="checkModle(item.id,item.themeCode)" class="chosenUse">选用</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <el-dialog title="复制模板提示" :visible.sync="dialogFormVisible" :modal="false" width="40%">
+        <el-form :model="form">
+            <el-form-item label="" :label-width="formLabelWidth">
+                <el-radio v-model="form.radio" label="0">保留原网站数据（文章，产品等相关后台数据）</el-radio>
+                <el-radio style="margin-left:0;" v-model="form.radio" label="1">不保留原网站数据（使用模板中的数据，原数据将会丢失）</el-radio>
+            </el-form-item>
+        </el-form>
+        <div slot="footer" class="dialog-footer">
+            <el-button @click="dialogFormVisible = false">取 消</el-button>
+            <el-button type="primary" @click="comfirms">确 定</el-button>
+        </div>
+    </el-dialog>
+</div>

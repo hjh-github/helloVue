@@ -1,0 +1,52 @@
+<div class="imagePanel" style="height:100%">
+    <el-col :span="18" style="height:100%;border-right:1px solid #e6e6e6">
+        <el-row type="flex" justify="space-between" align="middle" style="height:60px;
+        border-bottom: 1px solid #e6e6e6;">
+            <span class="tips" v-show="onSrc == ''">选择图片拖动并排序，来实现你的轮播图顺序</span>
+            <span v-show="onSrc != ''" class="sel-nav">
+                <span @click="selectAll" class="sel-itm" style="border-right:1px solid #ccc;">全选</span>
+                <span @click="deselectAll" class="sel-itm" style="border-right:1px solid #ccc;">全不选</span>
+                <span @click="deleteImage" class="sel-itm">删除</span>
+            </span>
+            <el-button type="primary" size="small" @click="add">添加横幅</el-button>
+        </el-row>
+        <el-row style="height:85%;overflow-y:auto;padding-top: 20px" v-loading="loading">
+            <draggable @end="sorted" v-model="cpts" :options="{animation:300,group:'people'}">
+                <div class="imgb" v-for="(im,i) in cpts" :class="{'cur-img':im.selected}" @click="setSelection(im,i)">
+                    <img class="imge" :src="im.settingConfig.canvasStyle.src">
+                    <div class="dot">
+                        {{i+1}}
+                    </div>
+                </div>
+            </draggable>
+        </el-row>
+    </el-col>
+    <el-col :span="6">
+        <el-row style="background-color: #f5faff;">
+            <div class="noimg">
+                <img class="active-img" v-if="onSrc != ''" :src="onSrc">
+                <div class="cabox" v-if="onSrc == ''">
+                    <i class="camera"></i>
+                    建议上传1920*450像素的图片
+                </div>
+            </div>
+        </el-row>
+        <el-row class="refbtn">
+            <el-button @click="change" :class="{unable: onSrc == ''}">
+                <i class="el-icon-refresh"></i>替换图片</el-button>
+        </el-row>
+        <el-row>
+            <div class="addlink marl10 text-item" :class="{unable: onSrc == ''}">
+                <addlink :callback="addLink" :plain="true" :model="inx!=-1?model.model.cpts[inx].model:''"></addlink>
+            </div>
+            <!-- <div class="sort-item marl10 text-item">
+                <v-text :model="selected.sort" :config="{text:'排序',type:'text'}"></v-text>
+                
+            </div>
+            <div class="describe-item marl10 text-item">
+                 <v-text :model="selected" :key="'desc'" :config="{text:'描述',type:'textarea'}"></v-text>
+            </div> -->
+        </el-row>
+    </el-col>
+
+</div>

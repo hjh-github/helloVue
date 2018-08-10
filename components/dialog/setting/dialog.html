@@ -1,0 +1,31 @@
+<!-- 设置弹框 start-->
+<div  class="commonDialog" v-if="visible">
+    <div :id="dialogId" class="cs-title">
+        <span>模块公共设置</span>
+        <i class="closeDialog" @click="visible=false" data-isSecond="1"></i>
+    </div>
+    <div class="commonSet-content sdialog">
+        <div style="height:690px;">
+            <el-tabs v-model="activeTab" type="card" @tab-click="handleClick">
+                <el-tab-pane label="常规" name="常规">
+                    <commtab :parent="parent" :model="model"></commtab>
+                </el-tab-pane>
+                <el-tab-pane label="标题" name="标题">
+                    <titletab :parent="parent" :model="model"></titletab>
+                </el-tab-pane>
+                <!--<el-tab-pane label="样式" name="样式">-->
+                <!--<styletab  :model="model"></styletab>-->
+                <!--</el-tab-pane>-->
+                <el-tab-pane label="动画" name="动画">
+                    <animtab :parent="parent" :model="model"></animtab>
+                </el-tab-pane>
+            </el-tabs>
+        </div>
+        <div class="square-btn-box clearfix text-dcrtion positionA">
+            <button class="succee-btn reset-btn fr succee-btn-text marright20 fs12" @click="_reset" type="button">
+                重置
+            </button>
+        </div>
+    </div>
+</div>
+<!-- 公共样式设置 end-->

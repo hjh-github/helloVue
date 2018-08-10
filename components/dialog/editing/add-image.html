@@ -1,0 +1,16 @@
+<div>
+    <el-row>
+        <span>图片文件：</span>
+    </el-row>
+    <el-row>
+        <el-col :span="3">
+            <div class="photoFile natureItem">
+                <div class="addImg addImgBtn">添加图片</div>
+            </div>
+        </el-col>
+
+        <el-col :span="3" style="width:88px;height:88px;" v-for="im in model[key]">
+            <img style="float:left;width:100%;height:auto;" :src="im.src" @click="editImage(im)">
+        </el-col>
+    </el-row>
+</div>

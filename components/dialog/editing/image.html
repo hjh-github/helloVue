@@ -1,0 +1,46 @@
+<!-- 图片编辑  -->
+<div class="images-outer" v-if="model.type!=0 && model.type!=7">
+    <div class="clearfix">
+        <div class="photoFile natureItem">
+            <span>图片文件：</span>
+            <div v-if="model[key].src==null" class="addImg addImgBtn">添加图片</div>
+            <div @click="selectImage">
+                <img v-loading="loading" style="width:100%;height:100%;" v-if="model[key].src!=null"
+                     :src="model[key].src">
+            </div>
+        </div>
+        <div class="photoSize natureItem ">
+            <span>图片尺寸：</span>
+            <div class="h"><span>高：</span><input type="text" v-model="height"></div>
+            <!--加 acitve 类换图片  -->
+            <div class="proportion">
+                <i class="proportion-icon"></i>
+            </div>
+            <div class="w"><span>宽：</span><input type="text" v-model="width"></div>
+        </div>
+        <div v-if="showMargin" class="photoMargin natureItem clearfix">
+            <span class="mar-ele">图文间距：</span>
+            <div class="Mauto">
+                <div class="radio-imgtext-mar">
+                    <el-radio v-model="model[key].defMargin" :label="true">默认</el-radio>
+                    <el-radio v-model="model[key].defMargin" :label="false">自定义</el-radio>
+                </div>
+                <span class="ml30 mar-ele" v-if="!model[key].defMargin">水平：</span>
+                <input type="text" v-if="!model[key].defMargin" v-model="model[key].margin"></div>
+            <div class="Mauto1"></div>
+        </div>
+
+    </div>
+    <div class="href-outer clearfix">
+        <div class="photoHref natureItem">
+            <span>图片链接：</span>
+            <div class="setPathBtn hrefButton" @click="openLinkDialog">添加链接</div>
+            <!--<linkBtn :callback="setLink" :model="model.image.link"></linkBtn>-->
+            <!--<el-button type="primary" size="small" @click="openLinkDialog">链接</el-button>-->
+        </div>
+        <div class="photoDescribe natureItem">
+            <span>图片描述：</span>
+            <input type="text" v-model="model[key].desc" style="padding-left: 10px;border-radius: 2px;"/>
+        </div>
+    </div>
+</div>

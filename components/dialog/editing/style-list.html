@@ -1,0 +1,14 @@
+<!-- 样式列表 -->
+<div>
+    <div class="layout clearfix" v-if="app.channel ==1 || (app.channel ==2&&key!='hoverEffect')">
+        <span>{{config.text}}</span>
+        <span style="height:auto;">
+            <span class="imgLists positionR layout-img layout-container" @click="model[key]=i" :class="{'cur':i==model[key]}" :style="config.style"
+                  v-for="(v,i) in config.options" v-if="v.channel==app.channel">
+                <img :src="v.image||v.src" style="width:100%;height:100%;" :alt="v.text" :title="v.text" class="img-el">
+                <i class="checkin positionA" v-if="i==model[key]"></i>
+            </span>
+        </span>
+    </div>
+    <div v-if="app.channel==2 && key=='hoverEffect'" style="width: 100%;line-height: 50vh;color: #333; font-size: 13px;text-align: center">暂无</div>
+</div>

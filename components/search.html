@@ -1,0 +1,12 @@
+<v-cptborder :model="model" :editing="editingConfig" :setting="settingConfig" style="background-color:transparent;">
+    <div style="position: absolute;top:50%;transform: translate(-50%,-50%);left:50%;width:90%;" :style="{height:model.style.searchH}">
+        <el-autocomplete ref="input" @keyup.enter.native="search" :fetch-suggestions="querySearchAsync" :placeholder="model.placeholder"
+            :trigger-on-focus="false" v-model="model.text"
+                         :suffix-icon="suffix" :prefix-icon="prefix"
+                         style="width:100%;" :style="{height:model.style.searchH}">
+            <el-button v-if="showButton" type="primary" @click="search" :slot="slot" :icon="icon">
+                {{text}}
+            </el-button>
+        </el-autocomplete>
+    </div>
+</v-cptborder>

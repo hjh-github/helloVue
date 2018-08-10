@@ -1,0 +1,12 @@
+<div class="sortContainer topContainer sResizable " v-loading="canEdit && !loaded" :style="model.style"
+     :class="{editBb : canEdit}" v-if="!app.isPreview||(app.isPreview&&model.cpts.length != 0)">
+    <empty v-if="canEdit && model.cpts.length == 0" :plus="plus" msg="添加通栏"></empty>
+    <draggable v-if="!app.isPreview" v-model="cpts" :options="{animation:150}" @end="sortfn">
+        <v-group-container v-for="(group,index) in model.cpts" :pmodel="group" :model="group.model" :method="method"
+                           :setting="group.settingConfig" :height="group.height"></v-group-container>
+    </draggable>
+    <div v-else>
+        <v-group-container v-for="(group,index) in model.cpts" :pmodel="group" :model="group.model" :method="method"
+                           :setting="group.settingConfig" :height="group.height"></v-group-container>
+    </div>
+</div>

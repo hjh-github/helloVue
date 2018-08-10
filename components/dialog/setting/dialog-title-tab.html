@@ -1,0 +1,79 @@
+<div class="titleBar com-set-item scroll-bar">
+    <div class="big-titltBar-item mar-bot10">
+        <span class="subtitle displayI">主标题:</span>
+        <input maxlength="10" type="text" class="title-input h30p gray-border padL10" v-model="title">
+    </div>
+    <div class="small-titltBar-item mar-bot">
+        <span class="subtitle displayI">副标题:</span>
+        <input maxlength="20" type="text" class="title-input h30p gray-border padL10" v-model="subtitle">
+    </div>
+    <div class="font-item mar-bot">
+        <span class="subtitle displayI">主文字&nbsp;:</span>
+        <el-radio-group v-model="model.titleStyle.useDefault">
+            <el-radio :label="true"
+                      @change="restore({titleStyle:['color','font-size','font-family','font-style','font-weight','text-decoration']})">
+                默认
+            </el-radio>
+            <el-radio :label="false">自定义</el-radio>
+        </el-radio-group>
+    </div>
+    <div class="font-self-item mar-bot" v-show="!model.titleStyle.useDefault">
+        <fontedit :model="model.titleStyle"></fontedit>
+    </div>
+    <div class="second-font-item mar-bot">
+        <span class="subtitle displayI">副文字&nbsp;:</span>
+        <el-radio-group v-model="model.subTitleStyle.useDefault">
+            <el-radio :label="true"
+                      @change="restore({subTitleStyle:['color','font-size','font-family','font-style','font-weight','text-decoration']})">
+                默认
+            </el-radio>
+            <el-radio :label="false">自定义</el-radio>
+        </el-radio-group>
+    </div>
+    <div class="second-font-self-item mar-bot" v-show="!model.subTitleStyle.useDefault">
+        <fontedit :model="model.subTitleStyle"></fontedit>
+    </div>
+
+
+    <div class="second-font-item mar-bot">
+        <span class="subtitle displayI">“更多”文字&nbsp;:</span>
+        <el-radio-group v-model="model.showMore.useDefault">
+            <el-radio :label="true"
+                      @change="restore({showMore:['color','font-size','font-family','font-style','font-weight','text-decoration']})">
+                默认
+            </el-radio>
+            <el-radio :label="false">自定义</el-radio>
+        </el-radio-group>
+    </div>
+    <div class="second-font-self-item mar-bot" v-show="!model.showMore.useDefault">
+        <fontedit :model="model.showMore"></fontedit>
+    </div>
+
+
+    <div class="second-font-item mar-bot">
+        <span class="subtitle displayI">位置&nbsp;:</span>
+        <el-radio-group v-model="model.titleStyle.horizontal">
+            <el-radio :label="0">居左</el-radio>
+            <el-radio :label="1">居中</el-radio>
+            <!--<el-radio :label="2">居右</el-radio>-->
+        </el-radio-group>
+    </div>
+
+
+    <div class="titleBar-height-selft-item mar-bot">
+        <span class="subtitle displayI"></span>
+        <span class="self-subtitle">高度&nbsp;:</span>
+        <input type="text" v-model="model.titleBarStyle.height" class="time-number lh30 alignC fs14">
+    </div>
+    <div class="titleBar-background-item mar-bot">
+        <span class="subtitle displayI">背景&nbsp;:</span>
+        <el-radio-group v-model="model.titleBarStyle.useDefault">
+            <el-radio :label="true" @change="restore({titleBarStyle:['background-color','background-image']}) ">默认
+            </el-radio>
+            <el-radio :label="false">自定义</el-radio>
+        </el-radio-group>
+    </div>
+    <div class="titleBar-background-self-item mar-bot" v-show="!model.titleBarStyle.useDefault">
+        <bgedit :model="model.titleBarStyle"></bgedit>
+    </div>
+</div>

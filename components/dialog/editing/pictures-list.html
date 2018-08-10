@@ -1,0 +1,16 @@
+<div v-if="app.cellList" v-loading="loading" style="min-height: 300px;">
+    <ul >
+        <li class="fl pictures-list" v-for='(item,index) in app.cellList'  >
+            <div v-if='index==0||index%7==0' class="imgx"
+                 :style="config.style" @click="setSelection(item)" :class="imageClass(item)">
+                <img :src="item.src" alt="" style="display:block;height:100%;width:100%;">
+                <i class="delImg" @click="delImg(item.id,index)" :id="item.id"></i>
+            </div>
+            <div @click="setSelection(item);" :class="imageClass(item)" class="imgx"
+                  v-else>
+                <img :src="item.src" alt="" style="display:block;height:100%;width:100%;">
+                <i class="delImg" @click="delImg(item.id,index)" :id="item.id" ></i>
+            </div>
+        </li>
+    </ul>
+</div>

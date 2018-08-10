@@ -1,0 +1,18 @@
+<!-- 图片编辑  -->
+<div>
+    <div class="radio-type">
+        <span class="radio-title" v-text="config.text"></span>
+        <el-radio class="radio-btn" v-for="item in config.radio" v-model="model[key].radio" :label="item.value">{{item.name}}</el-radio>
+    </div>
+    <div class="images-outer" v-show="model[key].radio == '1'">
+        <div class="photoSize natureItem image-size">
+            <div class="">
+                <div class="h"><span>高：</span><input type="text" v-model="model[key].height" value="config.heitht"></div>
+                <div class="proportion">
+                    <i class="proportion-icon"></i>
+                </div>
+                <div class="w"><span>宽：</span><input type="text" v-model="model[key].width" value="config.width"></div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,16 @@
+<div ref="container" class="effectiveArea editBlr" :style='model.style' style="background-color:transparent;height:100%;">
+    <el-menu :background-color="model['background-color']" :text-color="model['text-color']" :active-text-color="model['active-text-color']"
+        mode="horizontal" style="cursor:move;height: 100%">
+        <template v-for="(item,i) in navList">
+            <el-submenu :index="i" v-if="item.children&&item.children.length>0" @click.native="chanPage(item.id)" :ref="i" :style="style"
+                style="width:125px;text-align: center;height:calc(100% + 1px);">
+                <template slot="title" :style="{'font-size':style['font-size']}">{{item.name}}</template>
+                <el-menu-item v-for="(cItem,n) in item.children" @click="chanPage(cItem.id)">
+                    {{cItem.name}}
+                </el-menu-item>
+            </el-submenu>
+            <el-menu-item :index="i" v-else @click="chanPage(item.id)" :ref="i" :style="style" style="width:125px;height:calc(100% + 1px);text-align: center;">{{item.name}}</el-menu-item>
+        </template>
+        <li v-if="!app.isPreview" style="text-align: center;width:20px;height:calc(100% + 1px);opacity: 0.7;background: rgb(148, 147, 147);opacity: 0.4;;position: absolute;right:-20px">点击拖拽</li>
+    </el-menu>
+</div>

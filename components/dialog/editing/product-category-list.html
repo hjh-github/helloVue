@@ -1,0 +1,32 @@
+<!--文章来源-->
+<div class="transfer-module">
+    <div class="transfer-select-item">
+        <span class="transfer-select-text">选择分类：</span>
+        <el-cascader v-loading="loading"
+                     :options="cates"
+                     change-on-select
+                     :props="props"
+                     @change="change">
+        </el-cascader>
+        <!--<el-input style="width: 320px" placeholder="请输入内容" v-model="model[key].searchName" class="input-with-select">-->
+            <!--<el-button @click="search" slot="append" icon="el-icon-search"></el-button>-->
+        <!--</el-input>-->
+    </div>
+
+    <div class="transfer-box">
+        <el-transfer
+                :titles="['可选列表', '已选列表']"
+                v-loading="aloading"
+                filterable
+                :filter-method="filterMethod"
+                filter-placeholder="请输入产品关键字"
+                v-model="selectedProducts"
+                :data="allProducts"
+                :props="aprops"
+                :button-texts="['移除','添加']"
+                @change="selectedChanged"
+        >
+        </el-transfer>
+
+    </div>
+</div>

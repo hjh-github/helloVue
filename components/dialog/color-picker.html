@@ -1,0 +1,13 @@
+<div class="title color-picker-cpt colorpick-parents">
+    <el-row>
+        <el-col :span="3">
+            <span>{{config.text}}：</span>
+        </el-col>
+        <el-col :span="2">
+            <el-color-picker v-model="model[key]" show-alpha></el-color-picker>
+        </el-col>
+        <el-col :span="3">
+            <el-input v-model="model[key]"></el-input>
+        </el-col>
+    </el-row>
+</div>

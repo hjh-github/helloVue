@@ -1,0 +1,56 @@
+<!-- 设置连接的弹窗 -->
+<div class="setlink-dialog">
+    <el-row class="setlink-dialog-ro" :gutter="60">
+        <el-col :span="10" class="setlink-dialog-left link-slider-top">
+            <el-radio-group ref="eradio" v-model="link.type">
+                <el-radio ref="r1" :label="0">无</el-radio>
+                <p></p>
+                <el-radio ref="r2" :label="1">本地链接</el-radio>
+                <p></p>
+                <el-radio ref="r3" :label="2">自定义链接</el-radio>
+            </el-radio-group>
+        </el-col>
+        <el-col :span="14" class="setlink-dialog-right link-slider-top">
+            <div v-show="model.link.type==1" v-if="isUpdatePages">
+                <el-row style="padding-bottom: 10px;">
+                    本地连接
+                </el-row>
+                <el-row style="padding-bottom: 10px;">
+                    <el-select v-model="selectedLinkType" @change="changeType">
+                        <el-option v-for="v in linkTypeOptions" :key="v" :value="v" :label="v"></el-option>
+                    </el-select>
+                </el-row>
+                <el-row style="padding-bottom: 10px;">
+                    链接地址
+                </el-row>
+                <el-row style="padding-bottom: 10px;">
+                    <el-select v-model="selectedLink">
+                        <el-option  v-for="v in linkList" :key="v.link" :value="v.link" :label="v.name"></el-option>
+                    </el-select>
+                </el-row>
+                <el-row style="padding-bottom: 10px;font-size: 12px;color: red;" v-if="selectedLinkType!='栏目'">
+                    *点击“后台”进入商城后台系统，进入“建站管理”==>“建站商城导航”菜单==>开始添加内容
+                </el-row>
+                <el-row style="padding-bottom: 10px;">
+                    <el-checkbox v-model="model.link.open" true-label="_blank" false-label="_parent">新窗口打开
+                    </el-checkbox>
+                </el-row>
+            </div>
+            <div v-show="model.link.type==2" class="self-defined-link">
+                <el-row class="defined-link-name">
+                    自定义链接
+                </el-row>
+                <el-input type="text" v-model="model.link.net" placeholder="填写链接" class="input-with-select">
+                    <el-select v-model="domain" slot="prepend" placeholder="请选择" style="width: 100px;">
+                        <el-option label="http://" value="http://"></el-option>
+                        <el-option label="https://" value="https://"></el-option>
+                    </el-select>
+                </el-input>
+                <el-row style="margin-top: 10px;">
+                    <el-checkbox v-model="model.link.open" true-label="_blank" false-label="_parent">新窗口打开
+                    </el-checkbox>
+                </el-row>
+            </div>
+        </el-col>
+    </el-row>
+</div>

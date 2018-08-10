@@ -1,0 +1,6 @@
+<div class="qq-style">
+    <span>{{model[key].text}}</span>
+    <em v-for="item in model[key].radio">
+        <input type="radio" name="qs" :value="item.value" v-model="model[key].which" style="-webkit-appearance: none;"><i class="qs" :class="item.style"></i>
+    </em>
+</div>

@@ -1,0 +1,6 @@
+<div class="radio-type">
+    <span class="radio-title" v-text="config.text"></span>
+    <el-radio class="radio-btn" v-for="item in config.radio" v-model="model[key]" :label="item.value">{{item.name}}</el-radio>
+</div>
+
+

@@ -1,0 +1,9 @@
+<div>
+    <div v-if="config[0]" class="color-item mar-bot">
+        <span class="subtitle displayI"></span>
+        <span class="self-subtitle">颜色&nbsp;:</span>
+        <el-color-picker v-model="model['background-color']"></el-color-picker>
+        <!-- <span class="well-number displayI">#</span> -->
+        <input type="text" v-model="model['background-color']" class="time-number lh30 alignC fs14">
+    </div>
+</div>

@@ -1,0 +1,36 @@
+<!-- 客服列表 -->
+<div class="cs-list">
+    <h3>客服列表：</h3>
+    <ul class="cs-list-head">
+        <li>栏目</li>
+        <li>客服账号</li>
+        <li>显示文字</li>
+        <li>状态</li>
+        <li>操作</li>
+    </ul>
+    <ul class="cs-list-body" v-model="">
+        <li v-for="(option,ex) in model[key]">
+            <h4>{{option.column}}</h4>
+            <h4 v-if="option.hasImg">
+                <div class="qr-code" @click="selectImage" v-loading="loading" v-show="!model.hasImg">添加二维码</div>
+                <img :src="model.image.src" @click="selectImage" v-loading="loading" style="width: 50px;height: 50px; margin: 25px auto;" :alt="model.image.desc" v-show="model.hasImg">
+            </h4>
+            <em v-else>
+                <h4 @click="updateText" v-show="!option.isUpdate" v-text="option.num" @mouseenter="textHover(ex)" style="height: 30px;margin: 35px 0;line-height: 30px;"></h4>
+                <input type="text" ref="footerListName" id="custom-num" :value="option.num" v-show="option.isUpdate" @blur="updateText" style="font-size: 12px;color: #4d4d4d;margin: 35px 37px;">
+            </em>
+            <h4>{{option.text}}</h4>
+            <h4 class="cs-status">
+                <select name="" v-model="option.checkedList">
+                    <option v-for="opt in model.categoryOptions" :value="opt.value">{{ opt.text }}</option>
+                </select>
+            </h4>
+            <h4 class="cs-btn">
+                <i @click="orderList(option.order,ex)" class="down" v-if="option.order=='down'"></i>
+                <i @click="orderList(option.order,ex)" class="top" v-if="option.order=='top'"></i>
+                <i @click="showList(option.isShow,ex)" class="isshow" v-show="option.isShow"></i>
+                <i @click="showList(option.isShow,ex)" class="ishide" v-show="!option.isShow"></i>
+            </h4>
+        </li>
+    </ul>
+</div>

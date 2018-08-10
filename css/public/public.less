@@ -1,0 +1,1363 @@
+html,
+body {
+    width: 100%;
+    color: #313131;
+
+}
+body{
+    overflow-x: hidden;
+}
+body,
+div,
+span,
+header,
+footer,
+nav,
+section,
+aside,
+article,
+ul,
+dl,
+dt,
+dd,
+li,
+a,
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+i,
+b,
+textarea,
+button,
+input,
+select {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    list-style: none;
+    font-style: normal;
+    text-decoration: none;
+    border: none;
+    font-weight: 500;
+    font-family: 'Microsoft YaHei';
+    -webkit-tap-highlight-color: transparent;
+    &:focus,
+    &:hover {
+        outline: none;
+    }
+}
+
+body, div, span, header, footer, nav, section, aside, article, ul, dl, dt, dd, li, a, p, h1, h2, h3, h4,h5, i, b, textarea, button, input, select  {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  list-style: none;
+  font-style: normal;
+  text-decoration: none;
+  border: none;
+  font-weight: 500;
+  font-family: 'Microsoft YaHei';
+  -webkit-tap-highlight-color:transparent;
+  &:focus, &:hover {
+     outline: none;
+  } 
+}
+
+a {
+    text-decoration: none;
+}
+
+textarea {
+    resize: none;
+}
+
+// vue 清除闪烁披风
+[v-cloak] {
+    display: none;
+}
+
+// 字母换行
+.wd-break-word {
+    word-break: normal;
+    white-space: pre-wrap;
+}
+
+//上标下标
+sup {
+    vertical-align: text-top;
+}
+
+sub {
+    vertical-align: text-bottom;
+}
+
+//显示隐藏
+.hide {
+    display: none;
+}
+
+.show {
+    display: block;
+} //浮动
+.fl {
+    float: left;
+}
+
+.fr {
+    float: right;
+}
+
+//盒子内填充
+//加上.clearfix 清除浮动
+/* .clearfix:before,.clearfix:after {display: table;content: "";}.clearfix:after {clear: both;}.clearfix { *zoom: 1;} */
+
+.clearfix::after {
+    content: ".";
+    clear: both;
+    display: block;
+    overflow: hidden;
+    font-size: 0;
+    height: 0;
+}
+
+.clearfix {
+    zoom: 1;
+}
+
+//相对定位和绝对定位
+.positionR {
+    position: relative;
+}
+
+.positionA {
+    position: absolute;
+}
+
+// 固定定位
+.positionF {
+    position: fixed;
+}
+
+//居中
+.center {
+    margin: 0 auto;
+}
+
+.m0auto {
+    margin: 0 auto;
+}
+
+//垂直方向的对齐
+.v-align-s {
+    vertical-align: sub;
+}
+
+//鼠标形状
+.pointer {
+    cursor: pointer;
+}
+
+//默认光标
+.auto-mouse {
+    cursor: auto !important
+}
+
+//版心
+.banxin {
+    width: 1200px;
+}
+
+//寛 100%
+.width100 {
+    width: 100%;
+}
+
+//显示隐藏
+.displayN {
+    display: none;
+}
+
+.displayB {
+    display: block;
+}
+
+// 局部loading
+.topo-loading {
+    display: block;
+    width: 20px;
+    height: 20px;
+    background-size: cover;
+    background-image: url(../../images/svg/topo-loading.svg);
+}
+
+//块级盒子auto
+.autoBox {
+    margin: 0 auto;
+}
+
+//白色背景
+.whiteBg {
+    background-color: #ffffff;
+}
+
+//白色字体
+.whiteFont {
+    color: #ffffff;
+}
+
+// 文字不分行
+.nowrap {
+    white-space: nowrap
+}
+
+.headline {
+    white-space: nowrap
+}
+
+//字体对齐方式
+.alignC {
+    text-align: center !important;
+}
+
+.alignL {
+    text-align: left;
+}
+
+.alignR {
+    text-align: right;
+}
+
+//转化块级 行内块
+.displayB {
+    display: block;
+}
+
+.displayI {
+    display: inline-block;
+}
+
+.displayN {
+    display: none
+}
+
+//字体对齐方式
+.alignC {
+    text-align: center;
+}
+
+.alignL {
+    text-align: left;
+}
+
+.alignR {
+    text-align: right;
+}
+
+//宽度 %比
+.w50 {
+    width: 50%;
+}
+
+.w80 {
+    width: 80%;
+}
+
+.w90 {
+    width: 90%;
+}
+
+.w100 {
+    width: 100%;
+}
+
+//宽度  1200 1920 
+.w1200 {
+    width: 1200px;
+}
+
+.w1920 {
+    width: 1920px;
+}
+
+//鼠标形状
+.pointer {
+    cursor: pointer;
+}
+
+//padding10px
+.padleft10 {
+    padding-left: 10px;
+}
+
+.padtop10 {
+    padding-top: 10px;
+}
+
+.padright10 {
+    padding-right: 10px;
+}
+
+.padbottom10 {
+    padding-bottom: 10px;
+}
+
+//padding20px
+.padleft20 {
+    padding-left: 20px;
+}
+
+.padtop20 {
+    padding-top: 20px;
+}
+
+.padright20 {
+    padding-right: 20px;
+}
+
+.padbottom20 {
+    padding-bottom: 20px;
+}
+
+//padding30px
+.padleft30 {
+    padding-left: 30px;
+}
+
+.padtop30 {
+    padding-top: 30px;
+}
+
+.padright30 {
+    padding-right: 30px;
+}
+
+.padbottom30 {
+    padding-bottom: 30px;
+}
+
+//margin10px
+.marleft10 {
+    margin-left: 10px;
+}
+
+.martop10 {
+    margin-top: 10px;
+}
+
+.marright10 {
+    margin-right: 10px;
+}
+
+.marbottom10 {
+    margin-bottom: 10px;
+}
+
+//margin20px
+.marleft20 {
+    margin-left: 20px;
+}
+
+.martop20 {
+    margin-top: 20px;
+}
+
+.marright20 {
+    margin-right: 20px;
+}
+
+.marbottom20 {
+    margin-bottom: 20px;
+}
+
+//margin30px
+.marleft30 {
+    margin-left: 30px;
+}
+
+.martop30 {
+    margin-top: 30px;
+}
+
+.marright30 {
+    margin-right: 30px;
+}
+
+.marbottom30 {
+    margin-bottom: 30px;
+}
+
+// padding
+.pd-20-0 {
+    padding: 20px 0;
+}
+
+.pd-0-45 {
+    padding: 0 45px;
+}
+
+.pd-0-20 {
+    padding: 0 20px;
+}
+
+//字体大小 10到50
+.fs10 {
+    font-size: 10px;
+}
+
+.fs12 {
+    font-size: 12px;
+}
+
+.fs14 {
+    font-size: 14px;
+}
+
+.fs16 {
+    font-size: 16px;
+}
+
+.fs18 {
+    font-size: 18px;
+}
+
+.fs20 {
+    font-size: 20px;
+}
+
+.fs22 {
+    font-size: 22px;
+}
+
+.fs24 {
+    font-size: 24px;
+}
+
+.fs26 {
+    font-size: 26px;
+}
+
+.fs28 {
+    font-size: 28px;
+}
+
+.fs30 {
+    font-size: 30px;
+}
+
+.fs32 {
+    font-size: 32px;
+}
+
+.fs34 {
+    font-size: 34px;
+}
+
+.fs36 {
+    font-size: 36px;
+}
+
+.fs38 {
+    font-size: 38px;
+}
+
+.fs40 {
+    font-size: 40px;
+}
+
+.fs42 {
+    font-size: 42px;
+}
+
+.fs44 {
+    font-size: 44px;
+}
+
+.fs46 {
+    font-size: 46px;
+}
+
+.fs48 {
+    font-size: 48px;
+}
+
+.fs50 {
+    font-size: 50px;
+}
+
+//行高 12到60 偶数
+.lh12 {
+    line-height: 12px;
+}
+
+.lh14 {
+    line-height: 14px;
+}
+
+.lh16 {
+    line-height: 16px;
+}
+
+.lh18 {
+    line-height: 18px;
+}
+
+.lh20 {
+    line-height: 20px;
+}
+
+.lh22 {
+    line-height: 22px;
+}
+
+.lh24 {
+    line-height: 24px;
+}
+
+.lh26 {
+    line-height: 26px;
+}
+
+.lh28 {
+    line-height: 28px;
+}
+
+.lh30 {
+    line-height: 30px;
+}
+
+.lh32 {
+    line-height: 32px;
+}
+
+.lh34 {
+    line-height: 34px;
+}
+
+.lh36 {
+    line-height: 36px;
+}
+
+.lh38 {
+    line-height: 38px;
+}
+
+.lh40 {
+    line-height: 40px;
+}
+
+.lh40 {
+    line-height: 40px;
+}
+
+.lh44 {
+    line-height: 44px;
+}
+
+.lh46 {
+    line-height: 46px;
+}
+
+.lh48 {
+    line-height: 48px;
+}
+
+.lh50 {
+    line-height: 50px;
+}
+
+.lh52 {
+    line-height: 52px;
+}
+
+.lh54 {
+    line-height: 54px;
+}
+
+.lh56 {
+    line-height: 56px;
+}
+
+.lh58 {
+    line-height: 58px;
+}
+
+.lh60 {
+    line-height: 60px;
+}
+
+// 高度
+.ht40 {
+    height: 40px
+}
+
+// 图片处理
+.ImgCenter {
+    max-height: 100%;
+    max-width: 100%;
+}
+
+.ImgCenterbox {
+    display: -webkit-box;
+    -webkit-box-orient: horizontal;
+    -webkit-box-pack: center;
+    -webkit-box-align: center;
+    display: -moz-box;
+    -moz-box-orient: horizontal;
+    -moz-box-pack: center;
+    -moz-box-align: center;
+    display: -o-box;
+    -o-box-orient: horizontal;
+    -o-box-pack: center;
+    -o-box-align: center;
+    display: -ms-box;
+    -ms-box-orient: horizontal;
+    -ms-box-pack: center;
+    -ms-box-align: center;
+    display: box;
+    box-orient: horizontal;
+    box-pack: center;
+    box-align: center;
+}
+
+// 图片处理结束
+//公共loading start
+// 外部盒子相同部分
+.svg_outbox {
+    width: 122px;
+    height: 122px;
+    left: 50%;
+    top: 50%;
+    margin-top: -61px;
+    margin-left: -61px;
+    z-index: 1000;
+}
+
+.svg_dialogBox {
+    background-color: #515254;
+    border-radius: 5px;
+}
+
+.svg_dialog_same {
+    width: 64px;
+    height: 64px;
+    left: 50%;
+    top: 50%;
+    margin-top: -32px;
+    margin-left: -32px;
+}
+
+//公共loading end
+//局部loading star
+.tpl_loading {
+    z-index: 1000;
+}
+
+//局部loading end
+//原来有的公共样式开始
+/* flex布局 */
+
+.flex-box {
+    display: flex;
+}
+
+.flex-box.row-center {
+    flex-direction: row;
+    align-items: center;
+}
+
+.flex-box.row-j-between {
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.flex-box.row-j-center {
+    flex-direction: row;
+    justify-content: center;
+}
+
+.flex-box.a-center {
+    align-items: center;
+}
+
+.flex-box.a-init {
+    align-items: initial;
+}
+
+.flex-box.j-center {
+    justify-content: center;
+}
+
+.flex-box.j-between {
+    justify-content: space-between;
+}
+
+.flex-column {
+    display: flex;
+    flex-direction: column;
+}
+
+.flex-box .flex-content {
+    flex: 1;
+}
+
+.flex-box .flex-content li {
+    display: flex;
+    align-items: center;
+}
+
+.flex-box .morelist li {
+    margin-bottom: 30px;
+}
+
+/* toast ���� */
+
+.tispsTag {
+    width: 320px;
+    height: 220px;
+    border-radius: 6px;
+    background-color: #fff;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    margin: -110px 0 0 -160px;
+    box-shadow: 0px 5px 20px 3px rgba(218, 219, 230, 0.5);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 1200;
+    font-size: 14px;
+}
+
+.tispsTag .tipsTitle {
+    width: 100%;
+    text-align: center;
+    height: 50px;
+    line-height: 50px;
+    border-bottom: 1px solid #dedede;
+}
+
+.tispsTag .tipsMsg {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 50px;
+}
+
+.tispsTag .tipsMsg span {
+    text-align: center;
+}
+
+.tispsTag .comfire {
+    width: 100%;
+    text-align: center;
+    height: 50px;
+    line-height: 50px;
+    border-top: 1px solid #dedede;
+    display: flex;
+}
+
+.tispsTag .comfire span {
+    flex: 1;
+    height: 49px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.tispsTag .comfire span:hover {
+    background-color: #fafafa;
+}
+
+.tispsTag .comfire .sure {
+    color: #21abff;
+}
+
+.toastFlash {
+    animation: toastFlash 0.3s linear;
+    -webkit-animation: toastFlash 0.3s linear;
+}
+
+@keyframes toastFlash {
+    0% {
+        margin-top: -110px;
+    }
+    25% {
+        margin-top: -115px;
+    }
+    50% {
+        margin-top: -110px;
+    }
+    75% {
+        margin-top: -115px;
+    }
+    100% {
+        margin-top: -110px;
+    }
+}
+
+@-webkit-keyframes toastFlash {
+    0% {
+        margin-top: -110px;
+    }
+    25% {
+        margin-top: -115px;
+    }
+    50% {
+        margin-top: -110px;
+    }
+    75% {
+        margin-top: -115px;
+    }
+    100% {
+        margin-top: -110px;
+    }
+}
+
+/* loading */
+
+.loading {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(204, 204, 204, 0);
+}
+
+.loading svg {
+    position: absolute;
+    top: 30%;
+    left: 50%;
+}
+
+/**  title����  **/
+
+.bubble-right-box,
+.bubble-top-box {
+    display: block;
+    min-width: 20px;
+    padding: 6px 10px;
+    border-radius: 6px;
+    background-color: #fff;
+    position: absolute;
+    top: 0;
+    left: 0;
+    white-space: nowrap;
+    text-align: center;
+    box-shadow: 2px 2px 10px 2px rgba(0, 0, 0, 0.4);
+    color: #5ca6e2;
+}
+
+.ml-20 {
+    margin-left: 20px;
+}
+
+/* ��ð�� */
+
+.bubble-right-box::before {
+    content: "";
+    display: block;
+    width: 10px;
+    height: 10px;
+    background-color: #fff;
+    position: absolute;
+    left: -4.7px;
+    top: 50%;
+    margin-top: -4px;
+    transform: rotate(45deg);
+    border-left: 1px solid #e6e6e6;
+    border-bottom: 1px solid #e6e6e6;
+}
+
+/* ��ð�� */
+
+.bubble-top-box::before {
+    content: "";
+    display: block;
+    width: 10px;
+    height: 10px;
+    background-color: #fff;
+    position: absolute;
+    left: 50%;
+    bottom: -5.7px;
+    margin-left: -4px;
+    transform: rotate(45deg);
+    border-right: 1px solid #e6e6e6;
+    border-bottom: 1px solid #e6e6e6;
+}
+
+.left-nav li.set {
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+}
+
+//原来有的公共样式结束
+// 蒙层
+.loading_tier {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    z-index: 999;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, .5);
+}
+
+/* flex布局 */
+
+.flex() {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+}
+
+.justifyContentB() {
+    -webkit-box-pack: justify;
+    -webkit-justify-content: space-between;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+}
+
+.justifyContentC() {
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+}
+
+.alignItemsC() {
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+
+.flex-N-C {
+    .flex();
+    .justifyContentC();
+}
+
+.flex-C {
+    .flex();
+    .alignItemsC()
+}
+
+.flex-C-C {
+    .flex();
+    .alignItemsC();
+    .justifyContentC;
+}
+
+.flex-C-B {
+    .flex();
+    .alignItemsC();
+    .justifyContentB();
+}
+
+.flex-C-C-W {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+}
+
+.flex-W {
+    .flex();
+    -webkit-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+}
+
+// 溢出显示省略号
+//1行
+.line-1-hide {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+// 2行
+.line-2-hide {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    height: 60px !important;
+}
+
+// 3行
+.line-3-hide {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    height: auto !important;
+}
+
+// 4行
+.line-4-hide {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 4;
+    height: auto !important;
+}
+
+//5行
+.line-5-hide {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 5;
+    height: auto !important;
+}
+
+// 6行
+.line-6-hide {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 6;
+    height: auto !important;
+}
+
+//8行
+.line-8-hide {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 8;
+    height: auto !important;
+}
+
+//12行
+.line-12-hide {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 12;
+    height: auto !important;
+}
+
+/* --------------------- 波纹效果---------------------------------- */
+
+.ripple {
+    overflow: hidden;
+    &::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 0px;
+        height: 3px;
+        background-color: #5ca6e2;
+        transition: width 0s;
+    }
+    &::after {
+        content: ' ';
+        position: absolute;
+        z-index: 0;
+        background-color: rgba(255, 255, 255, 0.1);
+        border-radius: 50%;
+        left: 50%;
+        top: 50%;
+        opacity: 75;
+        width: 0;
+        height: 0;
+        transition: all 0.36s;
+    }
+    &:hover::after {
+        content: ' ';
+        position: absolute;
+        z-index: 0;
+        background-color: rgba(255, 255, 255, 0.1);
+        border-radius: 50%;
+        left: 50%;
+        top: 50%;
+        margin-left: -50px;
+        margin-top: -50px;
+        width: 100px;
+        height: 100px;
+    }
+}
+
+.rippled {
+    pointer-events: none;
+    cursor: not-allowed !important;
+    &.save {
+        background-color: rgba(94, 166, 266, 0.6);
+        &::before {
+            transition: width 30s linear;
+        }
+    }
+    span {
+        opacity: 0.6;
+    }
+    &::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 81px;
+        height: 3px;
+        background-color: #5ca6e2;
+        transition: width 10s linear;
+    }
+    &::after {
+        content: '';
+        position: absolute;
+        z-index: 0;
+        background-color: rgba(255, 255, 255, 0.1);
+        border-radius: 50%;
+        left: 50%;
+        top: 50%;
+        margin-left: -50px;
+        margin-top: -50px;
+        width: 100px;
+        height: 100px;
+    }
+}
+
+.disabled {
+    pointer-events: none;
+    opacity: 0.6;
+}
+
+// -------- 历史记录 页面管理 左右的标签角
+.corner-top {
+    position: absolute;
+}
+
+.corner-top::after {
+    content: "";
+    width: 10px;
+    height: 10px;
+    background-color: #292d33;
+    position: absolute;
+    top: -5px;
+    left: 30px;
+    transform: rotate(45deg)
+}
+
+/* 图片短边百分百对齐容器 */
+
+.aspectFill {
+    background-size: cover;
+}
+
+.posShow {
+    background-color: rgba(0, 0, 0, 0.3);
+}
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:700);
+.cssload-container * {
+	color: rgb(0,0,0);
+	font-size: 72px;
+	font-weight: 700;
+	font-family: 'Open Sans', sans-serif;
+}
+.cssload-container {
+	position: absolute;
+	width: 256px;
+	height: 106px;
+	left: 50%;
+	top: 300px;
+	transform: translate(-50%, -50%);
+		-o-transform: translate(-50%, -50%);
+		-ms-transform: translate(-50%, -50%);
+		-webkit-transform: translate(-50%, -50%);
+		-moz-transform: translate(-50%, -50%);
+}
+.cssload-container > div {
+	position: absolute;
+	transform-origin: center;
+		-o-transform-origin: center;
+		-ms-transform-origin: center;
+		-webkit-transform-origin: center;
+		-moz-transform-origin: center;
+}
+
+.cssload-square,
+.cssload-circle,
+.cssload-triangle {
+	left: 64px;
+}
+.cssload-square {
+	background: rgb(36,187,242);
+	width: 51px;
+	height: 51px;
+	left: 68px;
+	top: 26px;
+	transform: scale(0);
+		-o-transform: scale(0);
+		-ms-transform: scale(0);
+		-webkit-transform: scale(0);
+		-moz-transform: scale(0);
+	animation: cssload-shrinkgrow 3.45s ease-in-out infinite;
+		-o-animation: cssload-shrinkgrow 3.45s ease-in-out infinite;
+		-ms-animation: cssload-shrinkgrow 3.45s ease-in-out infinite;
+		-webkit-animation: cssload-shrinkgrow 3.45s ease-in-out infinite;
+		-moz-animation: cssload-shrinkgrow 3.45s ease-in-out infinite;
+	animation-delay: 2.3s;
+		-o-animation-delay: 2.3s;
+		-ms-animation-delay: 2.3s;
+		-webkit-animation-delay: 2.3s;
+		-moz-animation-delay: 2.3s;
+}
+.cssload-circle {
+	background: rgb(36,242,70);
+	width: 57px;
+	height: 57px;
+	top: 21px;
+	left: 64px;
+	border-radius: 50%;
+	animation: cssload-shrinkgrow 3.45s ease-in-out infinite;
+		-o-animation: cssload-shrinkgrow 3.45s ease-in-out infinite;
+		-ms-animation: cssload-shrinkgrow 3.45s ease-in-out infinite;
+		-webkit-animation: cssload-shrinkgrow 3.45s ease-in-out infinite;
+		-moz-animation: cssload-shrinkgrow 3.45s ease-in-out infinite;
+	animation-delay: 0s;
+		-o-animation-delay: 0s;
+		-ms-animation-delay: 0s;
+		-webkit-animation-delay: 0s;
+		-moz-animation-delay: 0s;
+}
+.cssload-triangle {
+	width: 0;
+	height: 0;
+	left: 64px;
+	top: 23px;
+	border-style: solid;
+	border-width: 0 30.5px 53.1px 30.5px;
+	border-color: transparent transparent rgb(242,36,36) transparent;
+	transform: scale(0);
+		-o-transform: scale(0);
+		-ms-transform: scale(0);
+		-webkit-transform: scale(0);
+		-moz-transform: scale(0);
+	animation: cssload-shrinkgrow 3.45s ease-in-out infinite;
+		-o-animation: cssload-shrinkgrow 3.45s ease-in-out infinite;
+		-ms-animation: cssload-shrinkgrow 3.45s ease-in-out infinite;
+		-webkit-animation: cssload-shrinkgrow 3.45s ease-in-out infinite;
+		-moz-animation: cssload-shrinkgrow 3.45s ease-in-out infinite;
+	animation-delay: 1.15s;
+		-o-animation-delay: 1.15s;
+		-ms-animation-delay: 1.15s;
+		-webkit-animation-delay: 1.15s;
+		-moz-animation-delay: 1.15s;
+}
+
+
+@keyframes cssload-shrinkgrow {
+	0% {
+		transform: scale(0);
+	}
+	12.5% {
+		transform: scale(1);
+	}
+	25% {
+		transform: scale(1);
+	}
+	33% {
+		transform: scale(0);
+	}
+	100% {
+		transform: scale(0);
+	}
+}
+
+@-o-keyframes cssload-shrinkgrow {
+	0% {
+		-o-transform: scale(0);
+	}
+	12.5% {
+		-o-transform: scale(1);
+	}
+	25% {
+		-o-transform: scale(1);
+	}
+	33% {
+		-o-transform: scale(0);
+	}
+	100% {
+		-o-transform: scale(0);
+	}
+}
+
+@-ms-keyframes cssload-shrinkgrow {
+	0% {
+		-ms-transform: scale(0);
+	}
+	12.5% {
+		-ms-transform: scale(1);
+	}
+	25% {
+		-ms-transform: scale(1);
+	}
+	33% {
+		-ms-transform: scale(0);
+	}
+	100% {
+		-ms-transform: scale(0);
+	}
+}
+
+@-webkit-keyframes cssload-shrinkgrow {
+	0% {
+		-webkit-transform: scale(0);
+	}
+	12.5% {
+		-webkit-transform: scale(1);
+	}
+	25% {
+		-webkit-transform: scale(1);
+	}
+	33% {
+		-webkit-transform: scale(0);
+	}
+	100% {
+		-webkit-transform: scale(0);
+	}
+}
+
+@-moz-keyframes cssload-shrinkgrow {
+	0% {
+		-moz-transform: scale(0);
+	}
+	12.5% {
+		-moz-transform: scale(1);
+	}
+	25% {
+		-moz-transform: scale(1);
+	}
+	33% {
+		-moz-transform: scale(0);
+	}
+	100% {
+		-moz-transform: scale(0);
+	}
+}

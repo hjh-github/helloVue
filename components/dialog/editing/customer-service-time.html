@@ -1,0 +1,35 @@
+<!-- 工作时间 -->
+<div class="cs-list" v-show="model.showTime.which=='0'">
+        <h3>工作时间：</h3>
+        <div class="cs-add" @click="addTime">新增工作时间</div>
+        <ul class="cs-list-head cs-3">
+            <li>日期</li>
+            <li>时间</li>
+            <li>操作</li>
+        </ul>
+        <ul class="cs-list-body cs-3">
+            <li v-for="(item,i) in model[key]">
+                <div class="cs-week">
+                    <select name="" v-model="item.checkedsWeek">
+                        <option v-for="slist in model.week" :value="slist.value" v-text="slist.text"></option>
+                    </select>
+                    <span>至</span>
+                    <select name="" v-model="item.checkedeWeek">
+                        <option v-for="elist in model.week" :value="elist.value" v-text="elist.text"></option>
+                    </select>
+                </div>
+                <div class="cs-time">
+                    <select name="" v-model="item.checkedsTime">
+                        <option v-for="stList in model.time" :value="stList.value" v-text="stList.text"></option>
+                    </select>
+                    <span>至</span>
+                    <select name="" v-model="item.checkedeTime">
+                        <option v-for="etList in model.time" :value="etList.value" v-text="etList.text"></option>
+                    </select>
+                </div>
+                <div class="cs-btn">
+                    <i class="del" @click="del(i)"></i>
+                </div>
+            </li>
+        </ul>
+    </div>

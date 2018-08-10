@@ -1,0 +1,12 @@
+<div class="pro-share">
+    <span>开启分享：</span>
+    <el-radio v-model="model[key]" :label="true">是</el-radio>
+    <el-radio v-model="model[key]" :label="false">否</el-radio>
+    <span v-show="model[key]" class="shareList">
+        <img src="images/components/pro_share_1.png" alt="">
+        <img src="images/components/pro_share_2.png" alt="">
+        <img src="images/components/pro_share_3.png" alt="">
+        <img src="images/components/pro_share_4.png" alt="">
+        <img src="images/components/pro_share_5.png" alt="">
+    </span>
+</div>

@@ -1,0 +1,62 @@
+<div class="header-center positionR ">
+    <!-- 暂时隐藏的区域 之前设计稿需要展示修改 内容区&主题色  -->
+    <div v-if="webcode != 'SHOW'" v-show="setStyle" v-cloak class="web-style flipInX animated positionA">
+             <v-theme :themecolor="app.themecolor" :othertheme="app.othertheme"></v-theme>
+        </div>
+    <ul class="c-nav flex-box">
+        <!-- 分区设置暂缓 -->
+        <li v-cloak v-if="app.channel == 1" >
+            <a href="javascript:;" @click="baseConfig">
+                <div>
+                    <span>设置</span>
+                </div>
+            </a>
+
+        </li>
+        <li v-cloak v-if="webcode != 'SHOW'" >
+            <a href="javascript:;" @click="setStyle = !setStyle">
+                <div>
+                    <span>主题色</span>
+                </div>
+            </a>
+
+        </li>
+        <!-- <li v-cloak v-if="webcode == 'SHOW'">
+            <a @click="gotoNewPage('page/product/product.html')">
+                <div>
+                    <span>产品</span>
+                </div>
+            </a>
+        </li>
+        <li v-cloak v-if="webcode == 'SHOW'">
+            <a @click="gotoNewPage('page/newCate/newsCate.html')">
+                <div>
+                    <span>文章</span>
+                </div>
+            </a>
+        </li> -->
+        <!--	留言板功能暂时隐藏
+             <li v-cloak v-if="webcode == 'SHOW'" data-title="管理网站留言板">
+            <a href="page/Message/Message.html">
+                <div>
+                    <span>留言板</span>
+                </div>
+            </a>
+        </li> -->
+        <li v-cloak data-title="后台">
+            <a href="javascript:;" @click="remoteLogin()">
+                <div>
+                    <span>后台</span>
+                </div>
+            </a>
+        </li>
+        <!-- <li data-title="设置">
+            <a href="./page/set/setting.html">
+                <div>
+                    <span>设置</span>
+                </div>
+            </a>
+        </li> -->
+    </ul>
+    <!--toggleMob-->
+</div>

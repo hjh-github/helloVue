@@ -1,0 +1,32 @@
+<div ref="container" class="effectiveArea editBlr" :style='model.style'
+     style="background-color:transparent;height:100%;">
+    <ul :style="{'background-color':model['background-color'],'color':model['text-color']}"
+        :active-text-color="model['active-text-color']" mode="horizontal" style="cursor:move;height: 100%"
+        class="clearfix">
+        <li :index="i" @click="chanPage(item)" :ref="i" :style="style"
+            v-for="(item,i) in navList" :ref="i"
+            style="width:125px;height:100% ;text-align: center; float: left;cursor:pointer;position: relative"
+            @mouseover="hover(i)"
+            @mouseout="out(i)">
+            {{item.name}}
+            <i class="el-icon-arrow-down" v-if="item.children&&item.children.length>0"></i>
+            <div style="width:125px;text-align: center;cursor:pointer;position: absolute;top: 100%;display: none;"
+                 v-if="item.children&&item.children.length>0">
+                <ul :style="{'background-color':model['background-color'],'color':model['text-color']}"
+                    :active-text-color="model['active-text-color']" mode="horizontal"
+                    class="clearfix">
+                    <li v-for="(cItem,n) in item.children" @click="chanPage(cItem)"
+                        style="width:125px;height:40px ;line-height: 40px;text-align: center; cursor:pointer;"
+                        @mouseover="lihover"
+                        @mouseout="liout">
+                        {{cItem.name}}
+                    </li>
+                </ul>
+            </div>
+        </li>
+        <li v-if="!app.isPreview"
+            style="text-align: center;width:20px;height:100% ;opacity: 0.7;background: rgb(148, 147, 147);opacity: 0.4;;position: absolute;right:-20px">
+            点击拖拽
+        </li>
+    </ul>
+</div>

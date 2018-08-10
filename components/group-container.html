@@ -1,0 +1,16 @@
+<div ref="bgContainer" class="topContainer" :style="canvasStyle" :class="{editBb : canEdit}">
+    <div v-loading="!loaded && canEdit" class="groupContainer effectiveArea" :class="{editBlr : canEdit}" :style="areaStyle" style="position: relative;">
+        <!-- 新增显示组件高度功能 -->
+        <div v-if="!app.isPreview" class="conStyle">
+            <p style="color:#fff;font-size: 12px;">h:{{containerStyle.height}}</p>
+        </div>
+        <div ref="container" class="fleeDrop dragContainer" :style="containerStyle">
+            <empty v-if="canEdit && loaded && model.cpts.length == 0&&!app.isPreview" :plus="plus" msg="添加组件"></empty>
+        </div>
+        <div ref="dialog"></div>
+    </div>
+    <div v-if="canEdit" v-show="showBtns" class="clearfix group-set newSetBtns">
+        <button class="textEdit-set  mgl0 set-btn fl" @click="edit" type="button">编辑内容</button>
+        <button v-if="model['__componentType']" class="module-del fl set-btn" @click="remove" show-dialog="del_dialog" type="button"></button>
+    </div>
+</div>

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,user-scalable=no" />
+    <title>-</title>
+    <link rel="icon" href="images/icons/canglu.png">
+    <link rel="stylesheet" href="css/dependence/swiper.min.css">
+    <link rel="stylesheet" href="css/public/public.css" />
+    <link rel="stylesheet" href="css/setDialog.css" />
+    <link rel="stylesheet" href="css/common.css" />
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/dependence/animate.css">
+    <link href="https://cdn.bootcss.com/jqueryui/1.12.1/jquery-ui.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/dependence/colpick.css">
+    <link rel="stylesheet" href="css/sliderButton.css" />
+    <link rel="stylesheet" href="js/icons/iconfont.css" />
+    <!--navi-->
+    <!--<link rel="stylesheet" type="text/css" href="https://cdn.bootcss.com/bootstrap/4.0.0/css/bootstrap.min.css">-->
+    <!--<link rel="stylesheet" type="text/css" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css">-->
+    <!--<link rel="stylesheet" type="text/css" href="css/bootsnav.css">-->
+
+    <!-- 引入样式 -->
+    <link href="https://cdn.bootcss.com/element-ui/2.2.2/theme-chalk/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/cpt.css">
+
+    <!--<script src="js/dependence/vue.min.js"></script>-->
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+
+    <!-- 引入组件库 -->
+    <script src="js/lib/element.js"></script>
+    <script src="js/dependence/jquery-1.11.1.min.js"></script>
+    <script src="https://cdn.bootcss.com/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script src="js/workspace/swiper.min.js	"></script>
+    <!--<script src="js/dependence/colpick.js"></script>-->
+    <!--<script src="js/dependence/jquery.SuperSlide.3.0.alpha.js"></script>-->
+    <!-- <script src="js/common/common.js"></script> -->
+    <link href="https://cdn.bootcss.com/video.js/6.7.4/video-js.min.css" rel="stylesheet">
+    <script src="https://cdn.bootcss.com/video.js/6.7.4/video.min.js"></script>
+    <script src="https://cdn.bootcss.com/video.js/6.7.4/lang/zh-CN.js"></script>
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=DarF2LCCGzn6T16zgy8ZPkvYYE5CT6fu"></script>
+    <style>
+        .el-carousel__item h3 {
+            color: #475669;
+            font-size: 14px;
+            opacity: 0.75;
+            line-height: 150px;
+            margin: 0;
+        }
+
+        .el-carousel__item:nth-child(2n) {
+            background-color: transparent;
+        }
+
+        .el-carousel__item:nth-child(2n+1) {
+            background-color: transparent;
+        }
+    </style>
+</head>
+
+<body style="background-color:#f2f2f2">
+    <div id="app">
+        <div>
+            <v-loading v-if="!pageLoaded && !isPreview"></v-loading>
+            <div v-if='!app.hasSysWeb' style="width:100%;height:1000px;opacity: 0.6;background: #000;position: fixed;top:-46px;z-index:999"></div>
+            <v-header :webcode="webcode"></v-header>
+            <div v-if="!isPreview">
+                <v-modulelist :thisModule="thisModule" :moduleList="moduleList" :addModuleListIndex="addModuleListIndex" :icon-name="iconName"
+                    :moduleCategoryList="moduleCategoryList"></v-modulelist>
+                <v-tpl :icon-name="iconName" :has-sysWeb="hasSysWeb" :tpl-top-level-arr="tplTopLevelArr" :webcode="webcode" :tpl-theme-color-arr="tplThemeColorArr"></v-tpl>
+                <v-my-tpl :icon-name="iconName" :has-sysWeb="hasSysWeb" :tpl-top-level-arr="tplTopLevelArr" :webcode="webcode" :tpl-theme-color-arr="tplThemeColorArr"></v-my-tpl>
+            </div>
+            <div v-if="pageLoaded" id="edit" :style="{'margin-top':isPreview ? '0' : '46px'}">
+                <div class="positionR edit-frist-child" :style="canvasStyle">
+                    <v-hr-line v-if="!isPreview" :model="groupContainer.common"></v-hr-line>
+                    <!-- 商城白条 -->
+                    <div v-cloak v-show="app.webcode!='SHOW'" style="background: #f2f2f2;">
+                        <!-- 商城版编辑界面时，打开使用，预览时记得注释 -->
+                        <div style="width: 100%;height:30px;background:#fff">
+                            <div style="width: 1200px;height:100%;padding:5px 0;margin:0 auto;color:#999;font-size:12px;" class="clearfix">
+                                <a href="javascript:void(0); " style="color:#999;">收藏</a>
+                                <div style="float: right;height: 100%;margin-right:20px">
+                                    <a href="javascript:void(0);" style="color:#999;margin-right:10px">你好，请登录</a>
+                                    <a href="javascript:void(0);" style="color:#999;margin-right:10px">免费注册</a>
+                                    <a href='javascript:void(0);' style="color:#999;margin-right:10px">会员中心</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 商城白条 -->
+                    <v-nav-container v-if="navShow" :model="groupContainer.navigation" :setting="groupContainer.navContainer.settingConfig"
+                        :pages="firstParentId"></v-nav-container>
+                    <!-- <v-navigation :model="groupContainer.navigation" :pages="firstParentId" style="z-index:99"></v-navigation> -->
+                    <v-group-container v-show="groupContainer.common.conts.header.visible" :model="groupContainer.header.model" :setting="groupContainer.header.settingConfig"
+                        :height="groupContainer.header.settingConfig.style.height"></v-group-container>
+                    <v-banner-container v-show="groupContainer.common.conts.banner.visible" :model="groupContainer.banner"></v-banner-container>
+                    <v-edit-container :model="groupContainer.body.model"></v-edit-container>
+                    <v-group-container v-show="groupContainer.common.conts.bottom.visible" :model="groupContainer.bottom.model" :setting="groupContainer.bottom.settingConfig"
+                        :height="groupContainer.bottom.settingConfig.style.height"></v-group-container>
+                </div>
+            </div>
+            <div id="toolbar" style="z-index:3"></div>
+            <div id="tempdialog" style="z-index:4"></div>
+            <div id="tempdialog1" style="z-index:5"></div>
+            <div id="tempdialog2" style="z-index:6"></div>
+            <v-lantern></v-lantern>
+        </div>
+    </div>
+    <script src="js/workspace/utils.js"></script>
+    <script src="js/dependence/jquery.form.js"></script>
+
+    <!-- 配置文件 -->
+    <script type="text/javascript" src="./ueditor/ueditor.config.js"></script>
+    <!-- 编辑器源码文件 -->
+    <script type="text/javascript" src="./ueditor/ueditor.all.js"></script>
+    <script data-main="js/main" src="https://cdn.bootcss.com/require.js/2.3.5/require.min.js"></script>
+
+</body>
+
+</html>

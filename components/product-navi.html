@@ -1,0 +1,50 @@
+<v-cptborder :model="model" :editing="editingConfig" :setting="settingConfig">
+    <div class="product-nav-content" style="width: 100%">
+        <div v-if="model.type==0||model.type==2" class="align-style" style="margin:0;">
+            <el-row class="tac">
+                <el-col :span="24">
+                    <el-menu mode="vertical" :background-color="model['li-background-color']" class="el-menu-vertical-demo" default-active="1">
+                        <template v-for="(cate1,i) in allCates">
+                            <el-submenu :index="i" v-if="cate1.children&&cate1.children.length>0&&
+                            cate1.checked != false">
+                                <template slot="title">{{cate1.name}}</template>
+                                <el-submenu index="cate2.id" v-for="(cate2,n) in cate1.children" v-if="cate2.children&&cate2.children.length>0&&
+                            cate2.checked != false">
+                                    <template slot="title">{{cate2.name}}</template>
+                                    <el-menu-item index="cate3.id" v-for="(cate3,j) in cate2.children" v-if="cate3.checked != false" @click="goInfo">{{cate3.name}}</el-menu-item>
+                                </el-submenu>
+                                <el-menu-item :index="cate2.id" v-else-if="cate2.checked != false" :index="cate2.id" @click="goInfo">{{cate2.name}}</el-menu-item>
+                            </el-submenu>
+                            <el-menu-item style="border-bottom: 1px dashed #cccccc;" :index="i" v-else-if="cate1.checked != false" @click="goInfo">{{cate1.name}}</el-menu-item>
+                        </template>
+                    </el-menu>
+                </el-col>
+            </el-row>
+        </div>
+        <div style="height: 100%;" class="vertical-style" v-if="model.type==1||model.type==3">
+            <el-row style="height: 100%;">
+                <el-col :span="8" style="height: 350px;padding-left: 10px;margin-bottom:10px;border-right: 1px dashed #cccccc;" class="box-card"
+                    v-for="cate1 in allCates" v-if="cate1.checked!=false">
+                    <div style="padding-bottom: 15px;position: relative;">
+                        <h2> {{cate1.name}}</h2>
+                        <span style="position: absolute;top:2px; right: 16px;font-size:12px;color: #999"> 更多&gt;</span>
+                    </div>
+                    <div v-for="cate2 in cate1.children" style="margin-bottom:15px;" v-if="cate2.checked!=false">
+                        <el-row :gutter="20">
+                            <div>
+                                <el-col :span="8" style="margin-bottom:10px">
+                                    <h3>{{cate2.name}}</h3>
+                                </el-col>
+                            </div>
+                        </el-row>
+                        <div style="margin-bottom:15px;">
+                            <el-row :gutter="20">
+                                <el-col :span="8" v-for="cate3 in cate2.children" v-if="cate3.checked!=false">{{cate3.name}}</el-col>
+                            </el-row>
+                        </div>
+                    </div>
+                </el-col>
+            </el-row>
+        </div>
+    </div>
+</v-cptborder>

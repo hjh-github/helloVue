@@ -1,0 +1,49 @@
+<v-cptborder :model="model" :editing="editingConfig" :setting="settingConfig">
+    <!--长条指示器-->
+    <div class="long-indicator-carousel" :class="app.channel==2?'mobileCarousel':''" style="width:100%;height:100%;" v-if="model.type==0 || model.type==3">
+        <el-carousel :height="carouselHeight" :autoplay="model.carousel.autoplay" :interval="model.carousel.interval" arrow="always">
+            <el-carousel-item v-for="(image,i) in model.images" :key="image">
+                <v-href :model="image"><img @click="clickImg(image,i)" :style="" style="width:100%;height:100%" :src="image.src" :title="image.desc" :alt="image.desc" /></v-href>
+                <!-- <p style="position:absolute;bottom: 0;left:0;opacity:0.5;background:black;">{{image.desc}}</p> -->
+                <div style="height:60px;width:100%;line-height: 60px;opacity:0.5;background:black;position:absolute;bottom: 0;left:0;" v-if="image.desc">
+                    <v-href :model="image"><p class="carousel-img-desc" style="line-height: 44px;text-align:center;width: 86%;margin:0 7%;overflow: hidden;white-space: nowrap;text-overflow: ellipsis">{{image.desc}}</p></v-href>
+                </div>
+            </el-carousel-item>
+        </el-carousel>
+    </div>
+
+
+    <!--数字指示器-->
+    <el-carousel :height="carouselHeight" v-if="model.type==1" :autoplay="model.carousel.autoplay" :interval="model.carousel.interval"
+        arrow="always">
+        <el-carousel-item  :label="i+1" v-for="(image,i) in model.images" :key="image">
+            <v-href :model="image"><img @click="clickImg(image,i)" style="width:100%;height:100%" :src="image.src" :title="image.desc" :alt="image.desc" /></v-href>
+            <div style="height:60px;width:100%;line-height: 60px;opacity:0.5;background:black;position:absolute;bottom: 0;left:0;" v-if="image.desc">
+                <v-href :model="image"><p  class="carousel-img-desc" style="line-height: 30px;text-align:center;width: 86%;margin:0 7%;overflow: hidden;white-space: nowrap;text-overflow: ellipsis">{{image.desc}}</p></v-href>
+            </div>
+        </el-carousel-item>
+    </el-carousel>
+
+    <!--图片指示器-->
+    <div v-if="model.type==2">
+        <el-row :gutter="4">
+            <el-col :span="24" style="padding:10px 10px;">
+                <el-carousel indicator-position="none" ref="carousel2" :autoplay="model.carousel.autoplay" :interval="model.carousel.interval">
+
+                    <el-carousel-item v-for="(image,i) in model.images" :key="image">
+                        <v-href :model="image"><img @click="clickImg(image,i)" style="width:100%;height:100%" :src="image.src" :title="image.desc" :alt="image.desc" /></v-href>
+                        <div style="height:30px;width:100%;line-height: 30px;opacity:0.5;background:black;position:absolute;bottom: 0;left:0;" v-if="image.desc">
+                            <v-href :model="image"><p  class="carousel-img-desc" style="line-height: 30px;text-align:center;width: 86%;margin:0 7%;overflow: hidden;white-space: nowrap;text-overflow: ellipsis">{{image.desc}}</p></v-href>
+                        </div>
+                    </el-carousel-item>
+                </el-carousel>
+            </el-col>
+        </el-row>
+        <el-row :gutter="20" style="overflow: hidden">
+            <el-col :span="24/model.images.length" style="height:112px;width:112px;" v-for="(im , i) in model.images">
+                <img :src="im.src" @click="setActiveImg(i)" style="width:100%;height:100%;" />
+            </el-col>
+        </el-row>
+    </div>
+
+</v-cptborder>

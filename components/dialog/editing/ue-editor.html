@@ -1,0 +1,8 @@
+<!-- 富文本编辑器 -->
+<div class="editor" v-show="config==null||config.visible==null||model[config.visible]">
+
+    <span v-if="config">{{config==null?'':config.text}}</span>
+    <script :id="uid" name="content" type="text/plain">
+    </script>
+    <!--<textarea name="description" id="myEditor" class="" maxlength="2000" style="width: 840px"></textarea>-->
+</div>

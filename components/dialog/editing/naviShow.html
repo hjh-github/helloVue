@@ -1,0 +1,10 @@
+<div class="btn-edit">
+    <div class="showMore">
+        <span v-text="config.name"></span>
+        <el-radio class="radio-btn" v-for="item in config.radio" v-model="showSelect" :name="item.value" :label="item.value">{{item.name}}</el-radio>
+    </div>
+    <div class="showMore" v-if="model.config.showSelect==0" style="margin: 15px 0">
+        <span v-text="config.label"></span>
+        <el-radio class="radio-btn" v-for="item in config.place" v-model="showStyle" :name="item.value" :label="item.value">{{item.name}}</el-radio>
+    </div>
+</div>

@@ -1,0 +1,37 @@
+<div class="btn-edit">
+    <div class="showMore">
+        <span v-text="config.name"></span>
+        <el-radio class="radio-btn" v-for="item in config.radio" v-model="def" :name="item.value" :label="item.value">{{item.name}}</el-radio>
+    </div>
+    <div class="button-type">
+        <em v-show="def">
+        </em>
+        <em v-show="def">
+            <ul class="btn-custom">
+                <li class="btn-custom-type">
+                    <span class="button-title">颜色：</span>
+                    <i class="color-choose">
+                        <el-color-picker size="small" @change="config.current_2='-1';model.color = config.color1" v-model="color"
+                            show-alpha></el-color-picker>
+                    </i>&nbsp;&nbsp;#
+                    <input class="btn-custom-txt" type="text" v-model="color">
+                </li>
+                <li class="clearfix">
+                    <span class="button-title">图片：</span>
+                    <div v-if="model.canvasStyle.src ==''" class="def-img" @click="selectImage">
+                        <i class="el-icon-plus"></i>
+                        <p>添加图片</p>
+                    </div>
+                    <div v-if="model.canvasStyle.src !=''" class="addBtnBg positionR" v-loading="loading" :style="canvasStyle">
+                        <div class="changeBg positionA" @click="selectImage">替换</div>
+                        <i class="delBg positionA el-icon-close" @click="delImg"></i>
+                    </div>
+                </li>
+                <li>
+                    <span class="button-title">显示方式：</span>
+                    <el-radio class="radio-btn" v-for="item in config.showList" v-model="bgStyle" @change="choose(item.s)" :label="item.value">{{item.name}}</el-radio>
+                </li>
+            </ul>
+        </em>
+    </div>
+</div>

@@ -1,0 +1,702 @@
+@themeColor:#363f4d;
+// 盒子阴影
+.boxShadow {
+	box-shadow: 0 3px 8px 0px rgba(0,0,0, .2);
+}
+
+.tplSame {
+    z-index: 2;
+    left: 22px;
+}
+//我的模板样式start
+//按钮
+.mytpl {
+	top: 232px;
+	.btnIconBox {
+		border-radius: 50%;
+		background-color: #ffffff;
+		width: 48px;
+		height: 48px;
+		z-index: 100;
+	}
+	.clearBoxShadow {
+		background-color: @themeColor;
+		box-shadow: none;
+	}
+	.tplImgBox {
+		width: 19px;
+		height: 20px;
+		top: 50%;
+		left: 50%;
+		margin-top: -10px;
+		margin-left: -10px;
+		z-index: 999;
+	}
+	.iconRight {
+		width: 41px;
+		height: 95px;
+		top: -24px;
+		left: 50%;
+		// display: none;
+   }
+}
+
+#mytplDialog {
+    top: -130px;
+}
+// 弹窗 公共样式
+.tplSameDialog {
+	box-shadow: 4px 3px 8px 0px rgba(0,0,0, .2);
+	
+	.borderBottom {
+		border-bottom: 1px solid #e6e6e6;
+	}
+	width: 80vw;
+	height: 80vh;
+	max-height: 725px;
+	background-color: #ffffff;
+	z-index: 999;
+	
+	// left: 82px; //实际
+	left: 65px;
+	border-radius: 10px;
+	border-left: 12px solid @themeColor;
+	color: #292d33;
+	.mytpl_header {
+		height: 50px;
+		line-height: 50px;
+		
+		.tpl_right {
+			padding: 16px 28px 0 0;
+		}
+		.closeBox {
+			width: 20px;
+			height: 20px;
+			padding: 6px;
+			border-radius: 50%;
+			&:hover {
+				background: #ebeff5;
+			}
+		}
+	}
+	.mytpl_nav {
+		height: 70px;
+		line-height: 70px;
+		padding-left: 10px;
+		.mytpl_save {
+			width: 120px;
+			height: 34px;
+			line-height: 34px;
+            background-color: #5ca6e2;
+            color: #fff;
+			padding-left: 20px;
+			margin: 14px 30px 0 0;
+			border-radius: 17px;
+		}
+		li {
+			padding: 0 20px;
+			cursor: pointer;
+			&:hover {
+				color: #69bbff;
+			}
+		}
+		li.mytpl_border {
+			box-sizing: border-box;
+			height: 14px;
+			border-right: 1px solid #5d6367;
+			padding: 0;
+			margin-top: 30px;
+		}
+	}
+	.tplList {
+        padding: 30px 0 0 30px;
+        .dataUl {
+			overflow-y: auto;
+			height:60vh;
+			max-height: 575px;
+            li {
+				width: 268px;
+				height:268px;
+				margin-right: 20px;
+				border-radius: 8px;
+				border: 1px solid #e6e6e6;
+				// outline: 1px solid #e6e6e6;
+				background: #ffffff;
+				overflow: hidden;
+                &:last-of-type {
+                    margin-right: 0;
+				}
+				.imgBox {
+					 overflow: hidden;
+					 img {
+						 width: 100%;
+						 transition: transform 0.3s;
+					 }
+				}
+            }
+        }
+        .myTplUl {
+			li {
+				&:hover {
+					img {
+						transform: scale(1.2);
+					}
+				}
+			}
+		}
+		.imgBox {
+			border-top-left-radius: 8px;
+			border-top-right-radius: 8px;
+			overflow: hidden;
+		}
+		.tplBottom {
+			border-top: 1px solid #e6e6e6;
+			height: 90px;
+			.tpl_name {
+				height: 44px;
+				line-height: 44px;
+				color: #5d6367;
+				padding-left: 14px;
+			}
+			.info {
+				height: 44px;
+				line-height: 44px;
+				color: #5d6367;
+				padding: 0  20px 0 14px;
+				
+				span{
+					&.reading {
+
+						color: #b8bfcc;
+						cursor: pointer;
+						padding: 0 10px;
+						&:hover{
+							color:#b8bfcc;
+						}
+					}
+					&.tpl_data  {
+						color: #b8bfcc;
+						cursor: pointer;
+						padding: 0 10px;
+						&:hover{
+							color:#b8bfcc;
+						}
+					}
+					
+					&:hover{
+						color:#69bbff;
+					}
+				}
+				.chosenUse {
+					padding: 0 10px;
+					color: #69bbff;
+					cursor: pointer;
+				}
+			}
+		}
+		li.active  {
+			border: 1px solid #69bbff;
+        }
+        .no-tpl-tips {
+            position: absolute;
+            top: 0;
+            left: 0;
+            margin: 0;
+            bottom: 0;
+            margin: auto;
+        }
+    }
+    .no-mytpl {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+    }
+}
+//我的模板样式end
+
+// 黑层 颜色白色
+#mytpl_tier {
+	position: fixed;
+	z-index: 999;
+	width: 100%;
+	height: 100%;
+	background-color: transparent;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+}
+#mytpl-nameEiditdialog {
+	width: 300px;
+	height: 292px;
+	background-color: #ffffff;
+	top: 50%;
+	left: 50%;
+	margin-left: -150px;
+	margin-top: -136px;
+	z-index: 1000;
+	border-radius: 10px; 
+	overflow: hidden;
+	.mytplnameEidit_header {
+		height: 52px;
+		line-height: 52px;
+		background: #292d33;
+		cursor: move;
+		.nameEidit_btnBox {
+			width: 20px;
+			height: 20px;
+			border-radius: 50%;
+			background-color: #363f4d;
+			margin: 16px 16px 0 0;
+			padding: 6px;
+		}
+	}
+	.eidit_conten {
+		color: #292d33;
+		height: 180px;
+		box-sizing: border-box;
+		h5 {
+			height: 42px;
+			padding: 12px 0 0 12px;
+			line-height: 30px;
+			color: #292d33;
+			box-sizing: border-box;
+			font-size: 14px;
+		}
+		.currentVersions {
+			width: 260px;
+			padding: 12px 0 0 10px;
+			box-sizing: border-box;
+			height: 80px;
+			border: 1px solid #69bbff;
+			border-radius: 4px;
+			margin-bottom: 0;
+		}
+		.name_tips {
+			height: 36px;
+			line-height: 36px;
+			padding-left: 5px;
+			margin-top: -8px;
+			color:#999999;
+			sub {
+				vertical-align: middle;
+			}    
+		}
+	}
+	.name_btnBox {
+		height: 60px;
+		border-top: 1px solid #e6e6e6;
+		.name_eiditBtn {
+			width: 80px;
+			height: 30px;
+			line-height: 30px;
+			// background-color: #69bbff;//实际的
+			background-color: #69bbff;//模拟的
+			margin: 14px 20px 0 0;
+			border-radius: 7px;
+		}
+	}
+}
+//局部loading
+.tpl-loadingBox {background-color: #ffffff;}
+
+// 模板样式 开始
+#tpl {
+    top: 170px;
+}
+#tplDialog {
+    top: -60px;
+    width: 80vw;//宽度比我的模板要寛
+}
+.mdTips{
+	color:#333333;
+	padding-left:20px;
+	margin-bottom:20px;
+	font-size:14px;
+}
+.tplBottom {
+    background-color: #ffffff;
+    .tplsliderBar {
+        width: 312px;
+        height:72vh;
+        border-right: 1px solid #e6e6e6;
+        .tplSearchBox {
+            height: 60px;
+            line-height: 60px;
+            padding-top: 15px;
+            width: 320px;
+            input {
+                width: 260px;
+                height: 30px;
+                display: block;
+                padding-left: 35px;
+                background:#ebeff5 url("../images/tplSearch.png") no-repeat 9px center;
+                border-radius: 14px;
+            }
+        }
+        h5 {
+            height: 16px;
+            font-size: 14px;
+            line-height: 16px;
+            padding-left: 10px;
+            border-left: 3px solid #69bbff;
+        }
+        .sliderSame {
+            padding-left: 20px;
+            margin-bottom: 20px;
+            ul {
+                display: flex;
+                flex-wrap: wrap;
+                > li {
+                    width: 80px;
+                    height: 30px;
+                    margin-right: 10px;
+                    text-align: center;
+                    line-height: 30px;
+                    cursor: pointer;
+					font-size: 12px;
+					border: 1px solid  transparent;
+					margin-bottom: 5px;
+					margin-top: 5px;
+                    &.active {
+						color:#69bbff;
+                        border: 1px solid  #69bbff;
+                        border-radius: 15px;
+					}
+					&:hover {
+                        color:#69bbff;
+                    }
+                }
+            }
+        }
+        .colorChosen {
+            padding-left: 20px;
+            li {
+                width: 28px;
+                height: 28px;
+                float: left;
+                margin-right: 10px; 
+                border-radius: 50%;
+                background-color: #ffffff;
+                cursor: pointer;
+				position: relative;
+				margin-top:5px;
+				margin-bottom:5px;
+                .liInner {
+                    width: 26px;
+                    height: 26px;
+                    border-radius: 50%;
+                    position: absolute;
+                    top: 50%;
+                    left:50%;
+                    margin-left: -13px;
+					margin-top: -13px;
+                }
+                &.active {
+					.liInner {
+						border: 2px solid #ffffff;
+					}
+				}
+				&:hover {
+					.liInner {
+						border: 2px solid #ffffff;
+					}
+                }
+            }
+            li:last-of-type {
+                margin-right: 0px; 
+            }
+        }
+    }
+    .tplList {
+		padding-top: 0;
+		.slideBox {
+			color: #4d4d4d;
+			h5 {
+				margin: 18px 0px;
+				height: 16px;
+				font-size: 14px;
+				line-height: 16px;
+				border-left: 3px solid #9d9d9d;	
+				padding-left: 10px;
+			}
+			.lineBox {
+				height: 0;
+				border-top: 1px solid #e6e6e6;
+			}
+			.ulParentBox {
+				ul {
+
+					li {
+						float: left;
+						height: 54px;
+						line-height: 54px;
+						text-align: left;
+						padding-right:40px;
+	
+					}
+				}
+			}
+		}
+        .title {
+            ul {
+                width: 144px;
+                border: 1px solid #69bbff;
+                border-radius: 4px;
+            }
+            li {
+                height: 26px;
+                line-height: 26px;
+				float: left;
+				font-size: 12px;
+                text-align: center;
+                width: 71px;
+                color: #69bbff;
+                cursor: pointer;
+                &.active {
+                    background-color: #69bbff;
+                    color: #ffffff; 
+				}
+				&:nth-child(2){
+					border-left:1px solid #69bbff;
+				}
+            }
+        }
+        .dataUl {
+            li {
+                margin-bottom: 30px;
+            }
+		}
+		//下拉框
+		.tplDownDialog {
+			width: 100%;
+			background-color: rgba(255, 255, 255, 0);
+			z-index: 200;
+			.tplDownDialogContent {
+				background-color: #ffffff;
+				.contentTitle {
+					border-bottom: 1px solid #e6e6e6;
+					padding: 14px 0px;
+					height: 50px;
+					span {
+						display: inline-block;
+						font-size: 14px;
+						border-left: 3px solid #9d9d9d;
+						padding-left: 10px;
+					}
+				}
+				.slideUlBox {
+					margin-right: 0;
+					ul {
+						li {
+							float: left;
+							margin-right: 40px;
+							height: 52px;
+							line-height: 52px;
+							text-align: center;
+							font-size: 12px;
+							&.active {
+								border:0;
+								color: #69bbff;
+							}
+							&:hover {
+								border:0;
+								color: #69bbff;
+							}
+						}
+					}
+				}
+			}
+		}
+    }
+}
+// 模板样式 结束
+//模板列表 start
+// 按钮
+.tplListIcon {
+	top: 110px;
+	.iconTop {
+		top: 0;
+		height: 71px;
+	}
+}
+// 模块添加弹窗
+#tplListDialog {
+    top: 0px;
+    border-top-left-radius: 0px;
+    border-left: none;
+	width: 458px;
+	overflow: hidden;
+	.addMduleLeft {
+		width: 106px;
+		height: 100%;
+		padding-top: 20px;
+		background-color: @themeColor;
+		li {
+			width: 68px;
+			height: 30px;
+			line-height: 30px;
+			display: block;
+			margin:0px auto;
+			margin-bottom: 10px;
+			text-align: center;
+			&.active {
+				border-radius:15px;
+				background-color: #5ca6e2;
+			}
+			a {
+				color: #ffffff;
+				font-size: 12px;
+			}
+		}
+	}
+	h5 {
+		height: 16px;
+		font-size: 14px;
+		line-height: 16px;
+		padding-left: 10px;
+		border-left: 3px solid #69bbff;
+		margin: 20px 0 20px 20px;
+	}
+	.addMduleRight {
+		width: 350px;
+		color: #292d33;
+		.el-collapse-item__content{
+			padding-bottom:0;
+		}
+		.tabsTitle {
+			height: 52px;
+			line-height: 52px;
+			padding-left: 20px;
+			border-bottom: 1px solid #e6e6e6;
+			.tpl_right {
+				padding: 16px 28px 0 0;
+			}
+			.closeBox {
+				width: 20px;
+				height: 20px;
+				padding: 6px;
+				border-radius: 50%;
+				&:hover {
+					background: #ebeff5;
+				}
+			}
+		}
+		li {
+			width: 310px;
+			height: 112px;
+			border:1px solid #ebeff5;
+			margin: 0 auto;
+			margin-bottom: 10px;
+			cursor: move;
+		}
+		.layout {
+			ul {
+				
+				.dashedStyle {
+					border: 1px dashed #69bbff;
+				}
+				.bgcColor {
+					background-color: #c1e3ff;
+				}
+				.listHeight {
+					height: 40px;
+				}
+				.oneList {
+					width: 200px;
+					margin: 20px auto;
+				}
+				.twoList {
+					width: 98px;
+				}
+				.fourList {
+					width: 48px;
+				}
+				.marginRight {
+					margin-right: 2px;
+				}
+			}
+		}
+		.CommonElements {
+			p {
+				text-align: center;
+				height: 50px;
+				line-height: 50px;
+			}
+			img {
+				display: block;
+				margin: 0 auto;
+			}
+			.imgLi {
+				padding-top: 20px; 
+			}
+			.eleImg {
+				padding-top: 20px; 
+			}
+		}
+		.moduleContent {
+			height: 688px;
+			overflow: auto;
+			padding-bottom: 30px;
+			.contentBox {
+				width: auto;
+				height: 100%;
+				margin: 0 auto;
+				img {
+					width: 100%;
+					height: 100%;
+				}
+				&:hover {
+					> .moduleTier {
+						display: block;
+					}
+				}
+			}
+			//遮罩层
+			.moduleTier {
+				width: 100%;
+				height: 100%;
+				top: 0;
+				left: 0;
+				background-color: rgba(0, 0, 0, 0.5);
+				display: none;
+				.btnBox {
+					width: 156px;
+					height: 28px;
+					margin: 0 auto;
+					position: absolute;
+					top: 50%;
+					left: 50%;
+					margin-top: -14px;
+					margin-left: -78px;
+					span{
+						color:#ffffff;
+					}
+				}
+				.btn {
+					width: 68px;
+					height: 28px;
+					line-height: 28px;
+					margin: 0 5px;
+					background-color: rgba(255, 255, 255, 0);
+					border: 1px solid #ffffff;
+					color: #fff;
+					margin-bottom: 10px;
+					cursor: pointer;
+					border-radius: 2px;
+					&:hover {
+						background-color: #5CA5E3;
+						border-color: #5CA5E3;
+					}
+				}
+			}
+			p {
+				line-height: 30px;
+			}
+		}
+	}
+}
+//模板列表 end
+
+

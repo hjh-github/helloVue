@@ -1,0 +1,399 @@
+//按钮色 和边框色 蓝色
+@themeColor: #69bbff;
+//边框函数 传入边框和边框颜色
+.Borderfn(@borderWidth,@themeColor) {
+  border: @borderWidth solid @themeColor;
+}
+
+//圆角函数
+.borderRadius(@length) {
+  border-radius: @length;
+}
+
+//背景颜色函数
+.backgroundColorFn(@color) {
+  background-color: @color;
+}
+
+//溢出函数
+.overFlow(@wan) {
+  overflow: @wan;
+}
+
+.color() {
+  color: #fff
+}
+
+.bg() {
+  background: #292d33
+}
+
+.boder-b-1() {
+  border-bottom: 1px solid #e5e5e5
+}
+
+.border-top-right-radius(@num) {
+  -moz-border-top-right-radius: @num;
+  -o-border-top-right-radius: @num;
+  -webkit-border-top-right-radius: @num;
+  border-top-right-radius: @num;
+}
+
+.border-top-left-radius(@num) {
+  -moz-border-top-left-radius: @num;
+  -o-border-top-left-radius: @num;
+  -webkit-border-top-left-radius: @num;
+  border-top-left-radius: @num;
+}
+
+.border-radius(@num) {
+  -moz-border-radius: @num;
+  -o-border-radius: @num;
+  -webkit-border-radius: @num;
+  border-radius: @num;
+}
+
+.topCenter(@num) {
+  top: 50%;
+  margin-top: @num;
+}
+
+.bg-c(@url) {
+  background: url(@url) no-repeat center
+}
+
+.bg-position(@y,@x) {
+  background-position: @y @x;
+}
+
+.transitionout() {
+  -moz-transition: all .3s ease-out 0s;
+  -webkit-transition: all .3s ease-out 0s;
+  -o-transition: all .3s ease-out 0s;
+  transition: all .3s ease-out 0s;
+}
+
+.header {
+  .bg();
+}
+
+.colpick {
+  z-index: 1000;
+}
+
+
+
+.new-dialog {
+  font-size: 14px;
+  font-family: "SimSun", "Microsoft YaHei";
+  color: #292d33;
+  //box-shadow:0px 5px 10px 3px rgba(0, 0, 0, 0.2);
+  .set-dialog {
+    position: fixed;
+    top: 100px;
+    left: 500px;
+    z-index: 555;
+  }
+  .dialog-title {
+    .color();
+    .bg();
+    .border-top-right-radius(5px);
+    .border-top-left-radius(5px);
+    height: 52px;
+    line-height: 52px;
+    padding: 0 20px;
+    position: relative;
+    cursor: move;
+    .close-dialog {
+      .topCenter(-10px);
+      position: absolute;
+      right: 20px;
+      background: url(../images/dialog/close.png) no-repeat center;
+      display: block;
+      width: 20px;
+      height: 20px;
+      cursor: pointer;
+      border-radius: 50%;
+      &:hover {
+        background-color: #363f4d;
+      }
+    }
+  }
+
+  .dialog-row {
+    .boder-b-1();
+    background: #fff;
+  }
+  // 按钮
+  .square-btn {
+    .transitionout();
+    .border-radius(5px);
+    .bg-c("../asset/sprite.png");
+    background-color: #ebeff5;
+    width: 30px;
+    height: 30px;
+    border: 0;
+    cursor: pointer;
+  }
+  .succee-btn {
+    .border-radius(15px);
+    height: 30px;
+    color: #fff;
+    padding: 0 30px;
+    background-color: #69bbff;
+    text-align: center;
+    cursor: pointer;
+  }
+  //输入框
+  .slide-ui-input, .slide-square-input {
+    .border-radius(5px);
+    display: block;
+    margin-left: 210px;
+    height: 30px;
+    line-height: 30px;
+    width: 50px;
+    border: 0;
+    text-align: center;
+    background: #ebeff5;
+  }
+  .bgcolor-row {
+    padding-bottom: 98px;
+  }
+  .item-top {
+    padding-bottom: 12px;
+  }
+  .slide-ui-box {
+    float: left;
+    margin-top: 14px;
+  }
+  .ui-slider .ui-slider-handle {
+    .border-radius(7px);
+    background: #5ca6e2;
+    height: 14px;
+    width: 14px;
+    top: -5px;
+    cursor: pointer;
+  }
+  .set-dialog {
+    .slide-ui {
+      height: 3px;
+      background: #ebeff5;
+      border: 0;
+      width: 180px;
+      border: 0
+    }
+  }
+  .slide-ui-input, .slide-square-input {
+    .border-radius(5px);
+    display: block;
+    margin-left: 210px;
+    height: 30px;
+    line-height: 30px;
+    width: 50px;
+    border: 0;
+    text-align: center;
+    background: #ebeff5;
+  }
+  .slide-square-input {
+    margin-left: 0;
+  }
+  .square-btn.square-btn-noimg {
+    background-image: none;
+  }
+  .square-btn.active {
+    background-color: #5ca6e2;
+  }
+  .square-btn.wet {
+    .bg-position(-217px, -239px);
+  }
+  .square-btn.wet.active {
+    .bg-position(-216px, -272px);
+  }
+  .square-btn.italic {
+    .bg-position(-258px, -239px);
+  }
+  .square-btn.italic.active {
+    .bg-position(-258px, -272px);
+  }
+  .square-btn.underline {
+    .bg-position(-297px, -239px);
+  }
+  .square-btn.underline.active {
+    .bg-position(-297px, -272px);
+  }
+  .square-btn.t-left {
+    .bg-position(-347px, -239px);
+  }
+  .square-btn.t-left.active {
+    .bg-position(-347px, -272px);
+  }
+  .square-btn.t-center {
+    .bg-position(-387px, -239px);
+  }
+  .square-btn.t-center.active {
+    .bg-position(-387px, -272px);
+  }
+  .square-btn.t-right {
+    .bg-position(-428px, -239px);
+  }
+  .square-btn.t-right.active {
+    .bg-position(-428px, -272px);
+  }
+  .square-btn.pages-item {
+    .bg-position(-19px, -205px);
+  }
+  .square-btn.pages-more {
+    .bg-position(-47px, -199px);
+  }
+  //弹窗公共样式
+  // 宽度都是300px
+  .dialogCommonWidth {
+    width: 300px;
+  }
+  //文字编辑弹框 start
+  #textEidit-dialog {
+    .dialogCommonWidth;
+    .borderRadius(4px);
+    .overFlow(hidden);
+    height: 272;
+    .textEiditContent {
+      color: #292d33;
+      height: 160px;
+      background-color: #ffffff;
+      padding: 20px;
+      h5 {
+        padding-left: 10px;
+        margin-bottom: 10px;
+      }
+      textarea {
+        .Borderfn(1px, @themeColor);
+        .borderRadius(4px);
+        width: 260px;
+        height: 80px;
+      }
+      .lineDiv {
+        width: 260px;
+        height: 0;
+        border-top: 1px solid #e6e6e6;
+      }
+    }
+    .square-btn-box {
+      height: 60px;
+      .backgroundColorFn(#ffffff);
+    }
+  }
+  //文字编辑弹框 end
+  //动效弹框 strat
+  #effect-dialog {
+    height: 612px;
+    .backgroundColorFn(#ffffff);
+    .borderRadius(4px);
+    .overFlow(hidden);
+    .effect-dialog-content {
+      padding: 30px;
+      height: 500px;
+      overflow: auto;
+      padding-right: 0px;
+      border-bottom: 1px solid #e6e6e6;
+      ul {
+        li {
+          float: left;
+          margin-bottom: 20px;
+          margin-right: 18px;
+          .effectShowBox {
+            width: 68px;
+            height: 68px;
+            .borderRadius(4px);
+            .backgroundColorFn(#ebeff5);
+          }
+          p {
+            padding-top: 10px;
+            text-align: center;
+            font-size: 12px;
+          }
+          &:nth-of-type(3n) {
+            margin-right: 0px;
+          }
+        }
+      }
+
+    }
+    .square-btn-box {
+      padding-top: 15px;
+    }
+  }
+  //动效弹框 end
+  //文字编辑弹框 end
+  //动效时间弹框 strat
+  #effectDuration-dialog {
+    height: 306px;
+  }
+  //动效时间弹框 end
+}
+
+#mask-layer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: rgba(0, 0, 0, .5);
+  z-index: 553;
+}
+
+//底部设置
+#mobileFoot-dialog {
+  width: 600px;
+  color: #666;
+  .dialog-row {
+    .dialog-row_span {
+      width: 100px;
+      display: inline-block;
+      height: 30px;
+      line-height: 40px;
+    }
+    .item-top {
+      display: inline-block;
+    }
+    .slide-ui-wb {
+      display: inline-block;
+      padding-left: 10px;
+    }
+
+  }
+  .imagePreview {
+    width: 100%;
+    padding-top: 0 !important;
+    padding-bottom: 100px !important;
+    margin-top: 0;
+    border-radius: 0;
+    #bgFoot {
+      max-width: 50%;
+      max-height: 150px;
+    }
+  }
+  .yesORno {
+    border-top: 1px solid #eee;
+    .succee-btn {
+      border-radius: 4px;
+      margin-right: 20px;
+    }
+  }
+}
+
+//顶部设置
+#mobileHead-dialog {
+  width: 600px;
+  .imagePreview{
+    width: 100%;
+    margin-top: 0;
+    border-radius: 0;
+  }
+  .dialog-row{
+    .item-top{
+      display: inline-block;
+    }
+  }
+
+}
+

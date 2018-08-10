@@ -1,0 +1,68 @@
+<div :style="style" v-if="!app.isPreview">
+    <div style="width: 1200px;height:100%;padding:5px 0;margin:0 auto;color:#999;font-size:12px;" class="clearfix">
+        <span style="margin-left:30px;">欢迎来到XX商城</span>
+        <a href="javascript:void(0); " style="color:#999;">收藏夹</a>
+        <div style="float: right;height: 100%;margin-right:20px">
+            <span>您好</span>
+            <a href="javascript:void(0);" style="color:#999;margin-right:10px">请登录</a>
+            <a href="javascript:void(0);" style="color:#999;margin-right:10px">我的商城</a>
+            <a href="javascript:void(0);" style="color:#999;margin-right:10px">我的购物车</a>
+            <a href="javascript:void(0);" style="color:#999;margin-right:10px">商品分类</a>
+            <a href="javascript:void(0);" style="color:#999;margin-right:10px">客服</a>
+            <span>网站导航</span>
+        </div>
+    </div>
+</div>
+
+<div v-else class='wrapper'>
+    <div class='container'>
+        <ul class='collect lh'>
+            <li class='fore1'>
+                <a href='javascript:void(0)' onclick="AddFavorite(window.location,document.title);return false;">收藏</a>
+            </li>
+        </ul>
+
+        <ul class='shortcut-right lh'>
+            <#if Session.memberSession??>
+                <#assign user=S ession.memberSession.member>
+            </#if>
+            <#if user??>
+                <li class='fore1' id='loginbar'>
+                    <a href='${(domainUrlUtil.EJS_URL_RESOURCES)!}/member/order.html' target="_blank" class='login'>${(user.name)!''}</a>&nbsp;&nbsp;
+                    <a href='${(domainUrlUtil.EJS_URL_RESOURCES)!}/logout.html' onclick="logout()" class='regist'>退出</a>
+                </li>
+                <#else>
+                    <li class='fore1' id='loginbar'>
+                        <a href='${(domainUrlUtil.EJS_URL_RESOURCES)!}/login.html' class='login'>你好，请登录
+                        </a>&nbsp;&nbsp;
+                        <a href='${(domainUrlUtil.EJS_URL_RESOURCES)!}/register.html' class='regist'>免费注册</a>
+                    </li>
+            </#if>
+
+            <li class='fore2-1 ld ff-vip' stle='padding-left:12px;'>
+                <span></span>
+                <a href='${(domainUrlUtil.EJS_URL_RESOURCES)!}/member/index.html'>会员中心</a>
+            </li>
+
+            <li class='fore3 ld app-ff menu' style="text-align:center;width: 126px;padding: 0 5px;">
+                <div class="menubox">
+                    <div class="mu-line">
+                        <span></span>
+                        关注${(sysConfig.agent_name)!"苍鹿"}
+                        <i class="ci-t"></i>
+                    </div>
+                    <div class="imgwx-ej" style="display: none;border:1px solid #e0e0e0;border-top:0;">
+                        <#if (sysConfig.weixinpic_url)?? && sysConfig.weixinpic_url !="">
+                            <img src="${domainUrlUtil.EJS_IMAGE_RESOURCES!}${sysConfig.weixinpic_url!}" width="80" height="80">
+                            <#else>
+                                <img src="${(domainUrlUtil.EJS_URL_RESOURCES)!}/resources/front/img/weixin.png" width="80" height="80">
+                        </#if>
+                        <div style="padding: 0 6px; line-height: 20px;">
+                            关注${(sysConfig.agent_name)!"苍鹿"} 微信公众号
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>

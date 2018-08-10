@@ -1,0 +1,62 @@
+<!-- 动效设置 -->
+<div class="effect-dialog-content">
+    <!-- <el-row>
+        <div style="width:100px;height:100px;background:#00b7ee;" class="animated" :class="model.animation">
+            动画演示
+        </div>
+    </el-row> -->
+    <el-row class="content-item">
+        <el-col :span="4">
+            <div class="effect-name col-4-text-one">动画特效:</div>
+        </el-col>
+        <el-col :span="18" :offset="1" class="effect-select">
+            <el-select v-model="model.animation" placeholder="请选择动画">
+                <el-option-group v-for="group in animOpts" :key="group.label" :label="group.label">
+                    <el-option v-for="item in group.options" :key="item.value" :label="item.label" :value="item.value">
+                    </el-option>
+                </el-option-group>
+            </el-select>
+        </el-col>
+    </el-row>
+    <el-row class="content-item">
+        <template>
+            <el-col :span="4" class="col-4-text">
+                <div>完成时间:</div>
+            </el-col>
+            <el-col :span="18" :offset="1" class="slide-item">
+                <div class="block">
+                    <el-slider show-input :max="5" :min="0" :step="0.1"
+                               @change="durationChange"
+                               v-model="model.style['animation-duration']">
+                    </el-slider>
+                </div>
+            </el-col>
+        </template>
+    </el-row>
+    <el-row class="content-item">
+        <el-col :span="4" class="col-4-text">
+            <div class="delay-time">延迟时间:</div>
+        </el-col>
+        <el-col :span="18" :offset="1" class="slide-item">
+            <template>
+                <div class="block">
+                    <el-slider :max="5" :min="0" :step="0.1"
+                               @change="delayChange"
+                               v-model="model.style['animation-delay']" show-input>
+                    </el-slider>
+                </div>
+            </template>
+        </el-col>
+    </el-row>
+    <el-row class="content-item">
+        </el-col :span="4" class="col-4-text">
+        动画预览：
+        </el-col>
+        </el-col :span="10">
+        <div class="play-effect-btn fs12 pointer" @click="playAnimate">
+            播放动画
+        </div>
+        </el-col>
+    </el-row>
+
+</div>

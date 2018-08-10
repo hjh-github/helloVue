@@ -1,0 +1,13 @@
+<v-cptborder :model="model" :setting="settingConfig">
+    <div v-if="app.channel == 1">
+        <el-menu :default-active="activeIndex" mode="horizontal" @select="handleSelect">
+            <el-submenu v-if="item.parentId==0" :index="i" v-for="(item,i) in app.firstParentId">
+                <template slot="title">{{item.name}}</template>
+                <el-menu-item v-if="subItem.parentId == item.menuId" v-for="(subItem,i) in app.firstParentId"
+                              :index="i">
+                    {{subItem.name}}
+                </el-menu-item>
+            </el-submenu>
+        </el-menu>
+    </div>
+</v-cptborder>

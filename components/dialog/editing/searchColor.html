@@ -1,0 +1,22 @@
+<div>
+    <div class="btn-edit">
+        <div class="button-type">
+                <el-row>
+                    <el-col :span="2" class="marleft10">
+                        {{config.text}}
+                    </el-col>
+                </el-row>
+                <div class="button-color">
+                    <span class="button-title displayI alignR span-width">{{config.colorSize}}</span>
+                    <ul class="button-color-type">
+                        <li v-for="(c,index) in config.colorList" :class="{'cur':index==config.current_2}" @click="config.current_2=index;model.btnBg = c.color;"
+                            :style="{background:c.color}"></li>
+                        <li>
+                            <el-color-picker size="small" @change="config.current_2='-1';model.btnBg = config.color1" v-model="config.color1"></el-color-picker>
+                        </li>
+                        <i class="choose_color">选择颜色</i>
+                    </ul>
+                </div>
+        </div>
+    </div>
+</div>

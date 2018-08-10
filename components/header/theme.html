@@ -1,0 +1,23 @@
+<dl class="flex-box row-center themeColor">
+    <dt>主题色</dt>
+    <div class="colorbox presentc" :style="{backgroundColor:'#'+ themecolor}"></div>
+    <dd @click="setThemecolorfn" :class="{on : themecolor == 'ff3d30' }" style="background-color:#ff3d30" data-value="ff3d30"></dd>
+    <dd @click="setThemecolorfn" :class="{on : themecolor == 'ff9500' }" style="background-color:#ff9500" data-value="ff9500"></dd>
+    <dd @click="setThemecolorfn" :class="{on : themecolor == 'ffcc00' }" style="background-color:#ffcc00" data-value="ffcc00"></dd>
+    <dd @click="setThemecolorfn" :class="{on : themecolor == '4cd964' }" style="background-color:#4cd964" data-value="4cd964"></dd>
+    <dd @click="setThemecolorfn" :class="{on : themecolor == '5ac8fa' }" style="background-color:#5ac8fa" data-value="5ac8fa"></dd>
+    <dd @click="setThemecolorfn" :class="{on : themecolor == '007aff' }" style="background-color:#007aff" data-value="007aff"></dd>
+    <dd @click="setThemecolorfn" :class="{on : themecolor == '5856d6' }" style="background-color:#5856d6" data-value="5856d6"></dd>
+    <dd @click="setThemecolorfn" :class="{on : themecolor == 'efeff4' }" style="background-color:#efeff4" data-value="efeff4"></dd>
+    <div class="flex-box diy-theme">
+        <div class="flex-title marright10">自定义主题</div>
+        <ul class="flex-content ">
+            <li class="flex-box a-center">
+                <div class="pre-color colorbox" :class="{on : themecolor == othertheme }" :style="{backgroundColor:'#'+ othertheme}"></div>
+                <span style="margin-right: 10px">#</span>
+                <input maxlength="6" class="layout-size" @change="setOtherthemeFn" v-model="othertheme" type="text" name="bgcolor">
+            </li>
+        </ul>
+        <div class="flex-ctrl"></div>
+    </div>
+</dl>

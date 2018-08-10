@@ -1,0 +1,32 @@
+<v-cptborder :model="model" :editing="editingConfig" :setting="settingConfig">
+
+    <div class="floor-list" v-if="model.type==0">
+        <div v-if="model.visible" class="floor-title" :style="{borderColor:model.theme}" >
+            <div class="floor-name" :style="{color:model.titleColor}">{{model.floorListName }}</div>
+            <div class="floor-class">
+                <ul class="floor-more">
+                    <li v-for="item in model.classList" :style="{borderColor:model.theme,color:model.theme}" :id="item.id" :class="{cur:model.selectClass==item.id}" @click="model.selectClass = item.id"><span class="item-hover">{{item.name}}</span></li>
+                </ul>
+            </div>
+        </div>
+        <div class="floor-bigShow"><a href="javascript:void(0)"><div class="floor-bigImg" :style="{'background-image':'url('+app.b2cImaSrc+model.masterImage+')'}"></div></a></div>
+        <div class="floor-content">
+            <div class="floor-showList">
+                <ul>
+                    <li v-for="option in model.goodsList" :dataId="option.id">
+                        <a :href="'http://'+app.saveParams.domainUrl+'/product/'+option.product.id+'.html'" target="_blank">
+                            <div class="scale-box">
+                                <div class="floor-goodsImg" :style="{'background-image':'url('+app.b2cImaSrc+option.product.masterImg+')'}"></div>
+                            </div>
+                            <div class="goods-msg">
+                                <h3 class="goods-name">{{option.productName}}</h3>
+                                <h3 class="goods-price">￥{{option.product.mallPcPrice}}</h3>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+</v-cptborder>

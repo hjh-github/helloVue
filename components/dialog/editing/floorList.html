@@ -1,0 +1,7 @@
+<!--文章来源-->
+<div>
+    <span class="transfer-select-text">选择楼层：</span>
+    <el-select v-model="model.floorListId" placeholder="请选择展示楼层">
+        <el-option v-for="item in floorListIds" :key="item.id" :label="item.name" :value="item.id"></el-option>
+    </el-select>
+</div>

@@ -1,0 +1,10 @@
+<div class="parameter">
+    <span class="title">展示参数：</span>
+
+    <el-checkbox-group v-model="model[key]">
+        <el-checkbox v-for="(item,i) in config.checkbox" :label="item.value">{{item.name}}</el-checkbox>
+    </el-checkbox-group>
+</div>
+
+
+

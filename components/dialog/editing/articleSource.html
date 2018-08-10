@@ -1,0 +1,13 @@
+<!--文章来源-->
+<div>
+    <el-row>
+        <span>选择分类</span>
+        <el-cascader v-loading="loading" :options="cates" change-on-select :props="props" @change="change"></el-cascader>
+    </el-row>
+
+    <el-row style="margin-top:10px;margin-left: 60px;">
+        <el-transfer v-loading="aloading" filterable :filter-method="filterMethod" filter-placeholder="请输入文章关键字" :button-texts="['移除','添加']" v-model="selectedArticles" :titles="['可选文章','已选文章']" :data="allArticles" :props="aprops" @change="selectedChanged">
+        </el-transfer>
+    </el-row>
+
+</div>

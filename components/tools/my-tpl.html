@@ -1,0 +1,86 @@
+<div id="mytpl" class="mytpl positionF tplSame">
+    <div class="btnIconBox boxShadow pointer positionR" :class="{clearBoxShadow: app.iconName === 'myTpl'}" @click.stop.prevent="toggleIcon('myTpl')">
+        <div class="tplImgBox positionA">
+            <!-- 为点击的时候 -->
+            <img class="iconImage" :src="app.iconName !== 'myTpl'?'./images/myTpl.png':'./images/myTplChosen.png'" alt="">
+        </div>
+    </div>
+    <div v-cloak v-show="app.iconName === 'myTpl'" class="iconRight positionA">
+        <img src="./images/iconRight.png" alt="">
+    </div>
+    <!-- 我的模板弹窗 -->
+    <div v-cloak v-show="app.iconName === 'myTpl'" id="mytplDialog" class="tplSameDialog positionA boxModel fs14">
+        <div class="mytpl_header padleft20 boxModel borderBottom">
+            <span class="boxModel">我的模板库</span>
+            <div class="tpl_right fr">
+                <div class="closeBox pointer" @click.stop="app.iconName = ''">
+                    <img src="./images/mytpl_close.png" alt="">
+                </div>
+            </div>
+        </div>
+        <div class="mytpl_nav borderBottom clearfix">
+            <ul class="clearfix fl">
+                <!-- <li class="fl">全选</li>
+                <li class="fl mytpl_border"></li> -->
+                <li class="fl eiditName" @click="eiditTplname(0)">修改名称</li>
+                <li class="fl mytpl_border"></li>
+                <li class="fl" @click="deleteMytpl">删除</li>
+            </ul>
+            <div class="mytpl_save fr ffffff pointer" @click="eiditTplname(1)">
+                保存当前模板
+            </div>
+        </div>
+        <div class="tplList">
+            <ul class="clearfix dataUl myTplUl">
+                <li class="fl tplItem pointer" :class="{active: mytplIndex === index }" v-for="(mytpl_item,index) in userWebInfoHisList"
+                    :key="index" @click.stop.prevent="chosenMytpl(index,mytpl_item.id,mytpl_item.name)">
+                    <div>
+                        <div class="imgBox">
+                            <img style="width:274px;height:180px;" :src="mytpl_item.thumbImage" alt="">
+                        </div>
+                        <div class="tplBottom">
+                            <p class="tpl_name" v-text="mytpl_item.name">
+
+                            </p>
+                            <div class="info clearfix">
+                                <span class="tpl_data fl" v-text="mytpl_item.recordTime.substring(0,10)">
+
+                                </span>
+                                <div class="tpl_infoRight fr">
+                                    <!-- <span class="reading" @click="previewMytpl(mytpl_item.id)">预览</span> -->
+                                    <span class="chosenUse" @click="chosenUse(mytpl_item.id)">选用</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <p class="no-mytpl" v-if="userWebInfoHisList.length == 0">暂无模板信息，点击'保存当前模板'真的可以保存当前模板哟...</p>
+        <!-- 修改我的模板名称的弹窗和保存当前模板公用 -->
+        <div id="mytpl-nameEiditdialog" class="boxShadow draggable positionA" style="display: none;">
+            <div class="mytplnameEidit_header ffffff padleft20">
+                <span class="mytplText"></span>
+                <div class="nameEidit_btnBox fr pointer" @click="closeTplnameEidit">
+                    <img src="./images/tplName_close.png" alt="">
+                </div>
+            </div>
+            <div class="eidit_conten padleft20">
+                <h5>内容</h5>
+                <textarea type="text" class="currentVersions" maxlength="10" v-model="mytplCurName" v-if="myTplChangeWay == 0" @keyup.enter="eiditNameReq"
+                    placeholder="内容为空则自动保存为当前时间"></textarea>
+                <textarea type="text" class="currentVersions" v-if="myTplChangeWay == 1" v-model="mytplCurName" placeholder="内容为空则自动保存为当前时间"
+                    @keyup.enter="eiditNameReq"></textarea>
+                <p class="name_tips">
+                    <sub>*</sub>
+                    10个字符之内
+                </p>
+            </div>
+            <div class="name_btnBox clearfix">
+                <button class="name_eiditBtn ffffff fr pointer" @click="eiditNameReq">
+                    确定
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,41 @@
+    <div>
+    <el-row class="base-box" v-for="(item,key,i) in conts" :class={show:!item.visible}>
+        <el-col :span="20" class="base-key">{{item.name}}</el-col>
+        <el-col :span="4">
+            <i v-if="key != 'body'" class="el-icon-view eye-view" @click="vis(key)"></i>
+            <!-- <i class="el-icon-more" @click="toTab(key)"></i> -->
+        </el-col>
+    </el-row>
+    <div class="hieght-item mar-bot">
+        <span class="subtitle displayI">内容区&nbsp;:</span>
+        <el-radio-group v-model="defwidth">
+            <el-radio :label="true">默认</el-radio>
+            <el-radio :label="false">自定义</el-radio>
+        </el-radio-group>
+    </div>
+        <div class="hieght-item mar-bot">
+            <span class="subtitle displayI">导航&nbsp;:</span>
+            <el-radio-group v-model="app.navShow">
+                <el-radio :label="true">显示</el-radio>
+                <el-radio :label="false">隐藏</el-radio>
+            </el-radio-group>
+        </div>
+    <div class="slide-box" v-show="!defwidth">
+        <el-row>
+            <el-col :span="5" class="slider-text-item">
+                <span class="subtitle displayI">宽度&nbsp;:</span>
+            </el-col>
+
+            <el-col :span="18">
+                <el-slider
+                        v-model="ruler"
+                        show-input
+                        :step="240"
+                        :max="1440"
+                        :min="960">
+                </el-slider>
+            </el-col>
+        </el-row>
+    </div>
+    <bgedit :model="model.common" :config="config"></bgedit>
+</div>

@@ -1,0 +1,28 @@
+<div>
+    <div class="title" style="max-width: 350px;">
+        <el-row>
+            <el-col :span="4" style="white-space:nowrap" class="alignR">
+                轮播设置&nbsp;:
+            </el-col>
+            <el-col :span="18">
+                <div class="input-text-box marleft10">
+                    <el-radio v-model="model[key].autoplay" :label="true">自动轮播</el-radio>
+                    <el-radio v-model="model[key].autoplay" :label="false">手动轮播</el-radio>
+                </div>
+            </el-col>
+        </el-row>
+    </div>
+    <div class="title" style="max-width: 350px;">
+        <el-row>
+            <el-col :span="4" style="white-space:nowrap" class="alignR">
+                切换频率&nbsp;:
+            </el-col>
+            <el-col :span="18">
+                <div class="input-text-box marleft10" style="white-space:nowrap;">
+                    <el-input size="small" v-model="model[key].interval"  style="width:80px" placeholder="例如:3000"></el-input>
+                    <span>毫秒</span>
+                </div>
+            </el-col>
+        </el-row>
+    </div>
+</div>

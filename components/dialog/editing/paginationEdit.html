@@ -1,0 +1,11 @@
+<div class="pagination-edit-box" style="margin-top: 15px;">
+    <div>
+        <span>显示分页：</span>
+        <el-radio v-model="model[key]" :label="true">是</el-radio>
+        <el-radio v-model="model[key]" :label="false">否</el-radio>
+    </div>
+    <div class="" style="margin-top: 10px;">
+        <span>每页图片：</span>
+        <input class="pagination-edit-input" type="text" v-model="model.capacity" />张
+    </div>
+</div>

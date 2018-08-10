@@ -1,0 +1,35 @@
+<v-cptborder :model="model" :setting="settingConfig" :editing="editingConfig">
+    <div class="mobile-pop" v-if="showPop && app.channel==2" style="position: fixed" @click="hideCode"></div>
+    <div class="custom-show">
+        <div class="custom-show-top">
+            <ul>
+                <li :class="sty" v-show="item.isShow" v-for="item in model.customerList">
+                    <i :class="[item.class,qq]"></i>
+                    <em>
+                        <a v-if="!item.hasImg" :href="phone" style="color:black">{{item.text}}</a>
+                        <a v-else href="javascript:void(0)" @click="showCode" style="color:black">{{item.text}}</a>
+                        <div v-if="showCodeImg" class="codeImg" :class="{'mobileCode':app.channel==2}" :style="{'background-image':'url('+model.image.src+')'}"></div>
+                    </em>
+                </li>
+            </ul>
+        </div>
+        <div class="custom-show-conter" v-show="model.showTime.which=='0'">
+            <h3>
+                <i class="custom-show-time"></i>
+                <span>工作时间</span>
+            </h3>
+            <ul>
+                <li v-for="(item,i) in model.timeList">{{model.week[item.checkedsWeek].text}}至{{model.week[item.checkedeWeek].text}}：{{model.time[item.checkedsTime].text}}-{{model.time[item.checkedeTime].text}}</li>
+            </ul>
+        </div>
+        <div class="custom-show-bottom" v-show="model.showCell.which=='0'">
+            <h3>
+                <i class="custom-show-cell"></i>
+                <span>联系方式</span>
+            </h3>
+            <ul>
+                <li v-for="(item,i) in model.cellList">{{item.name}}：{{item.text}}</li>
+            </ul>
+        </div>
+    </div>
+</v-cptborder>

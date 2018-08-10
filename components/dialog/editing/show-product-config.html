@@ -1,0 +1,45 @@
+<div class="product-show-setting">
+    <el-card class="box-card">
+        <div slot="header" class="clearfix card-header">
+            <span>基本配置</span>
+        </div>
+        <el-form label-width="90px">
+            <el-form-item label="分页展示:">
+                <el-radio v-model="model[key].showPage" :label="true">是</el-radio>
+                <el-radio v-model="model[key].showPage" :label="false">否</el-radio>
+            </el-form-item>
+            <el-form-item label="产品个数">
+                <el-input v-model="model[key].capacity"></el-input>
+            </el-form-item>
+        </el-form>
+    </el-card>
+    <el-card class="box-card">
+        <div slot="header" class="clearfix card-header">
+            <span>跳转设置</span>
+        </div>
+        <el-form label-width="110px">
+            <!--<el-form-item label="显示更多:">
+                <el-row>
+                    <el-radio v-model="model.showMore.visible" :label="false">隐藏</el-radio>
+                    <el-radio v-model="model.showMore.visible" :label="true">显示</el-radio>
+                </el-row>
+                <el-row v-show="model.showMore.visible">
+                    <addlink :callback="addLink" :plain="true" :model="showMore"></addlink>
+                </el-row>
+            </el-form-item>-->
+            <!--<el-form-item class="two-el-form-item" label="支持幻灯片：">-->
+            <!--<el-radio v-model="model[key].useSlide" :label="true">是</el-radio>-->
+            <!--<el-radio v-model="model[key].useSlide" :label="false">否</el-radio>-->
+            <!--</el-form-item>-->
+            <el-form-item label="点击产品：">
+                <el-radio v-model="model[key].clickConfig.showType" :label="true">产品详情页</el-radio>
+                <el-radio v-model="model[key].clickConfig.showType" :label="false">幻灯片</el-radio>
+                <div v-show="model[key].clickConfig.showType">
+                    <span>详情打开方式:</span>
+                    <el-radio v-model="model[key].clickConfig.detailShowType" :label="0">当前窗口</el-radio>
+                    <el-radio v-model="model[key].clickConfig.detailShowType" :label="1">新窗口</el-radio>
+                </div>
+            </el-form-item>
+        </el-form>
+    </el-card>
+</div>

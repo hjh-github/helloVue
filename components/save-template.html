@@ -1,0 +1,75 @@
+<div class="new-dialog ">
+    <div class="text-dialog positionA save-template corner-top flipInX animated">
+        <div class="dialog-title">
+            保存为系统模板
+            <button @click="closeDialog('saveTemplate')" class="close-dialog" type="button"></button>
+        </div>
+        <div class="content scroll-bar">
+            <dl class="content-item">
+                <dt>选择网站类型</dt>
+                <dd>
+                    <input type="radio" @change="cancleEmpty" id="typeSHOW" value="SHOW" v-model="saveTemplate.themeCode">
+                    <label for="typeSHOW" :class="{active:saveTemplate.themeCode == 'SHOW'}">企业官网型</label>
+                    <input type="radio" @change="cancleEmpty" id="typeB2C" value="B2C" v-model="saveTemplate.themeCode">
+                    <label for="typeB2C" :class="{active:saveTemplate.themeCode == 'B2C'}">企业电商型</label>
+                    <input type="radio" @change="cancleEmpty" id="typeB2B2C" value="B2B2C" v-model="saveTemplate.themeCode">
+                    <label for="typeB2B2C" :class="{active:saveTemplate.themeCode == 'B2B2C'}">商城平台型</label>
+                    <input type="radio" @change="cancleEmpty" id="typeNEWS" value="NEWS" v-model="saveTemplate.themeCode">
+                    <label for="typeNEWS" :class="{active:saveTemplate.themeCode == 'NEWS'}">综合门户型</label>
+                </dd>
+            </dl>
+            <dl class="content-item">
+                <dt>选择行业分类</dt>
+                <dd>
+                    <select v-model="saveTemplate.industryCode">
+                        <option disabled value="">请选择</option>
+                        <option v-for="(tplTopLevel,index) in tplTopLevelArr" :value="tplTopLevel.code">
+                            {{tplTopLevel.name}}
+                        </option>
+                    </select>
+                </dd>
+            </dl>
+            <dl class="content-item">
+                <dt>选择色系分类</dt>
+                <dd>
+                    <li @click.stop.prevent="themeColorSaveT(tplThemeColor.code)" v-for="(tplThemeColor,index) in tplThemeColorArr" class="lis1 " :style="{backgroundColor:'#'+tplThemeColor.code,borderColor:tplThemeColor.code}" :class="{active: tplThemeColor.code == saveTemplate.colorCode}" :title="tplThemeColor.name">
+                        <div class="liInner"></div>
+                    </li>
+                </dd>
+            </dl>
+            <dl class="content-item">
+                <dt>模板名称</dt>
+                <dd>
+                    <input type="text" class="alter-input" @change="cancleEmpty" v-model="saveTemplate.name" maxlength="10" placeholder="如 Q-101">
+                    <span class="nameLen">{{saveTemplate.name.length}}/5</span>
+                </dd>
+            </dl>
+            <dl class="content-item">
+                <dt>缩略图</dt>
+                <dd>
+                    <div class="thumbZoom">
+                        <form action="" enctype="multipart/form-data" method="post">
+                            <input type="file" name="imageFile" id="tplthumbImg" onchange="imgUpload(this,'thumbImg')" value="点击上传" accept="image/png,image/PNG,image/jpg,image/JPG,image/gif,image/GIF,image/jpeg,image/JPEG"
+                            />
+                            <input type="hidden" name="param" value="templates">
+                        </form>
+                        <img id="thumbImg" src="" alt="">
+                        <p class="tips">建议尺寸（px）: 275 × 180</p>
+                        <p class="btn">上传图片</p>
+                    </div>
+
+                </dd>
+            </dl>
+
+        </div>
+        <div class="square-btn-box clearfix text-dcrtion">
+            <div v-if="saveTemplate.msg != ''" class="msg fadeIn animated">{{saveTemplate.msg}}</div>
+            <button type="button" @click="counterSaveTpl()" class="succee-btn ripple positionR">
+                确定
+            </button>
+            <button type="button" @click="destroyOldInfoT()" class="succee-btn recover ripple positionR">
+                清空
+            </button>
+        </div>
+    </div>
+</div>

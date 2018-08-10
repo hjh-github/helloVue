@@ -1,0 +1,24 @@
+<!-- 联系方式 -->
+<div class="cs-list" v-show="model.showCell.which=='0'">
+    <h3>联系方式：</h3>
+    <div class="cs-add" @click="addCell">新增联系方式</div>
+    <ul class="cs-list-head cs-3">
+        <li>名称</li>
+        <li>内容</li>
+        <li>操作</li>
+    </ul>
+    <ul class="cs-list-body cs-3">
+        <li v-for="(option,index) in model[key]">
+            <div class="cs-name" v-text="option.name"></div>
+            <div class="cs-content">
+                <h3 class="showText" v-text="option.text" @mouseenter="textHover(index)" @click="updateText(index)" v-show="!option.isUpdate"></h3>
+                <input type="text" :value="option.text" ref="footerListName" v-show="option.isUpdate" @blur="updateText(index)">
+            </div>
+            <div class="cs-btn">
+                <i class="down" @click="orderList(1,index)" v-if="index < model[key].length-1"></i>
+                <i class="top" @click="orderList(2,index)" v-if="index > 0"></i>
+                <i class="clo" @click="del(index)"></i>
+            </div>
+        </li>
+    </ul>
+</div>

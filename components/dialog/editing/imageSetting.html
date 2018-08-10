@@ -1,0 +1,26 @@
+<!--列表多图 图片设置-->
+<el-row>
+    <el-col :span="2"><i :class="{'icon-arrow-left':visible}" @click="visible=!visible"></i>图片设置:</el-col>
+    <el-col :span="8" v-show="visible" style="margin:.2rem .2rem;border:1px solid #ccc;padding:.5rem .5rem;">
+        <div>
+            <span>图片描述：</span>
+            <el-radio v-model="model[key].descVisible" :label="true">显示</el-radio>
+            <el-radio v-model="model[key].descVisible" :label="false">隐藏</el-radio>
+        </div>
+
+        <div>
+            <span>点击图片：</span>
+            <el-radio-group v-model="model[key].clickEffect">
+                <el-radio :label="0">无效果</el-radio>
+                <el-radio :label="1">幻灯片</el-radio>
+                <!--<el-radio :label="2">图片链接</el-radio>-->
+            </el-radio-group>
+            </el-row>
+        </div>
+        <div v-show="model[key].clickEffect==2">
+            <span>打开方式：</span>
+            <el-radio v-model="model[key].open" :label="0">当前窗口</el-radio>
+            <el-radio v-model="model[key].open" :label="1">新窗口</el-radio>
+        </div>
+    </el-col>
+</el-row>

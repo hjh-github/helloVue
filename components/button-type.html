@@ -1,0 +1,12 @@
+<v-cptborder :model="model" :setting="settingConfig" :editing="editingConfig">
+        <v-href :model="model">
+            <div @mouseover="hover" @mouseout="out">
+            <el-button :plain="model.btnStatus=='btn-type-3'" :round="model.btnStatus=='btn-type-4'"
+                       :style="{'background-color':model.btnBg,'background-image':'url('+model.image.src+')','background-repeat':model.image.repeat,'background-size':model.image.size,'background-position':model.image.position}"
+                       type="primary" style="width: 80%;height: 80%;margin: auto;top:0;left:0;right:0;bottom: 0;position: absolute;border-color:transparent"
+                       :class="model.btnStatus" ref="button">
+                {{model.text}}
+            </el-button>
+            </div>
+        </v-href>
+</v-cptborder>

@@ -1,0 +1,56 @@
+<div class="new-dialog">
+    <div class="flex-box flex-column pages text-dialog  corner-top animated fadeInLeft">
+        <div class="dialog-title auto-mouse">
+            页面管理
+            <button class="close-dialog" @click="close" type="button"></button>
+        </div>
+
+        <ul class="flex-content flex-column pages-ul dialog-row" style="height:630px;padding-left: 10px;
+        " id="page-List">
+            <!--firstParentId 是扁平化结构，不适合遍历，这里进行转化成树结构-->
+            <div v-model="navList">
+                <li class="flex-column positionR page-item" v-for="nav in navList" v-cloak>
+                    <div class="secondPath first-nav " @click="current == nav.id?current=null:current = nav.id">
+                        <span class="square-btn pages-item iden"></span>
+                        <span class="page-name">{{nav.name}}</span>
+                        <i v-if="nav.columnCode != 'custom'" class="moreTool moreTools" style="float:right;margin-right: 15px" @click="chanPage(nav.id)"></i>
+                        <i v-if="nav.columnCode != 'index'" class="el-icon-more moreTool" style="float:right;" @click="tshow==nav.id ? tshow='' : tshow=nav.id"></i>
+                        <div class="more-tool first-nav" v-show="tshow==nav.id" @mouseleave="tshow = ''">
+                            <ul>
+                                <li @click="pageAlter(nav)">修改</li>
+                                <li @click="deletePage(nav)">删除</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!--子节点-->
+                    <div v-show="current == nav.id">
+                        <div v-model="nav.children">
+                            <div v-for="navItem in nav.children" v-cloak class="secondPath second-nav slideInDown ">
+                                <span class="square-btn pages-item iden"></span>
+                                <span class="page-name">{{navItem.name}}</span>
+                                <i v-if="navItem.columnCode != 'custom'" class="moreTool moreTools" style="float:right;margin-right: 15px" @click="chanPage(navItem.id)"></i>
+                                <i class="el-icon-more moreTool" style="float:right" @click="tshow==navItem.id ? tshow='' : tshow=navItem.id"></i>
+                                <div class="more-tool" v-show="tshow==navItem.id" @mouseleave="tshow = ''">
+                                    <ul>
+                                        <li @click="pageAlter(navItem)">修改</li>
+                                        <li @click="deletePage(navItem)">删除</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </div>
+        </ul>
+        <div class="square-btn-box clearfix text-dcrtion">
+            <button @click="addpageFn" type="button" class="succee-btn ">
+                新增页面
+            </button>
+        </div>
+    </div>
+    <!-- 页面管理 - 修改dialog -->
+    <div ref="pageDialog">
+
+    </div>
+    <newpage :navList="navList" v-if="addPage"></newpage>
+</div>

@@ -1,0 +1,30 @@
+<div v-show="visible" style="z-index:100;position:fixed;" :style="styleConfig">
+    <div @click="cancel" class="vmask"></div>
+    <div class="moduleSetDialog vdialog moduleSetFileWb" id="dialog">
+        <div class="DialogTitle" id="DialogTitle">
+            <span>{{config.title}}</span>
+            <i class="closeDialog" data-isSecond="0" @mousedown="cancel"></i>
+        </div>
+
+        <div class="img-txt">
+            <div class="ImgTxtTips">
+                <ul>
+                    <li v-for="(item,key,index) in config.pages" v-show="config.pages[key].check?config.pages[key].check(model):true" @click="active=index"
+                        :class="{'cur':index==active}">
+                        <label>{{key}}</label>
+                    </li>
+                </ul>
+            </div>
+
+            <dl>
+                <dd class="content" v-for="(item,key,index) in config.pages" :ref="key" v-show="active==index">
+                    <div></div>
+                </dd>
+            </dl>
+            <div class="ImgTxtButton">
+                <div class="ITsubmit" @click="ok">确定</div>
+                <div class="ITclose" @click="cancel" v-if="config.canCancel==null||config.canCancel">取消</div>
+            </div>
+        </div>
+    </div>
+</div>

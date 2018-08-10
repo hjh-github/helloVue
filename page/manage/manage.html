@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+	<meta charset="UTF-8">
+	<title>网站管理</title>
+	<link rel="stylesheet" href="../../css/public/public.css"/>
+	<link rel="stylesheet" href="../../css/dependence/animate.css"/>
+	<link rel="stylesheet" href="manage.css"/>
+</head>
+<body>
+<div class="layout" id="manage">
+	<!--左侧栏-->
+	<div class="left-nav">
+		<ul>
+			<li class="first">
+				<img src="../../images/product/toux.png" alt=""/>
+			</li>
+			<li class="bubbleRight" title="页面设计">
+				<a href="../../index.html">
+					<div>
+						<div><img src="../../images/design.png"></div>
+						<span>设计</span>
+					</div>
+				</a>
+			</li>
+			<li class="bubbleRight" title="添加/编辑产品">
+				<a href="../product/product.html">
+					<div>
+						<div><img src="../../images/productIcon.png"></div>
+						<span>产品</span>
+					</div>
+				</a>
+			</li>
+			<li class="bubbleRight on" title="添加/编辑文章">
+				<a href="#">
+					<div>
+						<div><img src="../../images/passage.png"></div>
+						<span>文章</span>
+					</div>
+				</a>
+			</li>
+			<li class="bubbleRight" title="管理网站留言板">
+				<a href="../Message/Message.html">
+					<div>
+						<div><img src="../../images/comment.png"></div>
+						<span>留言板</span>
+					</div>
+				</a>
+			</li>
+			<li class="set bubbleRight" title="设置">
+				<a href="#">
+					<div>
+						<div><img src="../../images/product/shezhi.png" alt=""/></div>
+						<span>设置</span>
+					</div>
+				</a>
+			</li>
+		</ul>
+	</div>
+	<!--顶部-->
+	<header class="padleft30 lh50">
+		<div class="fl fs14 alignC pointer canglu">网站管理</div>
+		<div class="black"></div>
+		<ul class="clearfix">
+
+			<li class="fr fs14 two alignC pointer">
+				新手教程
+			</li>
+			<li class="fr fs14 one pointer">
+				常见问题
+			</li>
+		</ul>
+	</header>
+	<!--内容-->
+	<div class="content clearfix padleft30 padright30 padtop20">
+		<div class="outBox" v-show="flag">
+			<div class="title">
+				<div class="spaceT alignL lh44">网站空间</div>
+				<div class="timeT alignL lh44">网站有效期</div>
+				<div class="balnk"></div>
+			</div>
+			<div class="top">
+				<div class="space same">
+					<div class="iconBox  big">
+
+					</div>
+					<div class="rightBox padleft30 padtop10">
+						<p class="fs12 lh50 p1">已用/总共</p>
+						<p class="p2 fs16">20kb/250MB</p>
+						<div class="btn lh30 martop30 marbottom30 ffffff padleft20 fs14">去升级</div>
+					</div>
+				</div>
+				<div class="time same">
+					<div class="iconBox small">
+
+					</div>
+					<div class="rightBox padleft30 padtop10">
+						<p class="fs12 lh50 p1">服务时间</p>
+						<p class="p2 fs16">2017-02-02至2018-02-02 &nbsp; &nbsp;&nbsp;  剩余 <span>159</span> 天到期</p>
+						<div class="btn lh30 marbottom30 martop30 ffffff padleft20 fs14">去续费</div>
+					</div>
+				</div>
+				<div class="blank"></div>
+			</div>
+			<div class="bottom">
+				<div class="item active">
+					<div class="title positionR same clearfix">
+						<span class="number positionA alignC">1</span><span class="fl">域名注册</span><i class="fr martop5 imgBox"></i>
+					</div>
+					<p class="one fs12 padbottom20 font">使用自定义域名有什么好处？</p>
+					<p class="fs12 padbottom20 font">域名如何购买？</p>
+					<div class="btn lh30 marbottom30 martop30 ffffff padleft20 fs14 marleft30">去注册</div>
+				</div>
+				<div class="item">
+					<div class="title positionR same clearfix">
+						<span class="number positionA alignC">1</span><span class="fl">域名注册</span><i class="fr martop5 imgBox"></i>
+					</div>
+					<p class="one fs12 padbottom20 font">使用自定义域名有什么好处？</p>
+					<p class="fs12 padbottom20 font">域名如何购买？</p>
+					<div class="btn lh30 marbottom30 martop30 ffffff padleft20 fs14 marleft30">去注册</div>
+				</div>
+				<div class="item">
+					<div class="title positionR same clearfix">
+						<span class="number positionA alignC">1</span><span class="fl">域名注册</span><i class="fr martop5 imgBox"></i>
+					</div>
+					<p class="one fs12 padbottom20 font">使用自定义域名有什么好处？</p>
+					<p class="fs12 padbottom20 font">域名如何购买？</p>
+					<div class="btn lh30 marbottom30 martop30 ffffff padleft20 fs14 marleft30">去注册</div>
+				</div>
+				<div class="item last">
+					<div class="title positionR same clearfix">
+						<span class="number positionA alignC">1</span><span class="fl">域名注册</span><i class="fr martop5 imgBox"></i>
+					</div>
+					<p class="one fs12 padbottom20 font">使用自定义域名有什么好处？</p>
+					<p class="fs12 padbottom20 font">域名如何购买？</p>
+					<div class="btn lh30 marbottom30 martop30 ffffff padleft20 fs14 marleft30">去注册</div>
+				</div>
+			</div>
+		</div>
+		<div class="innerBox bind">
+
+		</div>
+	</div>
+</div>
+<script src="../../js/dependence/vue.min.js"></script>
+<script type="text/javascript">
+		var newsVm = new Vue({
+			el: '#manage',
+			data: {
+				flag: true,
+			},
+			mounted: function (){
+
+			},
+			methods: {
+
+			}
+		});
+		
+</script>
+</body>
+</html>

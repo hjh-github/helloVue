@@ -1,0 +1,36 @@
+<v-cptborder :model="model" :setting="settingConfig" :editing="editingConfig">
+    <!--滑动展开-->
+    <div v-if="model.Expansion==='1'">
+        <ul>
+            <li v-for="(item,i) in model.classify" :key="i" :style="model.listyleOne"
+                style="position: relative;cursor:pointer" :ref="i" @mouseover="hover(i)" @mouseout="out(i)">
+                <img :src="item.icon" style="width: 25px;height: 25px; margin: 7.5px auto;" v-if="model.classification==='0'">
+                <span @click="click(item)">{{item.name}}</span>
+                <i class="el-icon-arrow-right"
+                   style="position: absolute;right:20px;top:50%;transform:translateY(-50%);"></i>
+                <div style="width:120px;position: absolute;right:-120px;top: 0px;border: 1px solid #f2f2f2;display:none">
+                    <ul>
+                        <li v-for="(citem,i) in item.children" style="height: 40px;width: 100%;margin-left:20px;cursor:pointer;" @click="click(citem)">{{citem.name}}</li>
+                    </ul>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <!--点击展开-->
+    <div v-if="model.Expansion==='0'">
+        <div v-for="(item,i) in model.classify"  :key="i" :ref="i" :style="model.listyleTwo" @click="cShow(i)">
+            <div :style="model.listyleOne"
+                 style="position: relative;cursor:pointer" @mouseover="hover(i)" @mouseout="out(i)">
+                <img :src="item.icon" style="width: 25px;height: 25px; margin: 7.5px auto;" v-if="model.classification==='0'">
+                <span @click="click(item)">{{item.name}}</span>
+                <i class="el-icon-arrow-down"
+                   style="position: absolute;right:20px;top:50%;transform:translateY(-50%);"></i>
+            </div>
+            <div v-if="item.children&&item.children.length>0" style="padding-left: 40px ;border-bottom:1px dashed #b8b8b8;display: none" class="classifyShow">
+                <ul>
+                    <li v-for="(citem,k) in item.children" style="height: 40px;width: 100%;padding-left:20px;cursor:pointer;" @click="click(citem)">{{citem.name}}</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</v-cptborder>

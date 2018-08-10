@@ -1,0 +1,38 @@
+<div class="product-arg-config" style="margin-top: 20px;">
+    <span>为了保证展示效果，建议每个产品库的参数显示个数保持一致，如果产品开启了促销活动，则不显示市场价</span>
+    <el-table
+            :data="model[key].columns"
+            style="width: 100%">
+        <el-table-column
+                prop="label"
+                label="参数项名称"
+                width="280">
+        </el-table-column>
+        <el-table-column
+                label="是否显示"
+                width="180">
+            <template slot-scope="scope">
+                <el-button v-show="scope.row.visible === false" @click="scope.row.visible = true">no&nbsp;</el-button>
+                <el-button v-show="scope.row.visible === true" @click="scope.row.visible = false">yes</el-button>
+            </template>
+        </el-table-column>
+        <el-table-column
+                label="排序"
+                width="180">
+            <template slot-scope="scope">
+               <span v-if="scope.row.fixed === true">位置固定</span>
+                <div v-if="scope.row.fixed === false">
+                    <el-button v-if="scope.$index > 1" @click="up(scope.$index, scope.row)">上移</el-button>
+                    <el-button v-if="scope.$index < model[key].columns.length - 1" @click="down(scope.$index, scope.row)">下移</el-button>
+                </div>
+            </template>
+        </el-table-column>
+        <el-table-column
+                label="文字颜色"
+                width="180">
+            <template slot-scope="scope" v-if="scope.row.style !== undefined">
+                    <el-color-picker v-if="scope.row.style.color !== undefined"  v-model="scope.row.style.color" size="mini"></el-color-picker>
+            </template>
+        </el-table-column>
+    </el-table>
+</div>

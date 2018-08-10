@@ -1,0 +1,40 @@
+<el-row>
+    <el-row>
+        <el-col :span="4">
+            模块样式：
+        </el-col>
+        <el-col :span="18">
+            <el-row :gutter="5">
+                <el-col :span="2" v-for="c in config">
+                    <el-button :style="{'background-color':c}" circle :class="{'is-circle':true}"
+                               @click="changeColor(c)"></el-button>
+                </el-col>
+                <el-col :span="2">
+                    <el-color-picker v-model="bgStyle['background-color']" @change="changeColor"></el-color-picker>
+                </el-col>
+            </el-row>
+        </el-col>
+    </el-row>
+    <el-row style="height:400px;padding:20px 60px;">
+        <el-row style="height:150px;margin-top: 20px;">
+            <el-col :span="7" @click.native="model.type=0;$forceUpdate();" :style="{'border':model.type==0?'1px solid blue':'1px solid #ccc'}" style="margin-right:15px;height:150px;padding:50px 22px;">
+                <v-cart-item :model="temp1"></v-cart-item>
+            </el-col>
+            <el-col :span="7" @click.native="model.type=1;$forceUpdate();" :style="{'border':model.type==1?'1px solid blue':'1px solid #ccc'}" style="margin-right:15px;height:150px;padding:50px 22px;">
+                <v-cart-item :model="temp2"></v-cart-item>
+            </el-col>
+            <el-col :span="7" @click.native="model.type=2;$forceUpdate();" :style="{'border':model.type==2?'1px solid blue':'1px solid #ccc'}" style="height:150px;padding:50px 22px;">
+                <v-cart-item :model="temp3"></v-cart-item>
+            </el-col>
+        </el-row>
+        <el-row style="height:150px;margin-top: 30px;" >
+            <el-col :span="7" @click.native="model.type=3;$forceUpdate();" :style="{'border':model.type==3?'1px solid blue':'1px solid #ccc'}" style="margin-right:15px;height:150px;padding:50px 22px;">
+                <v-cart-item :model="temp4"></v-cart-item>
+            </el-col>
+            <el-col :span="7" @click.native="model.type = 4;$forceUpdate();" :style="{'border':model.type==4?'1px solid blue':'1px solid #ccc'}" style="height:150px;padding:50px 22px;">
+                <v-cart-item :model="temp5"></v-cart-item>
+            </el-col>
+        </el-row>
+    </el-row>
+
+</el-row>

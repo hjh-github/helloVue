@@ -1,0 +1,69 @@
+<cptborder :model="model" :setting="settingConfig" :editing="editingConfig">
+    <div class="imageAndTextCpt" style="word-wrap:break-word;width:100%;">
+        <div v-if="model.type==0||model.type === 7">
+            <div v-html="content" class="editable article-content"></div>
+        </div>
+
+        <div v-if="model.type==1||model.type === 8">
+            <div style="margin:0 auto;" :style="imgContainerStyle">
+                <v-href :model="model.image">
+                    <img :title="model.image.desc" class="editable" align="left" :src="model.image.src" :style="imgContainerStyle" style="display: block;margin: 0 auto;"
+                    />
+                </v-href>
+            </div>
+            <div v-html="content" class="editable article-content" style="width:100%;">
+            </div>
+        </div>
+        <div v-if="model.type==2||model.type === 9">
+            <div class="clearfix">
+                <div style="float:left;" :style="{'margin-right':imageMargin}">
+                    <v-href :model="model.image">
+                        <img :title="model.image.desc" class="editable" align="left" :src="model.image.src" :style="imgContainerStyle" />
+                    </v-href>
+                </div>
+                <div v-html="content" style="overflow:hidden;" class="editable article-content">
+                </div>
+            </div>
+        </div>
+
+        <div v-if="model.type==3||model.type === 10">
+            <div style="float:left;" :style="{'margin-right':imageMargin}">
+                <v-href :model="model.image">
+                    <img :title="model.image.desc" align="left" hspace="35" vspace="35" :src="model.image.src" :style="model.image.style" />
+                </v-href>
+            </div>
+            <div v-html="model.content" class="editable article-content">
+            </div>
+        </div>
+        <div v-if="model.type==4||model.type === 11">
+            <div class="clearfix">
+                <div v-html="content" style="float:left;" :style="{width:'calc(100% - '+imageMargin+' - '+model.image.style.width+')',}" class="editable article-content">
+                </div>
+                <div style="float:left;" :style="{width:model.image.style.width,height:model.image.style.height,'margin-left':imageMargin}">
+                    <v-href :model="model.image">
+                        <img :title="model.image.desc" class="editable" align="left" :src="model.image.src" :style="imgContainerStyle" />
+                    </v-href>
+                </div>
+
+            </div>
+        </div>
+
+        <div v-if="model.type==5||model.type === 12">
+
+            <img :title="model.image.desc" class="editable" align="right" :src="model.image.src" hspace="15" vspace="15" :style="type5Style"
+            />
+            <div v-html="content" class="editable article-content">
+            </div>
+        </div>
+
+        <div v-if="model.type==6||model.type === 13">
+            <div v-html="content" class="editable article-content" style="width:100%;">
+            </div>
+            <div style="margin:0 auto;" :style="imgContainerStyle">
+                <v-href :model="model.image">
+                    <img :title="model.image.desc" class="editable" align="left" :src="model.image.src" :style="imgContainerStyle" />
+                </v-href>
+            </div>
+        </div>
+    </div>
+</cptborder>

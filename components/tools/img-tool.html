@@ -1,0 +1,14 @@
+<div>
+    <button class="textEdit-set  modulset mgl0 set-btn fl" type="button" @click="edit">上传图片
+    </button>
+    <button class="textstyle-set modulset set-btn fl" @click="settin" type="button"></button>
+    <button class="textcengji-set modulset set-btn mgl0 fl" show-dialog="" @click="showToClass=!showToClass" type="button"></button>
+    <button class="set-link modulset set-btn fl" @click="link" type="button"></button>
+    <button class="module-del modulset set-btn mgl0 fl" type="button" @click="remove"></button>
+    <div class="classBox" v-show="showToClass" :class="model.toClass" style="z-index:200">
+        <button class="class-btn toMax" type="button" @click="toClassMax"></button>
+        <button class="class-btn toMin" type="button" @click="toClassMin"></button>
+        <button class="class-btn toAdd" type="button" @click="toClassAdd"></button>
+        <button class="class-btn toMinus" type="button" @click="toClassMinus"></button>
+    </div>
+</div>

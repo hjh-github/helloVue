@@ -1,0 +1,49 @@
+<div ref="bgContainer" class="banner-container positionR" :class="{editBb:isEdit}" :style="{'height':carHeight}">
+    <!-- 新增显示组件高度功能 -->
+    <empty v-if="isEdit && cpts.length == 0" :plus="plus" msg="添加横幅"></empty>
+    <el-carousel v-if="mod.type==0 ||mod.type==3 && cpts.length >0" trigger="click" :style="{'height':carHeight}" :autoplay="mod.carousel.autoplay"
+        :interval="mod.carousel.interval" :arrow="cpts.length == 0?'never':'hover'">
+        <el-carousel-item v-for="(item,i) in cpts" :key="item" :style="{'height':carHeight}">
+            <v-href :model='item.model'>
+                <v-group-container :container="$refs.bgContainer" :model="item.model" :setting="item.settingConfig" :height="mod.settingConfig.style.height"></v-group-container>
+            </v-href>
+        </el-carousel-item>
+    </el-carousel>
+    <!--数字指示器-->
+    <el-carousel v-if="mod.type==1 || mod.type==4 && cpts.length >0" trigger="click" :style="{'height':carHeight}" :autoplay="mod.carousel.autoplay"
+        :interval="mod.carousel.interval" :arrow="cpts.length == 0?'never':'hover'">
+        <el-carousel-item :label="i+1" v-for="(item,i) in cpts" :key="item" :style="{'height':carHeight}">
+            <v-href :model="item.model">
+                <v-group-container :container="$refs.bgContainer" :model="item.model" :setting="item.settingConfig" :height="mod.settingConfig.style.height"></v-group-container>
+            </v-href>
+        </el-carousel-item>
+    </el-carousel>
+
+    <!--图片指示器-->
+    <div class="type-02" v-if="(mod.type==2 || mod.type==5 )&& cpts.length >0">
+        <el-row :gutter="4">
+            <el-col :span="24">
+                <el-carousel trigger="click" indicator-position="none" ref="carousel2" :style="{'height':carHeight}" :autoplay="mod.carousel.autoplay"
+                    :interval="mod.carousel.interval" :arrow="cpts.length == 0?'never':'hover'">
+                    <el-carousel-item v-for="(item,i) in cpts" :key="item" :style="{'height':carHeight}">
+                        <v-href :model="item.model">
+                            <v-group-container :container="$refs.bgContainer" :model="item.model" :setting="item.settingConfig" :height="mod.settingConfig.style.height"></v-group-container>
+                        </v-href>
+                    </el-carousel-item>
+                </el-carousel>
+            </el-col>
+        </el-row>
+        <el-row type="flex" justify="center" align="middle" class="widget">
+            <el-col v-if="cpts.length>0" class="item-img" v-for="(im , i) in cpts">
+                <img :src="im.settingConfig.canvasStyle.src" @click="setImg(i)" style="width:100%;height:100%;" />
+            </el-col>
+        </el-row>
+
+
+    </div>
+
+    <div v-if="isEdit&&showBtns" class="clearfix group-set newSetBtns">
+        <button class="textEdit-set  mgl0 set-btn fl" @click="edit" type="button">编辑内容</button>
+        <!-- <button v-if="model['__componentType']" class="module-del fl set-btn" @click="remove" show-dialog="del_dialog" type="button"></button> -->
+    </div>
+</div>

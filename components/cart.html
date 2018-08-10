@@ -1,0 +1,55 @@
+<v-cptborder :model="model" :setting="settingConfig" :editing="editingConfig">
+    <div @mouseenter="mouseEnter" @mouseleave="mouseLeave">
+
+        <v-cart-item :model="model"></v-cart-item>
+
+        <div v-show="menuVisible" :style="menuStyle" style="position:fixed;width:15rem;background-color:white;border:1px solid #ccc;">
+            <template v-if="items.length==0">
+                <el-row style="height:4rem;padding:.5rem;text-align:center;font-size:.6rem;color:darkgray">
+                    <i class="iconfont icon-gouwuchekong" style="font-size:2rem;"></i>
+                    <span>购物车中还没有商品，赶紧选购吧</span>
+                </el-row>
+            </template>
+            <template v-else>
+
+                <el-row style="border-bottom: 1px solid #ccc;padding:.2rem .1rem">
+                    最新加入商品
+                </el-row>
+                <el-row v-loading="loading" style="padding:.2rem .2rem">
+                    <el-row v-for="item in items" :gutter="2" style="height:3rem;margin-bottom:0.2rem;">
+                        <el-col :span="5" style="height:1.5rem;">
+                            <img style="border:1px solid #ccc;width: 100%;display: inline-block"
+                                 :src="item.image">
+                        </el-col>
+                        <el-col :span="14" style="height:1.5rem;padding:.2rem .2rem;">
+                            <el-row style="display: grid;">{{item['name']}}</el-row>
+                            <el-row style="display: grid;">{{item['summary']}}</el-row>
+                        </el-col>
+                        <el-col :span="5" style="height:100%;display: grid;text-align: center">
+                            <div style="position:relative;color:#606060;margin-top:50%;transform: translateY(-50%);">
+                                ￥{{item['price']}}
+                            </div>
+                        </el-col>
+                    </el-row>
+                </el-row>
+                <el-row style="background: #EEEEEE;border-top: 1px solid #ccc;height:2.4rem;">
+                    <el-row style="position: relative;height:1rem;">
+                        <div style="position: absolute;right:0.2rem;width:60%;">
+
+                            <div :span="14" style="float:right;color:lightseagreen;">
+                                <span style="font-size:0.4rem;line-height:1.2rem;">总计金额：</span><span
+                                    style="color:red;font-size:0.6rem;">￥{{totalPrice}}</span>
+                            </div>
+                            <div style="float:right;color:lightseagreen;margin-right:.2rem;font-size:0.4rem;line-height:1.2rem;">
+                                共<span style="color:red">{{items.length}}</span>种商品
+                            </div>
+                        </div>
+                    </el-row>
+                    <el-row style="position:relative;height:0.4rem;">
+                        <el-button size="small" type="danger" style="position:absolute;right:.6rem;">去购物车</el-button>
+                    </el-row>
+                </el-row>
+            </template>
+        </div>
+    </div>
+</v-cptborder>

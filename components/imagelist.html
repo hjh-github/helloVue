@@ -1,0 +1,84 @@
+<v-cptborder :model="model" :setting="settingConfig" :editing="editingConfig">
+    <div>
+        <!--多列排布-->
+        <div class="multiseriate" v-if="model.type==0">
+            <div class="clearfix">
+                <div v-for="(im,i) in model.images" v-if="paging(i)" :style="imageContainerStyle"
+                     style="float:left;margin-bottom:20px;">
+                    <!--<img :src="im.src" :style="model.imageStyle" @click="clickImg(im,i)"/>-->
+                    <himg :addon="model.addon" :link="getLink(im)" :src="im" :style="model.imageStyle"
+                          @click.native="clickImg(im,i)" :desc="im.desc" :hoverEffect="model.hoverEffect"></himg>
+                    <div class="img-descr-outer">
+                        <p class="imglist-img-descr" style="line-height: 1.5;text-align:center;" v-if="showDesc">
+                            {{im.desc}}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="imagelist-single-row-pagination-outer" v-if="model.showPage">
+                <el-pagination class="imagelist-single-row-pagination" small layout="prev, pager, next"
+                               :page-size="model.capacity" :total="model.images.length"
+                               @current-change="e=>{currentPage=e-1;}">
+                </el-pagination>
+            </div>
+        </div>
+
+        <!--单列排布-->
+        <div class="imagelist-carousel-outrer" v-if="model.type==1">
+            <el-carousel :interval="5000" arrow="always" :indicator-position="carouselPosition">
+                <el-carousel-item v-for="i in length" :key="i" :label="i" class="clearfix">
+                    <div v-for="(image,n) in model.images" style="float:left;" :style="imageContainerStyle"
+                         v-if="p(i,n)">
+                        <!--<img @click="clickImg(image,i*model.capacity+n)" :style="model.imageStyle" :src="image.src"-->
+                        <!--:title="image.desc" :alt="image.desc"/>-->
+                        <himg :addon="model.addon" :link="getLink(image)" :src="image" :style="model.imageStyle"
+                              @click.native="clickImg(image,i*model.capacity+n)"
+                              :desc="image.desc" :hoverEffect="model.hoverEffect"></himg>
+                        <p style="line-height: 1.5;text-align:center;" v-if="showDesc">{{image.desc}}</p>
+                    </div>
+                </el-carousel-item>
+            </el-carousel>
+        </div>
+        <!--滚动排列-->
+        <div class="imagelist-carousel-outrer"
+             v-if="model.type==2||model.type==3"
+             style="position: relative">
+            <ul class="clearfix" :style="imgbox" ref="imgbox">
+                <li style="float: left" :style="imageContainerStyle" v-for="(image,i) in model.images" :key="i">
+                    <himg :addon="model.addon" :link="getLink(image)" :src="image" :style="model.imageStyle"
+                          @click.native="clickImg(image,i*model.capacity+i)"
+                          :desc="image.desc" :hoverEffect="model.hoverEffect"></himg>
+                    <p style="line-height: 1.5;text-align:center;" v-if="showDesc">{{image.desc}}</p>
+                </li>
+                <li style="float: left" :style="imageContainerStyle" v-for="(image,i) in model.images" :key="i">
+                    <himg :addon="model.addon" :link="getLink(image)" :src="image" :style="model.imageStyle"
+                          @click.native="clickImg(image,i*model.capacity+i)"
+                          :desc="image.desc" :hoverEffect="model.hoverEffect"></himg>
+                    <p style="line-height: 1.5;text-align:center;" v-if="showDesc">{{image.desc}}</p>
+                </li>
+            </ul>
+        </div>
+        <!--微站部分-->
+        <div class="imagelist-carousel-outrer"
+             :class="model.type ===4 ? 'mobile-imglist' : ''"
+             v-if="model.type === 4">
+            <el-carousel :interval="5000" arrow="always">
+                <el-carousel-item v-for="i in length" :key="i" :label="i" class="clearfix">
+                    <div v-for="(image,n) in model.images" style="float:left;" :style="model.imageContainerStyle"
+                         v-if="p(i,n)">
+                        <himg :addon="model.addon" :link="getLink(image)" :src="image" :style="model.imageStyle"
+                              @click.native="clickImg(image,n)"
+                              :desc="image.desc" :hoverEffect="model.hoverEffect"></himg>
+                        <p style="line-height: 1.5;text-align:center;" v-if="showDesc">{{image.desc}}</p>
+                    </div>
+                </el-carousel-item>
+                <div class="imagelist-single-row-pagination-outer" v-if="model.showPage">
+                    <el-pagination class="imagelist-single-row-pagination" small layout="prev, pager, next"
+                                   :page-size="model.capacity" :total="model.images.length"
+                                   @current-change="e=>{currentPage=e-1;}">
+                    </el-pagination>
+                </div>
+            </el-carousel>
+        </div>
+    </div>
+
+</v-cptborder>

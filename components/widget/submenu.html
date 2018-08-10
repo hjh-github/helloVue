@@ -1,0 +1,14 @@
+<div @mouseenter.prevent="hover=true" @mouseleave.prevent="hover=false">
+    <div style="position:relative;width:6rem;padding-right:.5rem;padding-left:.5rem;" :style="menuStyle">
+        <div style="position:relative;top:50%;transform:translateY(-50%);">
+            <slot name="title"></slot>
+            <i v-if="hasChild&&model.type!=3" style="float:right;right:.5rem"
+               :class="{'el-icon-arrow-right':hover,'el-icon-arrow-down':!hover}"></i>
+        </div>
+    </div>
+    <div v-if="hasChild" v-show="hover" style="position: absolute;left:6rem;" :style="submenuStyle">
+        <slot>
+
+        </slot>
+    </div>
+</div>

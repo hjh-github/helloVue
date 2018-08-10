@@ -1,0 +1,21 @@
+<!-- 样式列表 -->
+<div class="layout clearfix">
+    <!-- <span style="height:auto;">
+        <span class="imgLists positionR layout-img layout-container" @click="model[key]=i"  >
+            <img :src="./images/components/mnStyle.png" style="width:100%;height:100%;" class="img-el">
+            <i class="checkin positionA" v-if="i==model[key]"></i>
+        </span>
+        <span class="imgLists positionR layout-img layout-container" @click="model[key]=i"  >
+            <img :src="./images/components/mnStyle-1.png" style="width:100%;height:100%;"  class="img-el">
+            <i class="checkin positionA" v-if="i==model[key]"></i>
+        </span>
+    </span> -->
+  <div class="mnStyle imgLists positionR layout-container" @click="model.type=0">
+    <img src="./images/components/mnStyle.png" alt="">
+    <i class="checkin positionA" v-if="model[key]==0"></i>
+  </div>
+  <div class="mnStyle imgLists positionR layout-container" style="margin-left:20px" @click="model.type=1">
+    <img src="./images/components/mnStyle-1.png" alt="">
+    <i class="checkin positionA" v-if="model[key]==1"></i>
+  </div>
+</div>

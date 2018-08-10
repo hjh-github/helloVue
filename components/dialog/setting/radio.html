@@ -1,0 +1,7 @@
+<!-- 名称： radio ... -->
+<div style="margin-top: 10px;margin-bottom: 10px;">
+    <span>{{config.text}}：</span>
+    <el-radio-group v-model="model[key]">
+        <el-radio v-for="option in config.options" :label="option.label">{{option.text}}</el-radio>
+    </el-radio-group>
+</div>

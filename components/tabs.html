@@ -1,0 +1,55 @@
+<v-cptborder :model="model" :editing="editingConfig" :setting="settingConfig">
+    <!--标签页组件-->
+    <div style="position: relative;width: 100%;overflow:hidden;height:100%">
+        <div style="position:relative;left:0;top:0;width:100%;overflow:hidden;"
+             :style="barStyle" v-if="model.type==0">
+            <div style="position:relative;width:100%;height:auto;zoom:1;overflow:hidden;top:50%;transform: translateY(-50%);text-align: center;">
+                <div v-for="(item, index) in model.tabs"
+                     style="position:relative;box-sizing: border-box;margin-top:10px;float:left;cursor:pointer"
+                     :style="tabStyle(item.name)" @click="setSelection(item)"
+                     @mouseover="hover" @mouseout="out" class="tabsHover">
+                    <div
+                            style="position:absolute;text-align: center;width:100%;height:100%;" :style="{'line-height':model.tabStyle.height+'px'}">
+                        {{item.title}}
+                    </div>
+                    <!--<i class="el-icon-close" v-if="!app.isPreview" @click="removeTab(item)"-->
+                    <!--style="position:absolute;top:50%;transform: translateY(-50%);border-radius:8px;top:4px;right:4px;border:1px solid red;color:red;"></i>-->
+                </div>
+            </div>
+            <i class="el-icon-plus" :class="{mobileTabs:app.channel==2}" v-if="!app.isPreview&&app.channel==2" @click="addTab()" style="position:absolute;top:50%;transform: translateY(-50%);right:40px;border:1px solid #ccc"></i>
+            <i class="el-icon-plus" v-if="!app.isPreview&&app.channel==1" @click="addTab()"
+               style="cursor:pointer;position:absolute;top:50%;transform: translateY(-50%);right:20px;border:1px solid #ccc;width: 100px;height: 40px;line-height: 40px;text-align: center;">添加标签</i>
+        </div>
+
+        <div style="position:absolute;left:0;top:0;width:180px;overflow:hidden;z-index:99"
+             :style="barStyle" v-if="model.type==1">
+            <div style="position:absolute;width:100%;height:100%;zoom:1;overflow:hidden;text-align: center;">
+                <div v-for="(item, index) in model.tabs"
+                     style="position:relative;box-sizing: border-box;float:left;cursor:pointer"
+                     :style="tabStyle(item.name)" @click="setSelection(item);" @mouseover="hover" @mouseout="out" class="tabsHover">
+                    <div
+                            style="position:absolute;text-align: center;width:180px;height:100%;line-height: 80px">
+                        {{item.title}}
+                    </div>
+                    <!--<i class="el-icon-close" v-if="!app.isPreview" @click="removeTab(item)"-->
+                    <!--style="position:absolute;top:50%;transform: translateY(-50%);border-radius:8px;top:4px;right:4px;border:1px solid red;color:red;"></i>-->
+                </div>
+            </div>
+            <i class="el-icon-plus" :class="{mobileTabs:app.channel==2}"
+               v-if="!app.isPreview" @click="addTab()"
+               style="position:absolute;bottom:0px;border:1px solid #ccc;width: 180px;text-align: center;height:40px;line-height:40px;cursor:pointer;background: #f2f2f2">添加标签</i>
+        </div>
+
+        <el-row style="height:100%" v-if="activePanel == item.name"
+                v-for="(item, index) in model.tabs"
+                :style="{'margin-left':groupL}">
+            <v-group-container :afterDrop="dropped" :canEdit="false"
+                               :model="item.group.model"
+                               :setting="item.group.settingConfig"
+                               style="height:100%"
+                               :height="groupH"
+                               :filter="filter"></v-group-container>
+        </el-row>
+
+    </div>
+</v-cptborder>

@@ -1,0 +1,13 @@
+<div class="footer" :style="{'background-color':model['background-color']}" @click="showBtns=true" @mouseleave="showBtns=false">
+    <ul class="mobileFooter">
+        <li class="mobileFooter" v-for="(option,ex) in model.navList" v-if="option.isShow">
+            <v-href :model="option">
+                <i :style="{'background-image':'url('+option.imgSrc+')'}"></i>
+                <span class="phoneTxt" :style="{color:model['color']}">{{option.name}}</span>
+            </v-href>
+        </li>
+    </ul>
+    <div v-if="showBtns&&!app.isPreview" class="clearfix group-set newSetBtns" style="z-index:100">
+        <button class="textEdit-set  mgl0 set-btn fl" @click="editNav"  type="button">编辑底部</button>
+    </div>
+</div>

@@ -1,0 +1,65 @@
+<div>
+    <addlink :model="model" :callback="getLink"></addlink>
+    <div class="btn-edit">
+        <el-row class="radio-type">
+            <el-col :span="2" class="alignR">
+                {{config.name}}
+            </el-col>
+            <el-col :span="6" class="marleft10">
+                <el-radio class="radio-btn" v-for="item in config.radio" v-model="config.selected" :label="item.value">{{item.name}}</el-radio>
+            </el-col>
+        </el-row>
+        <div class="button-type">
+            <em v-show="config.selected == '0'">
+                <el-row>
+                    <el-col :span="2" class="marleft10">
+                        {{config.text}}
+                    </el-col>
+                    <ul class="button-style">
+                        <li v-for="(c,index) in config.cellList" :value="c.value" @click="config.current_1=index;model.btnStatus = c.value" :class="{'cur':config.current_1 == index}">
+                            <img :src="c.imgSrc" alt="">
+                        </li>
+                    </ul>
+                </el-row>
+                <div class="button-color">
+                    <span class="button-title displayI alignR span-width">{{config.colorSize}}</span>
+                    <ul class="button-color-type">
+                        <li v-for="(c,index) in config.colorList" :class="{'cur':index==config.current_2}" @click="config.current_2=index;model.btnBg = c.color;"
+                            :style="{background:c.color}"></li>
+                        <li>
+                            <el-color-picker size="small" @change="config.current_2='-1';model.btnBg = config.color1" v-model="config.color1"></el-color-picker>
+                        </li>
+                        <i class="choose_color">选择颜色</i>
+                    </ul>
+                </div>
+            </em>
+            <em v-show="config.selected == '1'">
+                <ul class="btn-custom">
+                    <!--<li class="btn-custom-type">-->
+                        <!--<span class="button-title">颜色：</span>-->
+                        <!--<i class="color-choose">-->
+                            <!--<el-color-picker size="small" @change="config.current_2='-1';model.btnBg = config.color1" v-model="config.color1"></el-color-picker>-->
+                        <!--</i>&nbsp;&nbsp;-->
+                        <!--<input class="btn-custom-txt" type="text" :value="model.btnBg">-->
+                    <!--</li>-->
+                    <li class="clearfix">
+                        <span class="button-title">图片：</span>
+                        <div v-if="model[key].src ==''" class="def-img" @click="selectImage">
+                            <i class="el-icon-plus"></i>
+                            <p>添加图片</p>
+                            {{model[key].src}}
+                        </div>
+                        <div v-if="model[key].src !=''" class="addBtnBg positionR" @click="selectImage" v-loading="loading" :style="{'background-color':model.btnBg,'background-image':'url('+model[key].src+')','background-repeat':model[key].repeat,'background-size':model[key].size,'background-position':model[key].position}">
+                            <div class="changeBg positionA" @click="selectImage">替换</div>
+                            <i class="delBg positionA el-icon-close" @click="delImg"></i>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="button-title">显示方式：</span>
+                        <el-radio class="radio-btn" v-for="item in config.showList" @change="choose" v-model="config.showStyle" :label="item.value">{{item.name}}</el-radio>
+                    </li>
+                </ul>
+            </em>
+        </div>
+    </div>
+</div>

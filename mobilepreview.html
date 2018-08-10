@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,user-scalable=no" />
+    <title>-</title>
+    <link rel="icon" href="images/icons/canglu.png">
+    <link rel="stylesheet" href="css/dependence/swiper.min.css">
+    <link rel="stylesheet" href="css/public/public.css" />
+    <link rel="stylesheet" href="css/setDialog.css" />
+    <link rel="stylesheet" href="css/common.css" />
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/dependence/animate.css">
+    <link href="https://cdn.bootcss.com/jqueryui/1.12.1/jquery-ui.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/dependence/colpick.css">
+    <link rel="stylesheet" href="css/sliderButton.css" />
+    <!--navi-->
+    <!--<link rel="stylesheet" type="text/css" href="https://cdn.bootcss.com/bootstrap/4.0.0/css/bootstrap.min.css">-->
+    <!--<link rel="stylesheet" type="text/css" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css">-->
+    <!--<link rel="stylesheet" type="text/css" href="css/bootsnav.css">-->
+
+    <!-- 引入样式 -->
+    <link href="https://cdn.bootcss.com/element-ui/2.2.2/theme-chalk/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/cpt.css">
+
+    <!--<script src="js/dependence/vue.min.js"></script>-->
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+
+    <!-- 引入组件库 -->
+    <script src="js/lib/element.js"></script>
+    <script src="js/dependence/jquery-1.11.1.min.js"></script>
+    <script src="https://cdn.bootcss.com/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script src="js/workspace/swiper.min.js	"></script>
+    <script src="js/dependence/jquery.form.js"></script>
+    <script src="js/dependence/colpick.js"></script>
+    <script src="js/dependence/jquery.SuperSlide.3.0.alpha.js"></script>
+    <!-- <script src="js/common/common.js"></script> -->
+    <link href="https://cdn.bootcss.com/video.js/6.7.4/video-js.min.css" rel="stylesheet">
+    <script src="https://cdn.bootcss.com/video.js/6.7.4/video.min.js"></script>
+    <script src="https://cdn.bootcss.com/video.js/6.7.4/lang/zh-CN.js"></script>
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=DarF2LCCGzn6T16zgy8ZPkvYYE5CT6fu"></script>
+    <style>
+        .el-carousel__item h3 {
+            color: #475669;
+            font-size: 14px;
+            opacity: 0.75;
+            line-height: 150px;
+            margin: 0;
+        }
+
+        .el-carousel__item:nth-child(2n) {
+            background-color: #99a9bf;
+        }
+
+        .el-carousel__item:nth-child(2n+1) {
+            background-color: #d3dce6;
+        }
+    </style>
+</head>
+
+<body style="background-color:#f2f2f2">
+    <div id="app">
+        <!-- <v-loading></v-loading> loading加载动画 -->
+        <v-header :webcode="webcode"></v-header>
+        <div v-if="!isPreview">
+            <v-modulelist :thisModule="thisModule" :moduleList="moduleList" :addModuleListIndex="addModuleListIndex" :icon-name="iconName"
+                :moduleCategoryList="moduleCategoryList"></v-modulelist>
+            <v-tpl :icon-name="iconName" :has-sysWeb="hasSysWeb" :tpl-top-level-arr="tplTopLevelArr" :webcode="webcode" :tpl-theme-color-arr="tplThemeColorArr"></v-tpl>
+            <v-my-tpl :icon-name="iconName" :has-sysWeb="hasSysWeb" :tpl-top-level-arr="tplTopLevelArr" :webcode="webcode" :tpl-theme-color-arr="tplThemeColorArr"></v-my-tpl>
+
+        </div>
+        <div>
+            <div class="positionR edit-frist-child mobileContent">
+                <v-lantern></v-lantern>
+                <div class="editContent_m" style="overflow: hidden;position: relative" :style="overflow">
+                    <v-page-navi-mobile class="mobileHead" :model="groupContainer.navigation" :setting="groupContainer.navContainer.settingConfig" style="position: fixed" v-if="!app.isInfoPage"></v-page-navi-mobile>
+                    <v-edit-container class="scroll-bar mobileEditContent" :model="groupContainer.body.model" :style="infoPage"></v-edit-container>
+                    <v-mobile-footer class="mobileFoot" :model="groupContainer.bottom.settingConfig.canvasStyle" style="position: fixed;z-index: 2" v-if="!app.isInfoPage"></v-mobile-footer>
+                </div>
+            </div>
+        </div>
+
+
+        <div id="tempdialog" style="z-index:4"></div>
+        <div id="tempdialog1" style="z-index:5"></div>
+        <div id="tempdialog2" style="z-index:6"></div>
+        <v-lantern></v-lantern>
+    </div>
+    <script src="js/workspace/utils.js"></script>
+    <script data-main="js/main" src="https://cdn.bootcss.com/require.js/2.3.5/require.min.js"></script>
+    <!-- 配置文件 -->
+    <script type="text/javascript" src="./ueditor/ueditor.config.js"></script>
+    <!-- 编辑器源码文件 -->
+    <script type="text/javascript" src="./ueditor/ueditor.all.js"></script>
+</body>
+
+</html>

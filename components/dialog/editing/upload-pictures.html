@@ -1,0 +1,14 @@
+<div class="clearfix">
+	<div class="explain clearfix">
+	    <span class="float-l">你可以上传大小在2MB以内，格式jpg,gif,或者png的图片文件</span>
+	    <span class="float-r">
+			<button type="button" class="burleBtn clearfix" >
+				<div class="upimgBox" v-loading="loading" element-loading-spinner="el-icon-loading">
+					<img src="asset/icon_shangc.png" alt="">
+					<span>上传图片</span>
+				</div>
+				<input ref='file' class ="upimgMore" name="imageFile"  @change="upImg"  type="file">
+			</button>
+	    </span>
+	</div>
+</div>	

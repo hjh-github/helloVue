@@ -1,0 +1,4 @@
+<v-cptborder :model="model" :setting="settingConfig" :editing="editingConfig">
+    <bmap :model="model"></bmap>
+    <div v-if="model.showDesc" v-html="model.desc" style="width:100%"></div>
+</v-cptborder>

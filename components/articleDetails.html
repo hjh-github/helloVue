@@ -1,0 +1,38 @@
+<v-cptborder :model="model" :setting="settingConfig" :editing="editingConfig">
+
+    <div class="articleDetailsInfo">
+        <div class="title" v-text="article.name"></div>
+        <div class="articleInfo">
+            <span v-show="model.parameter.indexOf('0')>=0" v-text="article.createTime"></span>
+            <!--<span v-show="model.parameter.indexOf('1')>=0">作者：大白</span>
+            <span v-show="model.parameter.indexOf('3')>=0">来源：新华网</span>
+            <span v-show="model.parameter.indexOf('4')>=0">网址：http://www.wwww.com</span>-->
+        </div>
+        <div class="articleContent">
+            <div v-if="model.type=='0' || model.type=='4'" class="img article-sty-1" :style="{'background-image':'url('+article.image+')','background-repeat':'no-repeat','backgroung-size':'cover'}"></div>
+            <div v-else-if="model.type=='1' || model.type=='5'" class="img article-sty-2" :style="{'background-image':'url('+article.image+')','background-repeat':'no-repeat','backgroung-size':'cover'}"></div>
+            <div v-else-if="model.type=='2' || model.type=='6'" class="img article-sty-3" :style="{'background-image':'url('+article.image+')','background-repeat':'no-repeat','backgroung-size':'cover'}"></div>
+            <div v-else-if="model.type=='3' || model.type=='7'" class="img article-sty-4" :style="{'background-image':'url('+article.image+')','background-repeat':'no-repeat','backgroung-size':'cover'}"></div>
+            <div class="articleInfo-s" v-html="article.description"></div>
+        </div>
+        <div class="articleMore">
+            <div v-show="model.parameter.indexOf('5')>=0">
+                <div class="prevAr" v-if="prevInfo!=null" @click="showDetail(prevInfo.id)">上一篇：{{prevInfo.name}}</div>
+                <div class="nextAr" v-if="nextInfo!=null" @click="showDetail(nextInfo.id)">下一篇：{{nextInfo.name}}</div>
+            </div>
+            <div class="shareAr" v-show="model.share">
+                <i>分享到：</i>
+                <div class="share-icon">
+                    <ul>
+                        <li><a><img src="images/components/pro_share_1.png" alt=""></a></li>
+                        <li><a><img src="images/components/pro_share_2.png" alt=""></a></li>
+                        <li><a><img src="images/components/pro_share_3.png" alt=""></a></li>
+                        <li><a><img src="images/components/pro_share_4.png" alt=""></a></li>
+                        <li><a><img src="images/components/pro_share_5.png" alt=""></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</v-cptborder>

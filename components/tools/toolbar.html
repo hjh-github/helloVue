@@ -1,0 +1,21 @@
+<div style="width:200px; height:35px; transform:translateY(-110%); position: absolute; z-index: 1;"
+    :style="pos">
+    <div v-if="canEdit" class="clearfix modelSet newSetBtns">
+        <div v-show="editing!=null">
+            <button v-if="toolType == 'add-picture'" class="textEdit-set  modulset mgl0 set-btn fl"  type="button" @click="upimg">上传图片
+            </button>
+            <button v-else class="textEdit-set  modulset mgl0 set-btn fl"  type="button" @click="edit">编辑内容</button>
+            <button v-show="showSetting" class="copy-set modulset set-btn fl" type="button" @click="copy"></button>
+            <button v-show="showSetting" class="textstyle-set modulset set-btn fl" show-dialog="textSet-dialog" @click="settin" type="button"></button>
+            <button class="textcengji-set modulset set-btn mgl0 fl" show-dialog="" @click="showToClass=!showToClass" type="button"></button>
+            <button v-if="hasLink" class="set-link modulset set-btn fl" @click="link" type="button"></button>
+            <button class="module-del modulset set-btn fl" v-if="model.removeShow!=false" show-dialog="del_dialog" @click="remove" type="button"></button>
+            <div class="classBox" :class="c" v-show="showToClass" style="z-index:200">
+                <button class="class-btn toMax" type="button" @click="toClassMax"></button>
+                <button class="class-btn toMin" type="button" @click="toClassMin"></button>
+                <button class="class-btn toAdd" type="button" @click="toClassAdd"></button>
+                <button class="class-btn toMinus" type="button" @click="toClassMinus"></button>
+            </div>
+        </div>
+    </div>
+</div>

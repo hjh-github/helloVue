@@ -1,0 +1,11 @@
+<div>
+    <span>分类列表</span>
+    <div style="border: 1px solid #ccc;height:300px;overflow-y:auto;">
+        <el-tree ref="tree"
+                 show-checkbox
+                 :default-checked-keys="model[key]"
+                 :expand-on-click-node="false" :data="cates" node-key="id" :props="defaultProps"
+                 @check-change="handleCheckChange">
+        </el-tree>
+    </div>
+</div>

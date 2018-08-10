@@ -1,0 +1,20 @@
+<div style="width:200px; height:35px; transform:translateY(-110%); position: absolute; z-index: 1;"
+    :style="pos">
+    <div v-if="canEdit" class="clearfix modelSet newSetBtns">
+        <ftool v-if="editing" :model="model" :save="tosave"></ftool>
+        <div v-else>
+            <button class="textEdit-set  modulset mgl0 set-btn fl" type="button" @click="editin">编辑内容
+            </button>
+            <button class="textstyle-set modulset set-btn fl" @click="settin" type="button"></button>
+            <button class="textcengji-set modulset set-btn mgl0 fl" show-dialog="" @click="showToClass=true" type="button"></button>
+            <button class="set-link modulset set-btn fl" @click="link" type="button"></button>
+            <button class="module-del modulset set-btn mgl0 fl" type="button" @click="remove"></button>
+            <div class="classBox" v-show="showToClass" :class="model.toClass" style="z-index:200">
+                <button class="class-btn toMax" type="button" @click="toClassMax"></button>
+                <button class="class-btn toMin" type="button" @click="toClassMin"></button>
+                <button class="class-btn toAdd" type="button" @click="toClassAdd"></button>
+                <button class="class-btn toMinus" type="button" @click="toClassMinus"></button>
+            </div>
+        </div>
+    </div>
+</div>

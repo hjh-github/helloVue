@@ -1,0 +1,28 @@
+<div ref="bgContainer" class="topContainer" :style="canvasStyle" style="z-index:999;position: absolute;"
+     :class="{editBb : canEdit}">
+    <div class="groupContainer effectiveArea" :class="{editBlr : canEdit}" :style="areaStyle">
+        <div ref="container" class="fleeDrop dragContainer" :style="containerStyle">
+            <!--<v-navigation :model="model" :pages="pages"-->
+                          <!--v-if="model.navShow"></v-navigation>-->
+            <v-nav  :model="model" :pages="pages"></v-nav>
+        </div>
+        <div ref="dialog"></div>
+    </div>
+    <div v-if="canEdit" v-show="showBtns" class="clearfix group-set newSetBtns" style="z-index:100">
+        <button class="textEdit-set  mgl0 set-btn fl" @click="edit" type="button">编辑内容</button>
+        <button class="textEdit-set  mgl0 set-btn fl" @click="editNav" type="button">编辑导航</button>
+        </button>
+    </div>
+</div>
+<!-- <div v-if="isEdit" class="clearfix modelSet newSetBtns" :class="toolP">
+    <div v-show="editing!=null&&!editing.customToolbar && showBtns">
+        <button class="textEdit-set  modulset mgl0 set-btn fl" show-dialog="map" type="button" @click="edit">编辑内容
+        </button>
+        <button class="textstyle-set modulset set-btn fl" show-dialog="textSet-dialog" @click="settin" type="button"></button>
+        <button class="textcengji-set modulset set-btn mgl0 fl" show-dialog="" @click="showToClass=true" type="button"></button>
+        <button class="module-del modulset set-btn fl" show-dialog="del_dialog" @click="remove" type="button"></button>
+    </div>
+    <div v-show="editing!=null&&editing.customToolbar">
+        <slot name="toolbar"></slot>
+    </div>
+</div> -->

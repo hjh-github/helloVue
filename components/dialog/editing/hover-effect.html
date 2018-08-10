@@ -1,0 +1,157 @@
+<div>
+    <el-row>
+        <pickrect :config="config" :model="model" :store="key"></pickrect>
+    </el-row>
+    <el-row style="padding:1rem 2rem;" v-if="model.addon.textColor">
+        <!--边框效果-->
+        <div v-if="model[key]==1">
+            <el-row class="background-item mar-bot">
+                <span class="subtitle displayI">边框&nbsp;:</span>
+                <el-radio-group v-model="model.addon.defBorder">
+                    <el-radio :label="true" @change="$forceUpdate()">默认</el-radio>
+                    <el-radio :label="false" @change="$forceUpdate()">自定义</el-radio>
+                </el-radio-group>
+            </el-row>
+            <el-row v-if="!model.addon.defBorder">
+                <el-row style="margin-top:.4rem">
+                    <el-col :span="2">颜色&nbsp;:</el-col>
+                    <el-col :span="4">
+                        <el-color-picker v-model="model.addon.borderStyle['border-color']"
+                                         @active-change="colorChanged(model.addon.borderStyle,'border-color')"></el-color-picker>
+                    </el-col>
+                </el-row>
+                <el-row style="margin-top:.4rem">
+                    <el-col :span="2">宽度&nbsp;:</el-col>
+                    <el-col :span="4">
+                        <el-input type="text" size="mini" v-model="model.addon.borderStyle['border-width']"
+                        ></el-input>
+                    </el-col>
+                </el-row>
+                <el-row style="margin-top:.4rem">
+                    <el-col :span="2">样式&nbsp;:</el-col>
+                    <el-col :span="12">
+                        <div style="width:2rem;border:1px dashed;padding:.4rem .2rem;float:left;margin-right:1rem;"
+                             :style="{'border-color':('solid'==model.addon.borderStyle['border-style'])?'red':'#ccc'}"
+                             @click="model.addon.borderStyle['border-style']='solid';$forceUpdate();">
+                            <div style="width:100%;height:2px;border:1px solid cornflowerblue"></div>
+                        </div>
+                        <div style="width:2rem;border:1px dashed;padding:.4rem .2rem;float:left;margin-right:1rem;"
+                             :style="{'border-color':('dotted'==model.addon.borderStyle['border-style'])?'red':'#ccc'}"
+                             @click="model.addon.borderStyle['border-style']='dotted';$forceUpdate();">
+                            <div style="width:100%;height:2px;border:1px dotted cornflowerblue"></div>
+                        </div>
+                        <div style="width:2rem;border:1px dashed;padding:.4rem .2rem;float:left;"
+                             :style="{'border-color':('dashed'==model.addon.borderStyle['border-style'])?'red':'#ccc'}"
+                             @click="model.addon.borderStyle['border-style']='dashed';$forceUpdate();">
+                            <div style="width:100%;height:2px;border:1px dashed cornflowerblue"></div>
+                        </div>
+                    </el-col>
+                </el-row>
+            </el-row>
+
+
+        </div>
+        <!--阴影效果-->
+        <div v-if="model[key]==5||model[key]==6">
+            <el-row>
+                <el-col :span="2">背景 :</el-col>
+                <el-col :span="8">
+                    <el-radio-group v-model="model.addon.defBg">
+                        <el-radio :label="true" @change="$forceUpdate()">默认</el-radio>
+                        <el-radio :label="false" @change="$forceUpdate()">自定义</el-radio>
+                    </el-radio-group>
+                </el-col>
+            </el-row>
+            <el-row style="border:1px solid #ccc; padding:.5rem .5rem;margin:.2rem .2rem" v-show="!model.addon.defBg">
+                <el-row>
+                    <el-col :span="2">颜色：</el-col>
+                    <el-col :span="4">
+                        <el-color-picker v-model="model.addon.bgColor"
+                                         @active-change="$forceUpdate();"></el-color-picker>
+                    </el-col>
+                </el-row>
+                <el-row >
+
+                    <el-col :span="2">透明度：</el-col>
+                    <el-col :span="8">
+                        <el-slider
+                                v-model="opacity"
+                                show-input
+                                :max="90"
+                                :min="5">
+                        </el-slider>
+                    </el-col>
+                </el-row>
+
+            </el-row>
+            <el-row>
+                <el-col :span="2">文字 :</el-col>
+                <el-col :span="8">
+                    <el-radio-group v-model="model.addon.defBgText">
+                        <el-radio :label="true" @change="$forceUpdate()">默认</el-radio>
+                        <el-radio :label="false" @change="$forceUpdate()">自定义</el-radio>
+                    </el-radio-group>
+                </el-col>
+            </el-row>
+            <el-row style="border:1px solid #ccc; padding:.5rem .5rem;margin:.2rem .2rem" v-show="!model.addon.defBgText">
+                <el-row>
+                    <el-col :span="2">颜色：</el-col>
+                    <el-col :span="4">
+                        <el-color-picker v-model="model.addon.textColor"
+                                         @active-change="$forceUpdate()"></el-color-picker>
+                    </el-col>
+                </el-row>
+                <el-row>
+                    <el-col :span="2">大小 :</el-col>
+                    <el-col :span="4">
+                        <el-input size="small" v-model="model.addon.fontSize"></el-input>
+                    </el-col>
+                </el-row>
+
+                <el-row>
+                    <el-col :span="2">对齐 :</el-col>
+                    <el-col :span="4">
+                        <el-select v-model="model.addon.textAlign">
+                            <el-option  label="左对齐" key="left" value="left"></el-option>
+                            <el-option  label="居中对齐" key="center" value="center"></el-option>
+                            <el-option  label="右对齐" key="right" value="right"></el-option>
+                        </el-select>
+                    </el-col>
+                </el-row>
+                <el-row  v-if="this.model.__componentType=='add-picture'">
+                    <el-col :span="3">图片介绍 :</el-col>
+                    <el-col :span="7">
+                        <el-input
+                                placeholder="请输入内容"
+                                v-model="model.imgInput"
+                                clearable>
+                        </el-input>
+                    </el-col>
+                </el-row>
+            </el-row>
+
+        </div>
+        <!--图片替换效果-->
+        <div v-if="model[key]==7">
+            <el-table :data="images" style="width:100%;border:1px solid dodgerblue;">
+                <el-table-column label="图片" width="250">
+                    <template slot-scope="scope">
+                        <img style="width:1.5rem;height:1.5rem;" :src="scope.row.src">
+                    </template>
+                </el-table-column>
+                <el-table-column label="悬浮图片" width="250">
+                    <template slot-scope="scope">
+                        <img style="width:1.5rem;height:1.5rem;" :src="hoverSrc(scope.row)">
+                    </template>
+                </el-table-column>
+                <el-table-column label="操作">
+                    <template slot-scope="scope">
+                        <el-button size="small"
+                                   class="el-icon-edit-outline" @click="handleEdit(scope,scope.$index, scope.row)">
+                        </el-button>
+                    </template>
+                </el-table-column>
+            </el-table>
+        </div>
+    </el-row>
+</div>

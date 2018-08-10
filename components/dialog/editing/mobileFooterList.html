@@ -1,0 +1,35 @@
+<!-- 客服列表 -->
+<div class="mobileFooterList">
+    <div class="addFooterList" @click="addList">添加导航</div>
+    <ul class="cs-list-head">
+        <li>标题</li>
+        <li>链接地址</li>
+        <li>图标</li>
+        <li>显示</li>
+        <li>排序</li>
+        <li>操作</li>
+    </ul>
+    <ul class="cs-list-body scroll-bar">
+        <li v-for="(option,ex) in model.navList">
+            <div class="cs-content">
+                <h3 v-text="option.name" @mouseenter="option.isUpdate = true" v-if="!option.isUpdate"></h3>
+                <input type="text" maxlength="6" :value="option.name" ref="footerListName" v-if="option.isUpdate" @mouseleave="option.isUpdate = false" @blur="updateText(ex)">
+            </div>
+            <h4><input type="button" class="mSetting-link-input" @click="openLinkDialog(option,ex)" value="设置链接"></h4>
+            <h4>
+                <img :src="option.imgSrc" v-loading="loading" @click="selectImage(ex)" style="width: 25px;height: 25px; margin: 12.5px auto;">
+            </h4>
+            <h4 class="cs-btn">
+                <i @click="showList(option.isShow,ex)" class="isshow" v-show="option.isShow"></i>
+                <i @click="showList(option.isShow,ex)" class="ishide" v-show="!option.isShow"></i>
+            </h4>
+            <h4 class="cs-btn">
+                <i class="down" @click="orderList(1,ex)" v-if="ex < model[key].length-1"></i>
+                <i class="top" @click="orderList(2,ex)" v-if="ex > 0"></i>
+            </h4>
+            <h4 class="cs-btn">
+                <i class="del" @click="del(ex)"></i>
+            </h4>
+        </li>
+    </ul>
+</div>

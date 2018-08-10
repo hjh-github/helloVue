@@ -1,0 +1,113 @@
+<v-cptborder :model="model" :setting="settingConfig" :editing="editingConfig">
+    <div class="proDetailsInfo" style="min-width:900px" v-if="app.channel == 1">
+        <div :class="sty" class="pro-image-show">
+            <div class="big-img" v-if="bgImg" :style="{'background-image':'url('+bgImg+')','background-position':'center','background-repeat':'no-repeat','background-size':'cover',}"></div>
+            <div class="big-img" v-else :style="{'background-image':'url('+productDetails.image+')','background-position':'center','background-repeat':'no-repeat','background-size':'cover',}"></div>
+            <div class="small-img">
+                <div class="prev-btn"></div>
+                <div class="img-list">
+                    <ul>
+                        <li @click="bgImg=productDetails.image" :class="{cur:bgImg==productDetails.image}" :style="{'background-image':'url('+productDetails.image+')','background-positon':'center','background-repeat':'no-repeat','background-size':'cover',}"></li>
+                        <li @click="bgImg=item.image" :class="{cur:bgImg==item.image}" v-for="(item,i) in productDetails.sImageList" :style="{'background-image':'url('+item.image+')','background-position':'center','background-repeat':'no-repeat','background-size':'cover',}"></li>
+                    </ul>
+                </div>
+                <div class="next-btn"></div>
+            </div>
+        </div>
+        <div class="pro-text-show">
+            <h3 class="goods-title" v-text="productDetails.name"></h3>
+            <div class="pro-info" v-show="model.parameter.indexOf('2')>=0">编码：
+                <span v-text="productDetails.spu"></span>
+            </div>
+            <div class="goods-stitleBox">
+                <h4 class="goods-stitle" v-show="model.parameter.indexOf('3')>=0" v-text="productDetails.summary"></h4>
+            </div>
+            <div>
+                <em class="newPrice" v-show="model.parameter.indexOf('0')>=0" v-text="productDetails.price"></em>
+                <em v-show="model.parameter.indexOf('1')>=0" class="oldPrice" v-text="productDetails.marketPrice"></em>
+            </div>
+            <!--<div class="sale" v-show="model.offers=='0'"><i>优惠</i><span>5元店铺优惠券，满100元可用</span></div>-->
+            <!--<div class="pro-info">颜色参数：
+                <ul>
+                    <li class="cur">黑色</li>
+                    <li>蓝色</li>
+                    <li>黄色</li>
+                </ul>
+            </div>-->
+            <div class="goods-buyBox">
+                <div class="goods-buy">立即购买</div>
+                <div class="goods-share" v-show="model.share">
+                    <i @click="share=!share">分享</i>
+                    <div class="share-icon" v-show="share">
+                        <ul>
+                            <li>
+                                <a>
+                                    <img src="images/components/pro_share_1.png" alt="">
+                                </a>
+                            </li>
+                            <li>
+                                <a>
+                                    <img src="images/components/pro_share_2.png" alt="">
+                                </a>
+                            </li>
+                            <li>
+                                <a>
+                                    <img src="images/components/pro_share_3.png" alt="">
+                                </a>
+                            </li>
+                            <li>
+                                <a>
+                                    <img src="images/components/pro_share_4.png" alt="">
+                                </a>
+                            </li>
+                            <li>
+                                <a>
+                                    <img src="images/components/pro_share_5.png" alt="">
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--<div class="pro-more" v-show="model.nextPro=='0'">
+            <div class="pro-more-next">上一个：夏季牛仔裤</div>
+            <div class="pro-more-perv">下一个：连衣裙</div>
+        </div>-->
+        <div class="pro-content">
+            <div class="pro-title">
+                <span>产品详情</span>
+            </div>
+            <div class="pro-con" v-html="productDetails.description"></div>
+        </div>
+    </div>
+
+    <!--微端产品详情-->
+    <div class="proDetailsInfo-web" v-else>
+        <div class="proD-image" v-if="model.type==2">
+            <el-carousel :interval="5000" arrow="always">
+                <el-carousel-item v-for="(item,i) in productDetails.sImageList" :key="item">
+                    <h3 :style="{'background-image':'url('+item.image+')','background-position':'center','background-repeat':'no-repeat','background-size':'cover',}"></h3>
+                </el-carousel-item>
+            </el-carousel>
+        </div>
+        <div class="proD-info" :class="sty">
+            <div class="proD-title">
+                <h3 class="proD-name" v-text="productDetails.name"></h3>
+                <em class="newPrice" v-show="model.parameter.indexOf('0')>=0">￥{{productDetails.price}}</em>
+                <em v-show="model.parameter.indexOf('1')>=0" class="oldPrice">￥{{productDetails.marketPrice}}</em>
+                <div class="proD-share" v-if="model.type==3"></div>
+            </div>
+            <div class="proD-share" v-if="model.type==2"></div>
+        </div>
+
+        <div class="proD-content">
+            <div class="proD-title">
+                <h3>产品详情</h3>
+            </div>
+            <div class="proD-content" v-html="productDetails.description"></div>
+        </div>
+    </div>
+
+
+</v-cptborder>

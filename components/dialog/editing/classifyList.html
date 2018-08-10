@@ -1,0 +1,58 @@
+<div class="mobileFooterList">
+    <span style="transform: translateY(20px);">分类列表:</span>
+    <div class="addFooterList" @click="openLinkDialog">添加分类</div>
+    <ul class="cs-list-head">
+        <li>分类</li>
+        <li>图标</li>
+        <li>显示/隐藏</li>
+        <li>排序</li>
+        <li>操作</li>
+    </ul>
+    <div v-for="(option,ex) in model.classify">
+        <ul class="cs-list-body scroll-bar classifyUl">
+            <li>
+                <div class="cs-content">
+                    <h3 v-text="option.name"></h3>
+                </div>
+                <h4>
+                    <img :src="option.icon" style="width: 25px;height: 25px; margin: 12.5px auto;">
+                </h4>
+                <h4 class="cs-btn">
+                    <i @click="showList(option.isShow,ex)" class="isshow" v-show="option.isShow"></i>
+                    <i @click="showList(option.isShow,ex)" class="ishide" v-show="!option.isShow"></i>
+                </h4>
+                <h4 class="cs-btn">
+                    <i class="down" @click="orderList(1,ex)" v-if="ex < model.classify.length-1"></i>
+                    <i class="top" @click="orderList(2,ex)" v-if="ex > 0"></i>
+                </h4>
+                <h4 class="cs-btn">
+                    <i class="modify" @click="modify(option.id)"></i>
+                    <i class="del" @click="del(option.id)"></i>
+                </h4>
+            </li>
+        </ul>
+        <ul class="cs-list-body scroll-bar classifyUl">
+            <li v-for="(citem,i) in model.classify[0].children" :key="i">
+                <div class="cs-content">
+                    <h3 style="text-align: center;padding-left: 20px"> <img src="./images/components/jibie.png" style="margin-top: 7.5px;" alt="">{{citem.name}}</h3>
+                </div>
+                <h4>
+                    <img :src="option.icon" style="width: 25px;height: 25px; margin: 12.5px auto;">
+                </h4>
+                <h4 class="cs-btn">
+                </h4>
+                <h4 class="cs-btn">
+                </h4>
+                <h4 class="cs-btn">
+                    <i class="modify" @click="modify(citem.id)"></i>
+                    <i class="del" @click="del(citem.id)"></i>
+                </h4>
+            </li>
+        </ul>
+    </div>
+    <ul>
+        <li v-if="model.classify.length<1">
+            <div class="classifyWaring">没有数据,请添加数据</div>
+        </li>
+    </ul>
+</div>

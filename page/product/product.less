@@ -1,0 +1,1759 @@
+@font: #ffffff;
+@canglu: #238DE3;
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  font-size: 14px;
+}
+
+//自定义图片的尺寸 默认 7px*4px
+.imgSize(@w:7px,@h:4px) {
+  display: block;
+  width: @w;
+  height: @h;
+}
+
+// input消除初始属性
+.clearInput {
+  border: 0;
+  outline: 0;
+}
+
+// 输入框外框 - 默认 内边距5px ； 边框#c6c9cc
+.borderBox(@p:5px,@bc:#c6c9cc) {
+  border: 1px solid @bc;
+  padding: @p;
+}
+
+//  下拉框箭头 > 初始状态
+.arrows(@s:8px,@c:#5ca6e2) {
+  display: block;
+  border-left: 1px solid @c;
+  border-top: 1px solid @c;
+  width: @s;
+  height: @s;
+  margin-bottom: @s/2;
+  -webkit-transform: rotate(225deg);
+  -moz-transform: rotate(225deg);
+  -ms-transform: rotate(225deg);
+  -o-transform: rotate(225deg);
+  transform: rotate(225deg);
+}
+
+// 下拉框箭头 > 选择状态
+.arrowsChecked(@s:8px,@c:#7d8d9b) {
+  border-left: 1px solid @c;
+  border-top: 1px solid @c;
+  margin-bottom: -@s/2;
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+//input-number去掉箭头
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none !important;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+//不透明度为0
+.opacity0 {
+  opacity: 0;
+}
+
+//备注文字
+.tips {
+  color: #808080;
+}
+
+.w-100 {
+  width: 100px;
+}
+
+/*优化滚动条*/
+::-webkit-scrollbar {
+  width: 5px;
+  margin-right: -12px;
+  border-radius: 8px;
+  background-color: #f2f2f2;
+}
+
+::-webkit-scrollbar-thumb {
+  width: 8px;
+  border-radius: 8px;
+  background-color: #dadbe6;
+
+}
+
+li {
+  list-style: none;
+}
+
+.ml-20 {
+  margin-left: 20px;
+}
+
+.fl {
+  float: left;
+}
+
+.fr {
+  float: right;
+}
+
+//定位
+.positionR {
+  position: relative;
+}
+
+.positionA {
+  position: absolute;
+}
+
+//显示隐藏
+.displayN {
+  display: none;
+}
+
+.displayB {
+  display: block;
+}
+
+.displayI {
+  display: inline-block;
+}
+
+//字体对齐方式
+.alignC {
+  text-align: center;
+}
+
+.alignL {
+  text-align: left;
+}
+
+.alignR {
+  text-align: right;
+}
+
+.m0auto {
+  margin: 0 auto;
+}
+
+//鼠标形状
+.pointer {
+  cursor: pointer;
+}
+
+//字体大小 10到50
+.fs10 {
+  font-size: 10px;
+}
+
+.fs12 {
+  font-size: 12px;
+}
+
+.fs14 {
+  font-size: 14px;
+}
+
+.fs16 {
+  font-size: 16px;
+}
+
+.fs18 {
+  font-size: 18px;
+}
+
+.fs20 {
+  font-size: 20px;
+}
+
+.fs22 {
+  font-size: 22px;
+}
+
+.fs24 {
+  font-size: 24px;
+}
+
+.fs26 {
+  font-size: 26px;
+}
+
+.fs28 {
+  font-size: 28px;
+}
+
+.fs30 {
+  font-size: 30px;
+}
+
+.fs32 {
+  font-size: 32px;
+}
+
+.fs34 {
+  font-size: 34px;
+}
+
+.fs36 {
+  font-size: 36px;
+}
+
+.fs38 {
+  font-size: 38px;
+}
+
+.fs40 {
+  font-size: 40px;
+}
+
+.fs42 {
+  font-size: 42px;
+}
+
+.fs44 {
+  font-size: 44px;
+}
+
+.fs46 {
+  font-size: 46px;
+}
+
+.fs48 {
+  font-size: 48px;
+}
+
+.fs50 {
+  font-size: 50px;
+}
+
+//行高 12到60 偶数
+.lh12 {
+  line-height: 12px;
+}
+
+.lh14 {
+  line-height: 14px;
+}
+
+.lh16 {
+  line-height: 16px;
+}
+
+.lh18 {
+  line-height: 18px;
+}
+
+.lh20 {
+  line-height: 20px;
+}
+
+.lh22 {
+  line-height: 22px;
+}
+
+.lh24 {
+  line-height: 24px;
+}
+
+.lh26 {
+  line-height: 26px;
+}
+
+.lh28 {
+  line-height: 28px;
+}
+
+.lh30 {
+  line-height: 30px;
+}
+
+.lh32 {
+  line-height: 32px;
+}
+
+.lh34 {
+  line-height: 34px;
+}
+
+.lh36 {
+  line-height: 36px;
+}
+
+.lh38 {
+  line-height: 38px;
+}
+
+.lh40 {
+  line-height: 42px;
+}
+
+.lh44 {
+  line-height: 44px;
+}
+
+.lh46 {
+  line-height: 46px;
+}
+
+.lh48 {
+  line-height: 48px;
+}
+
+.lh50 {
+  line-height: 50px;
+}
+
+.lh52 {
+  line-height: 52px;
+}
+
+.lh54 {
+  line-height: 54px;
+}
+
+.lh56 {
+  line-height: 56px;
+}
+
+.lh58 {
+  line-height: 58px;
+}
+
+.lh60 {
+  line-height: 60px;
+}
+
+//盒子内填充
+//清除浮动
+.clearfix:before,
+.clearfix:after {
+  display: table;
+  content: "";
+}
+
+.clearfix:after {
+  clear: both;
+}
+
+.clearfix {
+  *zoom: 1;
+}
+
+//间隔条
+.spacerBar {
+  height: 10px;
+  width: 100%;
+  background-color: #F0F1FA;
+}
+
+//版心类
+.banxin {
+  width: 1200px;
+  margin: 0 auto;
+}
+
+//左侧栏
+.left-nav {
+  width: 60px;
+  height: 100%;
+  position: fixed;
+  left: 0;
+  top: 46px;
+  background-color: #2d3644;
+  z-index: 660;
+}
+
+.left-nav li {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 75px;
+  cursor: pointer;
+  font-size: 12px;
+
+}
+
+.left-nav li.on {
+  position: relative;
+  background-color: #69bbff;
+}
+
+.left-nav li a > div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.left-nav li a {
+  display: block;
+  color: #fff;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
+
+.left-nav li.set {
+  position: absolute;
+  bottom: 0px;
+  width: 100%;
+}
+
+//
+.layout {
+  width: 100%;
+  height: 100%;
+  > header {
+    width: 100%;
+    height: 46px;
+    display: flex;
+    align-items: center;
+    color: #fff;
+    background-color: #292d33;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 999;
+    .logo-box {
+      width: 240px;
+      .logo {
+        height: 15px;
+        width: auto;
+        margin: 0 9px;
+      }
+      span {
+        margin: 0 10px;
+      }
+    }
+    > ul {
+      flex: 1;
+      color: #b8c0cc;
+      li {
+        height: 46px;
+        width: 86px;
+        white-space: wrap;
+        cursor: pointer;
+        text-align: center;
+        line-height: 46px;
+        border-left: 1px solid #4d4d4d;
+        &.two {
+          width: 106px;
+          background-color: #69bbff;
+          color: #ffffff;
+          float: left;
+        }
+      }
+    }
+  }
+  > .content {
+    margin-left: 60px;
+    margin-top: 46px;
+    height: 100%;
+    display: flex;
+
+    > .left {
+      height: 100%;
+      width: 180px;
+      background-color: #edf1f5;
+      > ul {
+        background-color: #edf1f5;
+        > li {
+          width: 100%;
+          height: 60px;
+          padding-top: 21px;
+          padding-left: 20px;
+          > span {
+            color: #1A1A1A;
+          }
+          > a {
+            width: 18px;
+            height: 18px;
+            background-image: url("../../images/product/tiaozhuan.png");
+            margin-right: 20px;
+          }
+        }
+        > .active {
+          background-color: @font;
+          > span {
+            color: #238DE3;
+          }
+          > a {
+            background-image: url("../../images/product/tiaoz.png");
+          }
+        }
+      }
+    }
+    > .right {
+      background-color: @font;
+      padding: 0px 30px;
+      flex: 1;
+      height: 100%;
+      > nav {
+        height: 60px;
+        border-bottom: 1px solid #DFE2E6;
+        > ul {
+          > li {
+            padding: 24px 0px 14px;
+            margin-right: 45px;
+            color: #262626;
+            height: 100%;
+          }
+          > .active {
+            color: #238DE3;
+            border-bottom: 3px solid #238DE3;
+          }
+
+        }
+        > .rightBox {
+          img {
+            .imgSize();
+            margin-right: 10px;
+          }
+          li {
+            margin-right: 0;
+          }
+          li:first-child {
+            &.on {
+              ul {
+                border-top: 1px solid #238de3;
+                background-color: rgb(255, 255, 255);
+                box-shadow: 0px 3px 5px 0px rgba(56, 125, 182, 0.2);
+                position: absolute;
+              }
+              li {
+                width: 70%;
+                padding: 6px 0;
+                text-align: center;
+                margin: 0 auto;
+                border-bottom: 1px solid #dfe2e6;
+                &:hover {
+                  color: #238de3;
+                }
+                &:last-child {
+                  border-bottom: 0;
+                }
+              }
+            }
+          }
+          .search-input {
+            border-left: 1px solid #dfe2e6;
+            padding-left: 10px;
+            input {
+              &::-webkit-input-placeholder {
+                color: #cccccc;
+              }
+              &:-moz-placeholder {
+                color: #cccccc;
+              }
+              &::-moz-placeholder {
+                color: #cccccc;
+              }
+              &:-ms-input-placeholder {
+                color: #cccccc;
+              }
+            }
+          }
+          .search-box {
+            img {
+              .imgSize(14px, 14px);
+              margin-left: 10px;
+            }
+          }
+          span {
+            margin-right: 22px;
+          }
+          .item {
+            color: #707070;
+            left: 0;
+            top: 59px;
+            background: #fff;
+            width: 100%;
+            padding-bottom: 4px;
+          }
+        }
+
+      }
+      //列表
+      > .dataBox {
+        padding-top: 20px;
+        > .title {
+          height: 54px;
+          background-color: #edf1f5;
+          display: flex;
+          > li {
+            padding-top: 16px;
+            color: #333333;
+          }
+          > .checkboxBox {
+            padding-left: 20px;
+            padding-right: 45px;
+            > .checkbox {
+              vertical-align: middle;
+            }
+          }
+          > .productName {
+            text-align: left;
+            flex: 1.5;
+
+            width: 425px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+          }
+          > .productClass {
+            text-align: center;
+            flex: 1;
+          }
+          > .productMomey {
+            flex: 1;
+          }
+          > .time {
+            flex: 1;
+          }
+          > .do {
+            flex: 1;
+          }
+        }
+        > .data {
+          height: 680px;
+          overflow-y: auto;
+          > li {
+            height: 54px;
+            background-color: @font;
+            border-bottom: 1px solid #E9ECF0;
+            //&:hover{
+            //  background-color: #ff0;
+            //}
+            > .title {
+              height: 50px;
+              background-color: @font;
+              display: flex;
+              > li {
+                padding-top: 16px;
+                color: #666666;
+              }
+              > .checkboxBox {
+                padding-left: 20px;
+                padding-right: 45px;
+                > .checkbox {
+                  vertical-align: middle;
+                }
+              }
+              > .productName {
+
+                width: 425px;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                text-align: left;
+                flex: 1.5;
+              }
+              > .productClass {
+                text-align: center;
+                flex: 1;
+              }
+              > .productMomey {
+                font-family: SimSun;
+                flex: 1;
+              }
+              > .time {
+                font-family: SimSun;
+                flex: 1;
+              }
+              > .do {
+                margin-top: -7px;
+                flex: 1;
+                > .doInner {
+                  width: 112px;
+                  > .delete {
+                    width: 30px;
+                    height: 30px;
+                    background-color: #edf1f5;
+                    border-radius: 50%;
+                    padding: 8px 0px 0px 8px;
+                    margin-right: 10px;
+                    > i {
+                      width: 14px;
+                      height: 14px;
+                      background-image: url("../../images/product/shanc.png");
+                    }
+                    &:hover {
+                      background-color: #dce6ef;
+                      color: #ff0000;
+                      i {
+                        background-image: url("../../images/product/shanchu.png");
+                      }
+                    }
+                  }
+                  > .edit {
+                    width: 70px;
+                    height: 30px;
+                    background-color: #edf1f5;
+                    border-radius: 15px;
+                    text-decoration: none;
+                    > i {
+                      padding: 0;
+                      margin: 0;
+                      width: 14px;
+                      height: 14px;
+                      margin-right: 5px;
+                      background-image: url("../../images/product/bianj.png");
+                      vertical-align: middle;
+                    }
+                    &:hover {
+                      background-color: #dce6ef;
+                      color: #5CA6E2;
+                      i {
+                        background-image: url("../../images/product/bianji.png");
+                      }
+                    }
+                    > span {
+                      color: #90A3B3;
+                      text-decoration: none;
+                    }
+                  }
+                  .recover {
+                    width: 70px;
+                    height: 30px;
+                    background-color: #edf1f5;
+                    border-radius: 15px;
+                    text-decoration: none;
+                    > i {
+                      padding: 0;
+                      margin: 0;
+                      width: 17px;
+                      height: 14px;
+                      margin-right: 5px;
+                      background-image: url("../../images/newCate/huhuu.png");
+                      vertical-align: middle;
+                    }
+                    &:hover {
+                      background-color: #dce6ef;
+                      color: #5CA6E2;
+                      i {
+                        background-image: url("../../images/product/huif.png");
+                      }
+                    }
+                    > span {
+                      color: #90A3B3;
+                      text-decoration: none;
+                    }
+                  }
+                }
+              }
+            }
+          }
+          > .hover {
+            &:hover {
+              background-color: #F5F8FC;
+              ul {
+                background-color: #F5F8FC;
+              }
+            }
+          }
+          > .checked {
+            background-color: #dce6ef;
+            > ul {
+              background-color: #dce6ef;
+              > .do {
+                > .doInner {
+                  > .delete {
+                    > i {
+                      background-image: url("../../images/product/shanchu.png");
+                    }
+                  }
+                  > .edit {
+                    > i {
+                      background-image: url("../../images/product/bianji.png");
+                    }
+                    > span {
+                      color: #5CA6E2;
+                    }
+                  }
+                }
+              }
+            }
+          }
+
+        }
+        > .total {
+          > li {
+            height: 78px;
+            > ul {
+              display: flex;
+              border-top: 1px solid #DFE2E6;
+              > .checkboxBox {
+                padding-left: 20px;
+                padding-right: 45px;
+                padding-top: 30px;
+                > .checkbox {
+                  vertical-align: middle;
+                }
+              }
+              > .productName {
+                padding-top: 28px;
+                width: 250px;
+                > span {
+                  vertical-align: middle;
+                  margin-right: 20px;
+                }
+                > .allMove {
+                  width: 86px;
+                  height: 28px;
+                  border-radius: 4px;
+                  background-color: #238DE3;
+                  color: #FFFEFE;
+                  border: none;
+                  margin-right: 10px;
+                }
+                > .delete {
+                  width: 67px;
+                  height: 28px;
+                  border-radius: 4px;
+                  background-color: #238DE3;
+                  color: #FFFEFE;
+                  border: none;
+                }
+              }
+              > .blank {
+                flex: 1;
+              }
+              > .page {
+                width: 595px;
+                padding-top: 24px;
+                > ul {
+                  height: 28px;
+                  > .number {
+                    width: 36px;
+                    height: 36px;
+                    color: #999999;
+                    line-height: 36px;
+                    font-family: SimSun;
+                    &:hover {
+                      background-color: #199EE3;
+                      color: @font;
+                    }
+                    &.on {
+                      background-color: #199EE3;
+                      color: @font;
+                    }
+                  }
+                  > .arrow {
+                    padding-top: 8px;
+                  }
+                  > .left {
+                    height: 100%;
+                    padding-right: 20px;
+                    > .leftIconBox {
+                      padding: 5px 0px 0px 20px;
+                      > .icon {
+                        width: 6px;
+                        height: 11px;
+                        background-image: url("../../images/product/left%20b.png");
+                      }
+                    }
+                  }
+                  > .right {
+                    padding-left: 20px;
+                    > .rightIconBox {
+                      padding: 5px 20px 0px 0px;
+                      > .icon {
+                        width: 6px;
+                        height: 11px;
+                        background-image: url("../../images/product/righta.png");
+                      }
+                    }
+
+                  }
+                  > .goTo {
+                    padding-top: 8px;
+                    > span {
+                      color: #999999;
+                    }
+                    > .tiaozhuan {
+                      margin-left: 30px;
+                    }
+                    > input {
+                      width: 30px;
+                      padding-left: 10px;
+                      border: none;
+                      border-bottom: #666 1px solid;
+                      margin-right: 10px;
+                    }
+                    > .to {
+                      > i {
+                        width: 7px;
+                        height: 7px;
+                        margin-left: 5px;
+                        margin-top: -3px;
+                        background-image: url("../../images/product/go.png");
+                      }
+                      &:hover {
+                        color: #238DE3;
+                        > i {
+                          background-image: url("../../images/product/gogo.png")
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+      //分类
+      > .category {
+        display: flex;
+        > .classify {
+          margin: 20px 0px 30px;
+          padding: 10px 20px 0px 10px;
+          display: flex;
+          height: 800px;
+          border: 1px solid #EDF1F5;
+          > .navL {
+            margin-right: 13px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            > .navInner {
+              height: 40px;
+              padding: 0 20px;
+              margin-bottom: 10px;
+              background-color: #EDF1F5;
+              > div {
+                color: #4D4D4D;
+              }
+              > i {
+                display: none;
+              }
+            }
+            > .active {
+              > div {
+                color: #238DE3;
+              }
+              > i {
+                display: inline-block;
+              }
+            }
+            > .blank {
+              flex: 10;
+            }
+          }
+          > .add {
+            flex: 5;
+            display: flex;
+            flex-flow: column;
+            > .addTitle {
+              height: 50px;
+              background-color: #EDF1F5;
+              display: flex;
+              > div {
+                color: #666666;
+                flex: 1;
+              }
+            }
+            > form {
+              height: 50px;
+              display: flex;
+              > .addTto {
+                display: flex;
+                flex: 1;
+                height: 50px;
+                border: 1px solid #EDF1F5;
+                > div {
+                  flex: 1;
+                  display: flex;
+                  justify-content: center;
+                }
+                > .name {
+                  padding-top: 12px;
+                  > input {
+                    width: 120px;
+                    height: 25px;
+                    color: #666666;
+                    border: 1px solid #cccccc;
+                    padding: 2px 4px;
+                  }
+                }
+                > .sort {
+
+                  input {
+                    width: 30px;
+                    height: 20px;
+                    text-align: center;
+                    border: 1px solid #dedede;
+                  }
+                }
+                > .do {
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  > div {
+                    margin-right: 10px;
+                  }
+                  > .operation {
+                    width: 30px;
+                    height: 30px;
+                    border-radius: 50%;
+                    background-color: #edf1f5;
+                    background-repeat: no-repeat;
+                    background-position: center center;
+                  }
+                  > .shift {
+                    background-image: url("../../images/product/shanc.png");
+                  }
+                  > .edit {
+                    background-image: url("../../images/product/bianj.png");
+                  }
+                  > .save {
+                    width: 70px;
+                    height: 30px;
+                    padding-right: 10px;
+                    background-color: #edf1f5;
+                    color: #7a8b99;
+                    border-radius: 15px;
+                    background-repeat: no-repeat;
+                    background-image: url("../../images/product/shanc.png");
+                    background-position: 11px 8px;
+                  }
+
+                }
+              }
+
+              > .active {
+                > .do {
+                  > .shift {
+                    background-image: url("../../images/product/shanc.png");
+                    &:hover {
+                      background-image: url("../../images/newCate/shanchu.png");
+                    }
+                  }
+                  .edit {
+                    background-image: url("../../images/product/bianji.png");
+                  }
+                  .save {
+                    background-image: url("../../images/newCate/baochun.png");
+                    &:hover {
+                      background-image: url("../../images/newCate/baoc.png");
+                      color: #5CA6E2;
+                    }
+                  }
+
+                }
+              }
+            }
+            > .more {
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              height: 30px;
+              margin-top: 10px;
+              border: 1px solid #EDF1F5;
+              > .fs14 {
+                color: #238de3;
+                margin-right: 10px;
+              }
+              > .icon {
+                > img {
+                  vertical-align: middle;
+                }
+              }
+              &:hover {
+                background-color: #EDF1F5;
+              }
+            }
+          }
+          //新闻二级分类
+          > .secondLevl {
+            > form {
+              > .addTto {
+                > .checkedUps {
+                  padding-top: 12px;
+                  > .option {
+                    width: 125px;
+                    max-height: 193px;
+                    border-top: 1px solid @canglu;
+                    box-shadow: 0px 0px 4px #ececec;
+                    background-color: rgba(255, 255, 255, 1);
+                    top: 46px;
+                    left: 28%;
+                    z-index: 9999;
+                    display: none;
+                    overflow-y: auto;
+                    overflow-x: hidden;
+                    > ul {
+                      > li {
+                        width: 120px;
+                        height: 40px;
+                        margin: 0 auto;
+                        border-bottom: 1px solid #e6e6e6;
+                        color: #666666;
+                        white-space: nowrap;
+                        &:hover {
+                          color: #187dcf;
+                          cursor: pointer;
+                        }
+                      }
+                    }
+                  }
+                  > input {
+                    width: 125px;
+                    height: 25px;
+                    height: 17px;
+                    color: #666666;
+                    // border: none;
+                    outline: none;
+                    background: url(../../images/newCate/xiangxx.png) no-repeat right center;
+                    text-align: center;
+                    border: 1px solid #cccccc;
+                  }
+                }
+              }
+            }
+          }
+          > .section {
+            display: none;
+          }
+          > .active {
+            display: flex;
+          }
+        }
+      }
+
+      //添加
+      > .addBox {
+        padding-top: 20px;
+        // 输入框外框
+        .border-box {
+          //设置 内边距，边框色
+          .borderBox(10px, #c6c9cc);
+        }
+        // 下拉框箭头 * 模拟select
+        .arrows-icon {
+          //设置箭头size 初始状态的颜色
+          .arrows(8px, #7d8d9b);
+        }
+        .red {
+          color: red;
+          vertical-align: middle;
+        }
+        .flex-name {
+          color: #595959;
+          white-space: nowrap;
+        }
+        .addItem {
+          margin-bottom: 20px;
+          .flex-name {
+            width: 60px;
+            text-align: right;
+            margin-right: 15px;
+
+          }
+
+          .name-input {
+            width: 310px;
+          }
+          // 模拟select
+          .selcet {
+            margin-right: 10px;
+
+            .option {
+              width: 100%;
+              max-height: 226px;
+              overflow-y: auto;
+              border: 1px solid #5ca6e2;
+              border-top: 0;
+              background-color: #fff;
+              z-index: 9;
+              > li {
+                height: 36px;
+                line-height: 36px;
+                text-align: center;
+                color: #808080;
+                &:hover {
+                  background-color: #5ca6e2;
+                  color: #ffffff;
+                }
+              }
+            }
+            .input-box {
+              //设置选中状态
+              &.checked {
+                .arrows-icon {
+                  //设置选中状态的颜色
+                  .arrowsChecked(8px, #5ca6e2);
+                }
+                .border-box {
+                  .borderBox(10px, #5ca6e2)
+                }
+              }
+
+              .selcet-t {
+                width: 160px;
+                span {
+                  display: block;
+                  width: 115px;
+                  height: 20px;
+                  line-height: 20px;
+                  margin-right: 10px;
+                  color: #808080;
+                }
+              }
+            }
+          }
+          //  上传图片
+          .imgBtn {
+            width: 100px;
+            height: 100px;
+            line-height: 36px;
+            background-color: #edf1f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 10px;
+            > img {
+              .imgSize(100px, 100px);
+            }
+            > input {
+              width: 120px;
+              height: 120px;
+              background-color: #ff0;
+              left: 0;
+              top: 0;
+            }
+            &:hover {
+              .img-del {
+                display: block;
+              }
+            }
+            .img-del {
+              display: none;
+              width: 16px;
+              height: 16px;
+              background: #238de3 url("../../images/shanccc.png") no-repeat center center;
+              right: 1px;
+              top: 1px;
+              cursor: pointer;
+            }
+          }
+          .img-list {
+            > li {
+              margin-right: 10px;
+              width: 100px;
+              height: 100px;
+              overflow: hidden;
+              border: 1px solid #c6c9cc;
+              margin-top: 10px;
+              .imgCtrl {
+                opacity: 0;
+                top: 94px;
+                left: 0;
+                width: 120px;
+                height: 26px;
+                background-color: rgba(237, 241, 245, 0.8);
+                transition: opacity 0.2s;
+                display: flex;
+                .left {
+                  flex: 1;
+                  height: 26px;
+                  background: url("../../images/product/xiangyyyb.png") center center no-repeat;
+                  &:hover {
+                    background-image: url("../../images/product/xiangzuoa.png");
+                  }
+                }
+                .center {
+                  flex: 1;
+                  height: 26px;
+                  background: url("../../images/product/shanc.png") center center no-repeat;
+                  &:hover {
+                    background-image: url("../../images/product/shanchu.png");
+                  }
+                }
+                .right {
+                  flex: 1;
+                  height: 26px;
+                  background: url("../../images/product/xiangyyy.png") center center no-repeat;
+                  &:hover {
+                    background-image: url("../../images/product/xiangyouy.png");
+                  }
+                }
+                .notLeft {
+                  flex: 1;
+                  height: 26px;
+                  background: url("../../images/product/xiangzuo.png") center center no-repeat;
+                }
+                .notRight {
+                  flex: 1;
+                  height: 26px;
+                  background: url("../../images/product/xiangyyyc.png") center center no-repeat;
+                }
+              }
+              &:hover {
+                .imgCtrl {
+                  opacity: 1;
+                }
+              }
+
+            }
+          }
+          .prize-box {
+            input {
+              width: 160px;
+            }
+          }
+          .digest-box {
+            textarea {
+              width: 900px;
+              height: 70px;
+              resize: none;
+            }
+          }
+
+          .add-submit {
+            width: 120px;
+            height: 36px;
+            line-height: 36px;
+            background-color: #238DE3;
+            color: #ffffff;
+            text-align: center;
+            margin: 30px auto 0;
+            border-radius: 2px;
+            &:hover {
+              background-color: #187dcf;
+            }
+          }
+        }
+      }
+      //放在最后避免被覆盖
+      > .section {
+        display: none;
+      }
+      > .show {
+        display: block;
+      }
+    }
+  }
+}
+
+.changeCate {
+  padding-top: 20px;
+  width: 600px;
+  // 输入框外框
+  .border-box {
+    //设置 内边距，边框色
+    .borderBox(10px, #c6c9cc);
+  }
+  // 下拉框箭头 * 模拟select
+  .arrows-icon {
+    //设置箭头size 初始状态的颜色
+    .arrows(8px, #7d8d9b);
+  }
+  .addItem {
+    margin-bottom: 20px;
+    .flex-name {
+      width: 60px;
+      text-align: center;
+      margin-right: 15px;
+      color: #595959;
+    }
+    .name-input {
+      width: 310px;
+    }
+    // 模拟select
+    .selcet {
+      margin-right: 10px;
+
+      .option {
+        width: 100%;
+        max-height: 226px;
+        overflow-y: auto;
+        border: 1px solid #5ca6e2;
+        border-top: 0;
+        background-color: #fff;
+        z-index: 9;
+        > li {
+          height: 36px;
+          line-height: 36px;
+          padding-left: 10px;
+          color: #808080;
+          &:hover {
+            background-color: #5ca6e2;
+            color: #ffffff;
+          }
+        }
+      }
+      .input-box {
+        //设置选中状态
+        &.checked {
+          .arrows-icon {
+            //设置选中状态的颜色
+            .arrowsChecked(8px, #5ca6e2);
+          }
+          .border-box {
+            .borderBox(10px, #5ca6e2)
+          }
+        }
+
+        .selcet-t {
+          width: 160px;
+          span {
+            display: block;
+            width: 115px;
+            height: 20px;
+            line-height: 20px;
+            margin-right: 10px;
+            color: #808080;
+          }
+        }
+      }
+    }
+    //  上传图片
+    .imgBtn {
+      width: 120px;
+      height: 36px;
+      line-height: 36px;
+      background-color: #edf1f5;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-right: 15px;
+      > img {
+        .imgSize(20px, 14px);
+        margin-right: 10px;
+      }
+    ;
+      > input {
+        width: 120px;
+        height: 36px;
+        background-color: #ff0;
+        left: 0;
+        top: 0;
+      }
+
+    }
+    .img-list {
+      > li {
+        margin-right: 10px;
+        width: 100px;
+        height: 100px;
+        overflow: hidden;
+        border: 1px solid #c6c9cc;
+        .imgCtrl {
+          opacity: 0;
+          top: 94px;
+          left: 0;
+          width: 120px;
+          height: 26px;
+          background-color: rgba(237, 241, 245, 0.8);
+          transition: opacity 0.2s;
+          display: flex;
+          .left {
+            flex: 1;
+            height: 26px;
+            background: url("../../images/product/xiangyyyb.png") center center no-repeat;
+            &:hover {
+              background-image: url("../../images/product/xiangzuoa.png");
+            }
+          }
+          .center {
+            flex: 1;
+            height: 26px;
+            background: url("../../images/product/shanc.png") center center no-repeat;
+            &:hover {
+              background-image: url("../../images/product/shanchu.png");
+            }
+          }
+          .right {
+            flex: 1;
+            height: 26px;
+            background: url("../../images/product/xiangyyy.png") center center no-repeat;
+            &:hover {
+              background-image: url("../../images/product/xiangyouy.png");
+            }
+          }
+          .notLeft {
+            flex: 1;
+            height: 26px;
+            background: url("../../images/product/xiangzuo.png") center center no-repeat;
+          }
+          .notRight {
+            flex: 1;
+            height: 26px;
+            background: url("../../images/product/xiangyyyc.png") center center no-repeat;
+          }
+        }
+        &:hover {
+          .imgCtrl {
+            opacity: 1;
+          }
+        }
+
+      }
+    }
+    .prize-box {
+      input {
+        width: 160px;
+      }
+    }
+    .digest-box {
+      textarea {
+        width: 900px;
+        height: 70px;
+        resize: none;
+      }
+    }
+
+    .add-submit {
+      width: 120px;
+      height: 36px;
+      line-height: 36px;
+      background-color: #238DE3;
+      color: #ffffff;
+      text-align: center;
+      margin: 30px auto 0;
+      border-radius: 2px;
+      &:hover {
+        background-color: #187dcf;
+      }
+    }
+  }
+}
+
+.imgbg {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 99;
+}
+
+.edui-default .edui-editor {
+  z-index: 15 !important;
+}
+
+.checkImg {
+  width: 800px;
+  height: 530px;
+  background-color: #ffffff;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  margin-left: -400px;
+  margin-top: -265px;
+  border-radius: 5px;
+  .title {
+    padding: 30px 30px 20px 30px;
+    font-size: 16px;
+  }
+  > nav {
+    > ul {
+      width: 100%;
+      height: 35px;
+      line-height: 35px;
+      padding-left: 30px;
+      border-bottom: 1px solid #cccccc;
+      li {
+        width: 90px;
+        height: 35px;
+        line-height: 35px;
+        text-align: center;
+        &.on {
+          background-color: #FFFFFF;
+          border-top: 1px solid #cccccc;
+          border-left: 1px solid #cccccc;
+          border-right: 1px solid #cccccc;
+        }
+      }
+
+    }
+  }
+  > ul {
+    margin: 30px;
+    height: 360px;
+    border: 1px solid #cccccc;
+    .blue {
+      color: #238de3;
+      width: 150px;
+    }
+    .ctrlbar {
+      padding: 10px 20px;
+      line-height: 30px;
+      border-bottom: 1px solid #cccccc;
+      margin-bottom: 20px;
+      > .flex-content {
+        white-space: nowrap;
+        span {
+          float: left;
+        }
+      }
+      .imgInput {
+        width: 80px;
+        height: 28px;
+        line-height: 28px;
+        text-align: center;
+        border-radius: 5px;
+        border: 1px solid #cccccc;
+        margin-right: 10px;
+        input {
+          width: 80px;
+          height: 28px;
+          left: 0;
+          top: 0;
+        }
+        &.upLoad {
+          margin-right: 0px;
+          background-color: #238de3;
+          border: 0;
+          color: #ffffff;
+        }
+      }
+    }
+    .showImg {
+      width: 120px;
+      height: 120px;
+      input {
+        width: 120px;
+        height: 120px;
+        left: 0;
+        top: 0;
+      }
+      img {
+        width: 120px;
+        height: 120px;
+      }
+    }
+  }
+}
+
+//空数据图片
+.nullDataBox {
+  width: 596px;
+  height: 368px;
+  top: 50%;
+  left: 50%;
+  margin-left: -298px;
+  margin-top: -209px;
+  > .null_P {
+    line-height: 100px;
+    color: #808080;
+  }
+  button {
+    width: 86px;
+    height: 28px;
+    margin: 0 auto;
+    border: 1px solid;
+    border-color: @canglu;
+    color: @canglu;
+    background-color: @font;
+  }
+}
+
+#myEditor #ueditor_0 body {
+  height: 300px !important;
+  overflow-y: auto !important;
+}
+
+.view {
+  height: 134px !important;
+}
+
+//单个编辑样式
+//.checkImg {
+//  position: absolute;
+//  width: 200px;
+//  height: 110px;
+//  border-radius: 100px;
+//  top: 5px;
+//  left: 0;
+//  margin-left: -50px;
+//  background-color: #dedede;
+//z-index: 999;
+//  display: block;
+//
+//  >.addItem {
+//    width: 100px;
+//    height: 100px;
+//    position: absolute;
+//    left: 50%;
+//    top: 50%;
+//    margin-left: -50px;
+//    margin-top: -50px;
+//    outline: 2px solid #eee;
+//    z-index: 2;
+//    >.imgBtno{
+//      width: 100px;
+//      height: 100px;
+//      line-height: 36px;
+//      background-color: #edf1f5;
+//      display: flex;
+//      justify-content: center;
+//      align-items: center;
+//      margin-top: 10px;
+//
+//    }
+//    input{
+//      width: 100px;
+//      height: 100px;
+//    }
+//    img {
+//      width: 100px;
+//      height: 100px;
+//    }
+//  }
+//  >.sureImges{
+//    width: 100px;
+//    height: 100px;
+//    border-radius: 100px;
+//    position: absolute;
+//    bottom: 5px;
+//    right: 5px;
+//    background-color: #159e21;
+//    line-height: 100px;
+//    padding-left:63px;
+//    z-index: 1;
+//    color:#fff;
+//    opacity: 0.8;
+//    &:hover{
+//      opacity: 1;
+//    }
+//  }
+//  >.giveUp{
+//    width: 100px;
+//    height: 100px;
+//    border-radius: 100px;
+//    position: absolute;
+//    top: 5px;
+//    left: 5px;
+//    background-color: #f31f1f;
+//    padding-left:7px;
+//    color:#fff;
+//    line-height: 100px;
+//    z-index: 1;
+//    opacity: 0.8;
+//    &:hover{
+//      opacity: 1;
+//    }
+//  }
+//}

@@ -1,0 +1,17 @@
+<div class="header-left">
+        <div class="logo">
+            <img :src="logo">
+        </div>
+        <div>
+        </div>
+        <div  v-cloak  @click="pageflag()"  class="pageflag" firstTime="true">
+            <span>自助建站</span>
+            <div class="pagesImg">
+                <div class="imgBar">
+                    <img src="images/slideDowm.png">
+                </div>
+            </div>
+        </div>
+         <!-- 页面管理 弹窗 -->
+         <page-menus v-if="showMenus" :firstParentId="model"></page-menus>
+</div>
