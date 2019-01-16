@@ -2,7 +2,7 @@
 var http = require('http');
 var fs = require('fs');//引入文件读取模块
 
-var documentRoot = 'C:/Users/47100/Desktop/web';//需要访问的本地文件的存放目录
+var documentRoot = 'C:/Users/47100/Desktop/web/web';//需要访问的本地文件的存放目录
 
 var server = http.createServer(function (req, res) {
 
